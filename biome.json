@@ -1,0 +1,62 @@
+{
+  "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git"
+  },
+  "javascript": {
+    "formatter": {
+      "trailingCommas": "es5"
+    },
+    "globals": ["React"]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "all": true,
+      "suspicious": {
+        "noReactSpecificProps": "off",
+        "noConsole": {
+          "fix": "safe",
+          "level": "error",
+          "options": {
+            "allow": ["warn", "error", "info"]
+          }
+        },
+        "noConsoleLog": "off"
+      },
+      "style": {
+        "noDefaultExport": "off",
+        "noNamespaceImport": "off",
+        "useNamingConvention": "off",
+        "noImplicitBoolean": "off"
+      },
+      "correctness": {
+        "useImportExtensions": "off"
+      },
+      "nursery": {
+        "useSortedClasses": {
+          "fix": "safe",
+          "level": "error",
+          "options": {
+            "functions": ["cva", "cx", "cn"]
+          }
+        }
+      },
+      "performance": {
+        "noBarrelFile": "off",
+        "noReExportAll": "off"
+      }
+    }
+  },
+  "files": {
+    "ignore": ["node_modules"]
+  }
+}
