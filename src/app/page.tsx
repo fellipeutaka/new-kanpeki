@@ -1,5 +1,6 @@
 import { AccordionDemo } from "~/demos/accordion-demo";
 import { AlertDemo } from "~/demos/alert-demo";
+import { AvatarDemo } from "~/demos/avatar-demo";
 import { BadgeDemo } from "~/demos/badge-demo";
 import { BreadcrumbDemo } from "~/demos/breadcrumb-demo";
 import { ButtonDemo } from "~/demos/button-demo";
@@ -37,9 +38,9 @@ export default function SinkPage() {
       {/* <ComponentWrapper name="aspect-ratio">
         <AspectRatioDemo />
       </ComponentWrapper> */}
-      {/* <ComponentWrapper name="avatar">
+      <ComponentWrapper name="avatar">
         <AvatarDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       <ComponentWrapper name="badge">
         <BadgeDemo />
       </ComponentWrapper>

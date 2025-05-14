@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronsUpDown } from "lucide-react";
+import { ChevronsUpDownIcon } from "lucide-react";
 
 import { useState } from "react";
 import { Button } from "~/components/ui/button";
@@ -25,7 +25,7 @@ export function CollapsibleDemo() {
         </h4>
         <CollapsibleTrigger asChild>
           <Button variant="ghost" size="sm">
-            <ChevronsUpDown className="h-4 w-4" />
+            <ChevronsUpDownIcon className="size-4" />
             <span className="sr-only">Toggle</span>
           </Button>
         </CollapsibleTrigger>
