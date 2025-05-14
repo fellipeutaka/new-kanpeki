@@ -1,25 +1,28 @@
 import { CalendarIcon } from "lucide-react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
-import { Button } from "~/components/ui/button";
 import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "~/components/ui/hover-card";
+  AvatarFallback,
+  AvatarImage,
+  AvatarRoot,
+} from "~/components/ui/avatar";
+import { Button } from "~/components/ui/button";
+import { TooltipContent, TooltipRoot } from "~/components/ui/tooltip";
 
 export function HoverCardDemo() {
   return (
-    <HoverCard>
-      <HoverCardTrigger asChild>
-        <Button variant="link">@nextjs</Button>
-      </HoverCardTrigger>
-      <HoverCardContent className="w-80" side="right">
+    <TooltipRoot delay={700}>
+      <Button variant="link">@nextjs</Button>
+
+      <TooltipContent
+        offset={4}
+        className="w-80 p-4 shadow-md"
+        placement="right"
+      >
         <div className="flex justify-between gap-4">
-          <Avatar>
+          <AvatarRoot>
             <AvatarImage src="https://github.com/vercel.png" />
             <AvatarFallback>VC</AvatarFallback>
-          </Avatar>
+          </AvatarRoot>
           <div className="flex flex-col gap-1">
             <h4 className="font-semibold text-sm">@nextjs</h4>
             <p className="text-sm">
@@ -33,7 +36,7 @@ export function HoverCardDemo() {
             </div>
           </div>
         </div>
-      </HoverCardContent>
-    </HoverCard>
+      </TooltipContent>
+    </TooltipRoot>
   );
 }

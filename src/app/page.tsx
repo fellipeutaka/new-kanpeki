@@ -8,6 +8,7 @@ import { CarouselDemo } from "~/demos/carousel-demo";
 import { ChartDemo } from "~/demos/chart-demo";
 import { CheckboxDemo } from "~/demos/checkbox-demo";
 import { ComponentWrapper } from "~/demos/component-wrapper";
+import { HoverCardDemo } from "~/demos/hover-card-demo";
 import { InputDemo } from "~/demos/input-demo";
 import { InputOTPDemo } from "~/demos/input-otp-demo";
 import { LabelDemo } from "~/demos/label-demo";
@@ -89,9 +90,9 @@ export default function SinkPage() {
       {/* <ComponentWrapper name="form">
         <FormDemo />
       </ComponentWrapper> */}
-      {/* <ComponentWrapper name="hover-card">
+      <ComponentWrapper name="hover-card">
         <HoverCardDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       <ComponentWrapper name="input">
         <InputDemo />
       </ComponentWrapper>

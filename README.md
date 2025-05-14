@@ -41,3 +41,9 @@
  - [ ] Organize classNames
 - [ ] Replace all imports to use just `<Component.Sub />` pattern
 - [ ] Add more components
+
+# Annotations
+
+## Tooltip
+
+- In shadcn/ui (side) vs In RAC (placement)
