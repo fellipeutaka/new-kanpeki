@@ -8,6 +8,7 @@ import { ChartDemo } from "~/demos/chart-demo";
 import { ComponentWrapper } from "~/demos/component-wrapper";
 import { InputDemo } from "~/demos/input-demo";
 import { InputOTPDemo } from "~/demos/input-otp-demo";
+import { PaginationDemo } from "~/demos/pagination-demo";
 import { ResizableDemo } from "~/demos/resizable-demo";
 import { SeparatorDemo } from "~/demos/separator-demo";
 import { SkeletonDemo } from "~/demos/skeleton-demo";
@@ -102,9 +103,9 @@ export default function SinkPage() {
       {/* <ComponentWrapper name="navigation-menu">
         <NavigationMenuDemo />
       </ComponentWrapper> */}
-      {/* <ComponentWrapper name="pagination">
+      <ComponentWrapper name="pagination">
         <PaginationDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       {/* <ComponentWrapper name="popover">
         <PopoverDemo />
       </ComponentWrapper> */}
