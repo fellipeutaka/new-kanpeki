@@ -10,6 +10,7 @@ import { InputDemo } from "~/demos/input-demo";
 import { InputOTPDemo } from "~/demos/input-otp-demo";
 import { ResizableDemo } from "~/demos/resizable-demo";
 import { SonnerDemo } from "~/demos/sonner-demo";
+import { TextareaDemo } from "~/demos/textarea-demo";
 import { TooltipDemo } from "~/demos/tooltip-demo";
 
 export default function SinkPage() {
@@ -144,9 +145,9 @@ export default function SinkPage() {
       {/* <ComponentWrapper name="tabs">
         <TabsDemo />
       </ComponentWrapper> */}
-      {/* <ComponentWrapper name="textarea">
+      <ComponentWrapper name="textarea">
         <TextareaDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       {/* <ComponentWrapper name="toggle">
         <ToggleDemo />
       </ComponentWrapper> */}

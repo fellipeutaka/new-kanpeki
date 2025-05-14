@@ -42,7 +42,7 @@ export function TooltipContent({ className, ...props }: TooltipContentProps) {
     <Tooltip
       data-slot="tooltip-content"
       className={cn(
-        "group motion-duration-150 z-50 rounded-md border bg-popover px-3 py-1.5 text-popover-fg text-xs will-change-transform",
+        "group motion-duration-150 z-50 rounded-md border bg-popover px-3 py-1.5 text-popover-foreground text-xs will-change-transform",
         "entering:placement-left:motion-translate-x-in-[0.5rem]",
         "entering:placement-right:motion-translate-x-in-[-0.5rem]",
         "entering:placement-top:motion-translate-y-in-[0.5rem]",
