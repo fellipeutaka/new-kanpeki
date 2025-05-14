@@ -2,7 +2,7 @@
 
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import {
   InputOTP,
   InputOTPGroup,
@@ -23,10 +23,12 @@ export function InputOTPDemo() {
 }
 
 function InputOTPSimple() {
+  const id = useId();
+
   return (
     <div className="grid gap-2">
-      <Label htmlFor="simple">Simple</Label>
-      <InputOTP id="simple" maxLength={6}>
+      <Label htmlFor={id}>Simple</Label>
+      <InputOTP id={id} maxLength={6}>
         <InputOTPGroup>
           <InputOTPSlot index={0} />
           <InputOTPSlot index={1} />
@@ -44,10 +46,12 @@ function InputOTPSimple() {
 }
 
 function InputOTPPattern() {
+  const id = useId();
+
   return (
     <div className="grid gap-2">
-      <Label htmlFor="digits-only">Digits Only</Label>
-      <InputOTP id="digits-only" maxLength={6} pattern={REGEXP_ONLY_DIGITS}>
+      <Label htmlFor={id}>Digits Only</Label>
+      <InputOTP id={id} maxLength={6} pattern={REGEXP_ONLY_DIGITS}>
         <InputOTPGroup>
           <InputOTPSlot index={0} />
           <InputOTPSlot index={1} />
@@ -63,16 +67,12 @@ function InputOTPPattern() {
 
 function InputOTPWithSeparator() {
   const [value, setValue] = useState("123456");
+  const id = useId();
 
   return (
     <div className="grid gap-2">
-      <Label htmlFor="with-separator">With Separator</Label>
-      <InputOTP
-        id="with-separator"
-        maxLength={6}
-        value={value}
-        onChange={setValue}
-      >
+      <Label htmlFor={id}>With Separator</Label>
+      <InputOTP id={id} maxLength={6} value={value} onChange={setValue}>
         <InputOTPGroup>
           <InputOTPSlot index={0} />
           <InputOTPSlot index={1} />
@@ -93,10 +93,12 @@ function InputOTPWithSeparator() {
 }
 
 function InputOTPWithSpacing() {
+  const id = useId();
+
   return (
     <div className="grid gap-2">
-      <Label htmlFor="with-spacing">With Spacing</Label>
-      <InputOTP id="with-spacing" maxLength={6}>
+      <Label htmlFor={id}>With Spacing</Label>
+      <InputOTP id={id} maxLength={6}>
         <InputOTPGroup className="gap-2 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border">
           <InputOTPSlot index={0} aria-invalid="true" />
           <InputOTPSlot index={1} aria-invalid="true" />

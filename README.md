@@ -1,7 +1,7 @@
 # TODO
 - [x] Accordion
 - [ ] Alert Dialog (just dialog)
-- [ ] Breadcrumb
+- [x] Breadcrumb
 - [ ] Calendar
 - [ ] Checkbox
 - [ ] Collapsible
@@ -14,8 +14,8 @@
 - [ ] Dropdown Menu
 - [ ] Form
 - [ ] Hover Card (just a tooltip)
-- [ ] Input
-- [ ] Label
+- [x] Input
+- [x] Label
 - [ ] Menubar
 - [ ] Navigation Menu
 - [ ] Pagination
@@ -31,11 +31,13 @@
 - [ ] Textarea
 - [ ] Toggle
 - [ ] Toggle Group
-- [ ] Tooltip
+- [x] Tooltip
 
 # Next steps
 
 - [ ] Rename root components and `data-slot` names
+- [ ] Replace all lucide imports to use the `Icon` suffix
 - [ ] Convert to better folder structure
+ - [ ] Organize classNames
 - [ ] Replace all imports to use just `<Component.Sub />` pattern
 - [ ] Add more components

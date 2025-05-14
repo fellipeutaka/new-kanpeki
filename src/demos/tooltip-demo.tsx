@@ -2,48 +2,49 @@ import { InfoIcon } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
 import {
-  Tooltip,
+  TooltipArrow,
   TooltipContent,
-  TooltipTrigger,
+  TooltipRoot,
 } from "~/components/ui/tooltip";
+
+const positions = ["top", "right", "bottom", "left"] as const;
 
 export function TooltipDemo() {
   return (
     <div className="flex flex-wrap items-start gap-4">
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button variant="outline">Hover</Button>
-        </TooltipTrigger>
-        <TooltipContent>
+      <TooltipRoot>
+        <Button variant="outline">Hover</Button>
+        <TooltipContent offset={8}>
           <p>Add to library</p>
+
+          <TooltipArrow />
         </TooltipContent>
-      </Tooltip>
+      </TooltipRoot>
       <div className="flex gap-2">
-        {["top", "right", "bottom", "left"].map((side) => (
-          <Tooltip key={side}>
-            <TooltipTrigger asChild>
-              <Button variant="outline" className="capitalize">
-                {side}
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side={side as "top" | "right" | "bottom" | "left"}>
+        {positions.map((side) => (
+          <TooltipRoot key={side}>
+            <Button variant="outline" className="capitalize">
+              {side}
+            </Button>
+            <TooltipContent offset={8} placement={side}>
               <p>Add to library</p>
+
+              <TooltipArrow />
             </TooltipContent>
-          </Tooltip>
+          </TooltipRoot>
         ))}
       </div>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button variant="ghost" size="icon">
-            <InfoIcon />
-            <span className="sr-only">Info</span>
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
+      <TooltipRoot>
+        <Button variant="ghost" size="icon">
+          <InfoIcon />
+          <span className="sr-only">Info</span>
+        </Button>
+        <TooltipContent offset={8}>
           To learn more about how this works, check out the docs. If you have
           any questions, please reach out to us.
+          <TooltipArrow />
         </TooltipContent>
-      </Tooltip>
+      </TooltipRoot>
     </div>
   );
 }

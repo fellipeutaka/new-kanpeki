@@ -1,12 +1,16 @@
 import { AccordionDemo } from "~/demos/accordion-demo";
 import { AlertDemo } from "~/demos/alert-demo";
 import { BadgeDemo } from "~/demos/badge-demo";
+import { BreadcrumbDemo } from "~/demos/breadcrumb-demo";
 import { ButtonDemo } from "~/demos/button-demo";
 import { CarouselDemo } from "~/demos/carousel-demo";
 import { ChartDemo } from "~/demos/chart-demo";
 import { ComponentWrapper } from "~/demos/component-wrapper";
+import { InputDemo } from "~/demos/input-demo";
+import { InputOTPDemo } from "~/demos/input-otp-demo";
 import { ResizableDemo } from "~/demos/resizable-demo";
 import { SonnerDemo } from "~/demos/sonner-demo";
+import { TooltipDemo } from "~/demos/tooltip-demo";
 
 export default function SinkPage() {
   return (
@@ -32,9 +36,9 @@ export default function SinkPage() {
       <ComponentWrapper name="badge">
         <BadgeDemo />
       </ComponentWrapper>
-      {/* <ComponentWrapper name="breadcrumb">
+      <ComponentWrapper name="breadcrumb">
         <BreadcrumbDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       <ComponentWrapper name="button">
         <ButtonDemo />
       </ComponentWrapper>
@@ -80,12 +84,12 @@ export default function SinkPage() {
       {/* <ComponentWrapper name="hover-card">
         <HoverCardDemo />
       </ComponentWrapper> */}
-      {/* <ComponentWrapper name="input">
+      <ComponentWrapper name="input">
         <InputDemo />
-      </ComponentWrapper> */}
-      {/* <ComponentWrapper name="input-otp">
+      </ComponentWrapper>
+      <ComponentWrapper name="input-otp">
         <InputOTPDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       {/* <ComponentWrapper name="label">
         <LabelDemo />
       </ComponentWrapper> */}
@@ -149,9 +153,9 @@ export default function SinkPage() {
       {/* <ComponentWrapper name="toggle-group">
         <ToggleGroupDemo />
       </ComponentWrapper> */}
-      {/* <ComponentWrapper name="tooltip">
+      <ComponentWrapper name="tooltip">
         <TooltipDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
     </div>
   );
 }
