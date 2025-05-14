@@ -19,6 +19,7 @@ import { SkeletonDemo } from "~/demos/skeleton-demo";
 import { SonnerDemo } from "~/demos/sonner-demo";
 import { TableDemo } from "~/demos/table-demo";
 import { TextareaDemo } from "~/demos/textarea-demo";
+import { ToggleDemo } from "~/demos/toggle-demo";
 import { TooltipDemo } from "~/demos/tooltip-demo";
 
 export default function SinkPage() {
@@ -156,9 +157,9 @@ export default function SinkPage() {
       <ComponentWrapper name="textarea">
         <TextareaDemo />
       </ComponentWrapper>
-      {/* <ComponentWrapper name="toggle">
+      <ComponentWrapper name="toggle">
         <ToggleDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       {/* <ComponentWrapper name="toggle-group">
         <ToggleGroupDemo />
       </ComponentWrapper> */}

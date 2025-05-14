@@ -16,7 +16,7 @@ export function ToggleDemo() {
       <Toggle aria-label="Toggle italic" variant="default">
         <UnderlineIcon />
       </Toggle>
-      <Toggle aria-label="Toggle italic" variant="default" disabled>
+      <Toggle aria-label="Toggle italic" variant="default" isDisabled>
         Disabled
       </Toggle>
       <Toggle variant="outline" aria-label="Toggle italic">
@@ -25,7 +25,7 @@ export function ToggleDemo() {
       </Toggle>
       <Toggle
         aria-label="Toggle book"
-        className="data-[state=on]:[&_svg]:fill-accent-foreground"
+        className="selected:[&_svg]:fill-accent-foreground"
       >
         <BookmarkIcon />
       </Toggle>
