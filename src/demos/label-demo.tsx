@@ -1,4 +1,8 @@
-import { Checkbox } from "~/components/ui/checkbox";
+import {
+  CheckboxIndicator,
+  CheckboxProvider,
+  CheckboxRoot,
+} from "~/components/ui/checkbox";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { Textarea } from "~/components/ui/textarea";
@@ -7,12 +11,12 @@ export function LabelDemo() {
   return (
     <div className="grid w-full max-w-sm gap-6">
       <div className="flex items-center gap-3">
-        <Checkbox.Provider id="label-demo-terms">
-          <Checkbox.Root>
-            <Checkbox.Indicator />
-          </Checkbox.Root>
-        </Checkbox.Provider>
-        <Label htmlFor="label-demo-terms">Accept terms and conditions</Label>
+        <CheckboxProvider>
+          <CheckboxRoot>
+            <CheckboxIndicator />
+          </CheckboxRoot>
+          Accept terms and conditions
+        </CheckboxProvider>
       </div>
       <div className="grid gap-3">
         <Label htmlFor="label-demo-username">Username</Label>

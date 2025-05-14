@@ -9,6 +9,7 @@ import { CheckboxDemo } from "~/demos/checkbox-demo";
 import { ComponentWrapper } from "~/demos/component-wrapper";
 import { InputDemo } from "~/demos/input-demo";
 import { InputOTPDemo } from "~/demos/input-otp-demo";
+import { LabelDemo } from "~/demos/label-demo";
 import { PaginationDemo } from "~/demos/pagination-demo";
 import { ResizableDemo } from "~/demos/resizable-demo";
 import { SeparatorDemo } from "~/demos/separator-demo";
@@ -96,9 +97,9 @@ export default function SinkPage() {
       <ComponentWrapper name="input-otp">
         <InputOTPDemo />
       </ComponentWrapper>
-      {/* <ComponentWrapper name="label">
+      <ComponentWrapper name="label">
         <LabelDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       {/* <ComponentWrapper name="menubar">
         <MenubarDemo />
       </ComponentWrapper> */}
