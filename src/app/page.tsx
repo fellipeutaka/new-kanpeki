@@ -5,6 +5,7 @@ import { BreadcrumbDemo } from "~/demos/breadcrumb-demo";
 import { ButtonDemo } from "~/demos/button-demo";
 import { CarouselDemo } from "~/demos/carousel-demo";
 import { ChartDemo } from "~/demos/chart-demo";
+import { CheckboxDemo } from "~/demos/checkbox-demo";
 import { ComponentWrapper } from "~/demos/component-wrapper";
 import { InputDemo } from "~/demos/input-demo";
 import { InputOTPDemo } from "~/demos/input-otp-demo";
@@ -56,9 +57,9 @@ export default function SinkPage() {
       <ComponentWrapper name="carousel">
         <CarouselDemo />
       </ComponentWrapper>
-      {/* <ComponentWrapper name="checkbox">
+      <ComponentWrapper name="checkbox">
         <CheckboxDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       {/* <ComponentWrapper name="collapsible">
         <CollapsibleDemo />
       </ComponentWrapper> */}
