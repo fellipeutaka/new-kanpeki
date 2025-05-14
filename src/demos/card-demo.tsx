@@ -1,24 +1,35 @@
 import { BathIcon, BedIcon, LandPlotIcon } from "lucide-react";
 import Image from "next/image";
 
-import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
+import {
+  AvatarFallback,
+  AvatarImage,
+  AvatarRoot,
+} from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
-import { Card } from "~/components/ui/card";
+import {
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardRoot,
+  CardTitle,
+} from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 
 export function CardDemo() {
   return (
     <div className="flex flex-col items-start gap-4">
-      <Card.Root className="w-full max-w-sm">
-        <Card.Header>
-          <Card.Title>Login to your account</Card.Title>
-          <Card.Description>
+      <CardRoot className="w-full max-w-sm">
+        <CardHeader>
+          <CardTitle>Login to your account</CardTitle>
+          <CardDescription>
             Enter your email below to login to your account
-          </Card.Description>
-        </Card.Header>
-        <Card.Content>
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
           <form>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
@@ -44,8 +55,8 @@ export function CardDemo() {
               </div>
             </div>
           </form>
-        </Card.Content>
-        <Card.Footer className="flex-col gap-2">
+        </CardContent>
+        <CardFooter className="flex-col gap-2">
           <Button type="submit" className="w-full">
             Login
           </Button>
@@ -58,16 +69,16 @@ export function CardDemo() {
               Sign up
             </a>
           </div>
-        </Card.Footer>
-      </Card.Root>
-      <Card.Root>
-        <Card.Header>
-          <Card.Title>Meeting Notes</Card.Title>
-          <Card.Description>
+        </CardFooter>
+      </CardRoot>
+      <CardRoot>
+        <CardHeader>
+          <CardTitle>Meeting Notes</CardTitle>
+          <CardDescription>
             Transcript from the meeting with the client.
-          </Card.Description>
-        </Card.Header>
-        <Card.Content className="text-sm">
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="text-sm">
           <p>
             Client requested dashboard redesign with focus on mobile
             responsiveness.
@@ -79,33 +90,33 @@ export function CardDemo() {
             <li>Timeline: 6 weeks</li>
             <li>Follow-up meeting scheduled for next Tuesday</li>
           </ol>
-        </Card.Content>
-        <Card.Footer>
+        </CardContent>
+        <CardFooter>
           <div className="-space-x-2 flex *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale">
-            <Avatar.Root>
+            <AvatarRoot>
               <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
               <AvatarFallback>CN</AvatarFallback>
-            </Avatar.Root>
-            <Avatar.Root>
+            </AvatarRoot>
+            <AvatarRoot>
               <AvatarImage src="https://github.com/leerob.png" alt="@leerob" />
               <AvatarFallback>LR</AvatarFallback>
-            </Avatar.Root>
-            <Avatar.Root>
+            </AvatarRoot>
+            <AvatarRoot>
               <AvatarImage
                 src="https://github.com/evilrabbit.png"
                 alt="@evilrabbit"
               />
               <AvatarFallback>ER</AvatarFallback>
-            </Avatar.Root>
+            </AvatarRoot>
           </div>
-        </Card.Footer>
-      </Card.Root>
-      <Card.Root>
-        <Card.Header>
-          <Card.Title>Is this an image?</Card.Title>
-          <Card.Description>This is a card with an image.</Card.Description>
-        </Card.Header>
-        <Card.Content className="px-0">
+        </CardFooter>
+      </CardRoot>
+      <CardRoot>
+        <CardHeader>
+          <CardTitle>Is this an image?</CardTitle>
+          <CardDescription>This is a card with an image.</CardDescription>
+        </CardHeader>
+        <CardContent className="px-0">
           <Image
             src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
             alt="Photo by Drew Beamer"
@@ -113,8 +124,8 @@ export function CardDemo() {
             width={500}
             height={500}
           />
-        </Card.Content>
-        <Card.Footer className="flex items-center gap-2">
+        </CardContent>
+        <CardFooter className="flex items-center gap-2">
           <Badge variant="outline">
             <BedIcon /> 4
           </Badge>
@@ -125,55 +136,55 @@ export function CardDemo() {
             <LandPlotIcon /> 350m²
           </Badge>
           <div className="ml-auto font-medium tabular-nums">$135,000</div>
-        </Card.Footer>
-      </Card.Root>
+        </CardFooter>
+      </CardRoot>
       <div className="flex w-full flex-wrap items-start gap-8 md:*:data-[slot=card]:basis-1/4">
-        <Card.Root>
-          <Card.Content className="text-sm">Content Only</Card.Content>
-        </Card.Root>
-        <Card.Root>
-          <Card.Header>
-            <Card.Title>Header Only</Card.Title>
-            <Card.Description>
+        <CardRoot>
+          <CardContent className="text-sm">Content Only</CardContent>
+        </CardRoot>
+        <CardRoot>
+          <CardHeader>
+            <CardTitle>Header Only</CardTitle>
+            <CardDescription>
               This is a card with a header and a description.
-            </Card.Description>
-          </Card.Header>
-        </Card.Root>
-        <Card.Root>
-          <Card.Header>
-            <Card.Title>Header and Content</Card.Title>
-            <Card.Description>
+            </CardDescription>
+          </CardHeader>
+        </CardRoot>
+        <CardRoot>
+          <CardHeader>
+            <CardTitle>Header and Content</CardTitle>
+            <CardDescription>
               This is a card with a header and a content.
-            </Card.Description>
-          </Card.Header>
-          <Card.Content className="text-sm">Content</Card.Content>
-        </Card.Root>
-        <Card.Root>
-          <Card.Footer className="text-sm">Footer Only</Card.Footer>
-        </Card.Root>
-        <Card.Root>
-          <Card.Header>
-            <Card.Title>Header + Footer</Card.Title>
-            <Card.Description>
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-sm">Content</CardContent>
+        </CardRoot>
+        <CardRoot>
+          <CardFooter className="text-sm">Footer Only</CardFooter>
+        </CardRoot>
+        <CardRoot>
+          <CardHeader>
+            <CardTitle>Header + Footer</CardTitle>
+            <CardDescription>
               This is a card with a header and a footer.
-            </Card.Description>
-          </Card.Header>
-          <Card.Footer className="text-sm">Footer</Card.Footer>
-        </Card.Root>
-        <Card.Root>
-          <Card.Content className="text-sm">Content</Card.Content>
-          <Card.Footer className="text-sm">Footer</Card.Footer>
-        </Card.Root>
-        <Card.Root>
-          <Card.Header>
-            <Card.Title>Header + Footer</Card.Title>
-            <Card.Description>
+            </CardDescription>
+          </CardHeader>
+          <CardFooter className="text-sm">Footer</CardFooter>
+        </CardRoot>
+        <CardRoot>
+          <CardContent className="text-sm">Content</CardContent>
+          <CardFooter className="text-sm">Footer</CardFooter>
+        </CardRoot>
+        <CardRoot>
+          <CardHeader>
+            <CardTitle>Header + Footer</CardTitle>
+            <CardDescription>
               This is a card with a header and a footer.
-            </Card.Description>
-          </Card.Header>
-          <Card.Content className="text-sm">Content</Card.Content>
-          <Card.Footer className="text-sm">Footer</Card.Footer>
-        </Card.Root>
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-sm">Content</CardContent>
+          <CardFooter className="text-sm">Footer</CardFooter>
+        </CardRoot>
       </div>
     </div>
   );

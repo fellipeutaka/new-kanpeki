@@ -4,6 +4,7 @@ import { AvatarDemo } from "~/demos/avatar-demo";
 import { BadgeDemo } from "~/demos/badge-demo";
 import { BreadcrumbDemo } from "~/demos/breadcrumb-demo";
 import { ButtonDemo } from "~/demos/button-demo";
+import { CardDemo } from "~/demos/card-demo";
 import { CarouselDemo } from "~/demos/carousel-demo";
 import { ChartDemo } from "~/demos/chart-demo";
 import { CheckboxDemo } from "~/demos/checkbox-demo";
@@ -56,9 +57,9 @@ export default function SinkPage() {
       {/* <ComponentWrapper name="calendar">
         <CalendarDemo />
       </ComponentWrapper> */}
-      {/* <ComponentWrapper name="card">
+      <ComponentWrapper name="card">
         <CardDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       <ComponentWrapper name="carousel">
         <CarouselDemo />
       </ComponentWrapper>
