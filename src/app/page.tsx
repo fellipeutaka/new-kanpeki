@@ -9,6 +9,7 @@ import { ComponentWrapper } from "~/demos/component-wrapper";
 import { InputDemo } from "~/demos/input-demo";
 import { InputOTPDemo } from "~/demos/input-otp-demo";
 import { ResizableDemo } from "~/demos/resizable-demo";
+import { SkeletonDemo } from "~/demos/skeleton-demo";
 import { SonnerDemo } from "~/demos/sonner-demo";
 import { TextareaDemo } from "~/demos/textarea-demo";
 import { TooltipDemo } from "~/demos/tooltip-demo";
@@ -127,9 +128,9 @@ export default function SinkPage() {
       {/* <ComponentWrapper name="sheet">
         <SheetDemo />
       </ComponentWrapper> */}
-      {/* <ComponentWrapper name="skeleton">
+      <ComponentWrapper name="skeleton">
         <SkeletonDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       {/* <ComponentWrapper name="slider">
         <SliderDemo />
       </ComponentWrapper> */}
