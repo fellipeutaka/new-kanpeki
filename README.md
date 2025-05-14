@@ -18,7 +18,7 @@
 - [x] Label
 - [ ] Menubar
 - [ ] Navigation Menu
-- [ ] Pagination
+- [x] Pagination
 - [ ] Popover
 - [ ] Progress
 - [ ] Radio Group
@@ -26,9 +26,9 @@
 - [ ] Sheet (just a dialog)
 - [ ] Slider
 - [ ] Switch
-- [ ] Table
+- [x] Table
 - [ ] Tabs
-- [ ] Textarea
+- [x] Textarea
 - [ ] Toggle
 - [ ] Toggle Group
 - [x] Tooltip

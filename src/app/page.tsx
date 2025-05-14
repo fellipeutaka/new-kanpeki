@@ -13,6 +13,7 @@ import { ResizableDemo } from "~/demos/resizable-demo";
 import { SeparatorDemo } from "~/demos/separator-demo";
 import { SkeletonDemo } from "~/demos/skeleton-demo";
 import { SonnerDemo } from "~/demos/sonner-demo";
+import { TableDemo } from "~/demos/table-demo";
 import { TextareaDemo } from "~/demos/textarea-demo";
 import { TooltipDemo } from "~/demos/tooltip-demo";
 
@@ -142,9 +143,9 @@ export default function SinkPage() {
       {/* <ComponentWrapper name="switch">
         <SwitchDemo />
       </ComponentWrapper> */}
-      {/* <ComponentWrapper name="table">
+      <ComponentWrapper name="table">
         <TableDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       {/* <ComponentWrapper name="tabs">
         <TabsDemo />
       </ComponentWrapper> */}
