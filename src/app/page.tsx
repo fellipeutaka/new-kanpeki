@@ -17,6 +17,7 @@ import { InputOTPDemo } from "~/demos/input-otp-demo";
 import { LabelDemo } from "~/demos/label-demo";
 import { PaginationDemo } from "~/demos/pagination-demo";
 import { ResizableDemo } from "~/demos/resizable-demo";
+import { SelectDemo } from "~/demos/select-demo";
 import { SeparatorDemo } from "~/demos/separator-demo";
 import { SkeletonDemo } from "~/demos/skeleton-demo";
 import { SonnerDemo } from "~/demos/sonner-demo";
@@ -131,9 +132,9 @@ export default function SinkPage() {
       {/* <ComponentWrapper name="scroll-area">
         <ScrollAreaDemo />
       </ComponentWrapper> */}
-      {/* <ComponentWrapper name="select">
+      <ComponentWrapper name="select">
         <SelectDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       <ComponentWrapper name="separator">
         <SeparatorDemo />
       </ComponentWrapper>

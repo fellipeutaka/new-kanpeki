@@ -1,4 +1,5 @@
 # TODO
+
 - [x] Accordion
 - [ ] Alert Dialog (just dialog)
 - [x] Breadcrumb
@@ -38,8 +39,10 @@
 - [ ] Rename root components and `data-slot` names
 - [ ] Replace all lucide imports to use the `Icon` suffix
 - [ ] Convert to better folder structure
- - [ ] Organize classNames
+- [ ] Organize classNames
 - [ ] Replace all imports to use just `<Component.Sub />` pattern
+- [ ] Replace `transition-[color,box-shadow]` with `transition-colors transition-shadow`
+- [ ] Disable some animations and transitions if user prefers reduced motion
 - [ ] Add more components
 
 # Annotations

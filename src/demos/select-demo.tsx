@@ -1,93 +1,98 @@
+"use client";
+
 import {
   ChartBarIcon,
   ChartLineIcon,
   ChartPieIcon,
-  CircleDashed,
+  CircleDashedIcon,
 } from "lucide-react";
+import { Text } from "react-aria-components";
+import { ListboxItem, ListboxRoot } from "~/components/ui/list-box";
+import { PopoverContent } from "~/components/ui/popover";
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "~/components/ui/select";
+import { SelectRoot, SelectTrigger, SelectValue } from "~/components/ui/select";
 
 export function SelectDemo() {
   return (
     <div className="flex flex-wrap items-start gap-4">
-      <Select>
+      <SelectRoot aria-label="Fruits" placeholder="Select a fruit">
         <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Select a fruit" />
+          <SelectValue />
         </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            <SelectLabel>Fruits</SelectLabel>
-            <SelectItem value="apple">Apple</SelectItem>
-            <SelectItem value="banana">Banana</SelectItem>
-            <SelectItem value="blueberry">Blueberry</SelectItem>
-            <SelectItem value="grapes" disabled>
+        <PopoverContent>
+          <ListboxRoot>
+            {/* <SelectLabel>Fruits</SelectLabel> */}
+            <ListboxItem id="apple">Apple</ListboxItem>
+            <ListboxItem id="banana">Banana</ListboxItem>
+            <ListboxItem id="blueberry">Blueberry</ListboxItem>
+            <ListboxItem id="grapes" isDisabled>
               Grapes
-            </SelectItem>
-            <SelectItem value="pineapple">Pineapple</SelectItem>
-          </SelectGroup>
-        </SelectContent>
-      </Select>
-      <Select>
+            </ListboxItem>
+            <ListboxItem id="pineapple">Pineapple</ListboxItem>
+          </ListboxRoot>
+        </PopoverContent>
+      </SelectRoot>
+
+      <SelectRoot aria-label="Large List" placeholder="Large List">
         <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Large List" />
+          <SelectValue />
         </SelectTrigger>
-        <SelectContent>
-          {Array.from({ length: 100 }).map((_, i) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-            <SelectItem key={i} value={`item-${i}`}>
-              Item {i}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-      <Select disabled>
+        <PopoverContent>
+          <ListboxRoot
+            items={Array.from({ length: 100 }, (_, i) => ({ id: i }))}
+          >
+            {({ id }) => <ListboxItem id={id}>Item {id}</ListboxItem>}
+          </ListboxRoot>
+        </PopoverContent>
+      </SelectRoot>
+
+      <SelectRoot aria-label="Fruits" placeholder="Disabled" isDisabled>
         <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Disabled" />
+          <SelectValue />
         </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="blueberry">Blueberry</SelectItem>
-          <SelectItem value="grapes" disabled>
-            Grapes
-          </SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem>
-        </SelectContent>
-      </Select>
-      <Select>
+        <PopoverContent>
+          <ListboxRoot>
+            <ListboxItem id="apple">Apple</ListboxItem>
+            <ListboxItem id="banana">Banana</ListboxItem>
+            <ListboxItem id="blueberry">Blueberry</ListboxItem>
+            <ListboxItem id="grapes" isDisabled>
+              Grapes
+            </ListboxItem>
+            <ListboxItem id="pineapple">Pineapple</ListboxItem>
+          </ListboxRoot>
+        </PopoverContent>
+      </SelectRoot>
+
+      <SelectRoot aria-label="Charts" placeholder="With Icon">
         <SelectTrigger className="w-[180px]">
-          <SelectValue
-            placeholder={
+          <SelectValue>
+            {(values) => (
               <>
-                <CircleDashed className="text-muted-foreground" />
-                With Icon
+                {values.isPlaceholder && (
+                  <CircleDashedIcon className="text-muted-foreground" />
+                )}
+                {values.defaultChildren}
               </>
-            }
-          />
+            )}
+          </SelectValue>
         </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="line">
-            <ChartLineIcon />
-            Line
-          </SelectItem>
-          <SelectItem value="bar">
-            <ChartBarIcon />
-            Bar
-          </SelectItem>
-          <SelectItem value="pie">
-            <ChartPieIcon />
-            Pie
-          </SelectItem>
-        </SelectContent>
-      </Select>
+        <PopoverContent>
+          <ListboxRoot>
+            <ListboxItem id="line">
+              <ChartLineIcon />
+              <Text slot="label">Line</Text>
+            </ListboxItem>
+            <ListboxItem id="bar">
+              <ChartBarIcon />
+              <Text slot="label">Bar</Text>
+            </ListboxItem>
+            <ListboxItem id="pie">
+              <ChartPieIcon />
+              <Text slot="label">Pie</Text>
+            </ListboxItem>
+          </ListboxRoot>
+        </PopoverContent>
+      </SelectRoot>
     </div>
   );
 }
