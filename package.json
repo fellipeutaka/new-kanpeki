@@ -10,6 +10,7 @@
     "type-check": "tsc --noEmit --incremental false"
   },
   "dependencies": {
+    "@internationalized/date": "^3.8.0",
     "@radix-ui/react-scroll-area": "^1.2.8",
     "embla-carousel-react": "^8.6.0",
     "input-otp": "^1.4.2",
