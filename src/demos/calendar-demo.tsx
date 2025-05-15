@@ -1,31 +1,27 @@
 "use client";
 
-import { addDays } from "date-fns";
-import type { DateRange } from "react-day-picker";
-
-import { useState } from "react";
 import { Calendar } from "~/components/ui/calendar";
 
 export function CalendarDemo() {
-  const [date, setDate] = useState<Date | undefined>(new Date());
-  const [dateRange, setDateRange] = useState<DateRange | undefined>({
-    from: new Date(new Date().getFullYear(), 0, 12),
-    to: addDays(new Date(new Date().getFullYear(), 0, 12), 30),
-  });
-  const [range, setRange] = useState<DateRange | undefined>({
-    from: new Date(new Date().getFullYear(), 0, 12),
-    to: addDays(new Date(new Date().getFullYear(), 0, 12), 50),
-  });
+  // const [date, setDate] = useState<Date | undefined>(new Date());
+  // const [dateRange, setDateRange] = useState<DateRange | undefined>({
+  //   from: new Date(new Date().getFullYear(), 0, 12),
+  //   to: addDays(new Date(new Date().getFullYear(), 0, 12), 30),
+  // });
+  // const [range, setRange] = useState<DateRange | undefined>({
+  //   from: new Date(new Date().getFullYear(), 0, 12),
+  //   to: addDays(new Date(new Date().getFullYear(), 0, 12), 50),
+  // });
 
   return (
     <div className="flex @md:flex-row flex-col flex-wrap items-start gap-2">
       <Calendar
         mode="single"
-        selected={date}
-        onSelect={setDate}
+        // selected={date}
+        // onSelect={setDate}
         className="rounded-md border shadow-sm"
       />
-      <Calendar
+      {/* <Calendar
         mode="range"
         defaultMonth={dateRange?.from}
         selected={dateRange}
@@ -41,7 +37,7 @@ export function CalendarDemo() {
         onSelect={setRange}
         numberOfMonths={3}
         className="@4xl:flex hidden rounded-md border shadow-sm [&>div]:gap-5"
-      />
+      /> */}
     </div>
   );
 }

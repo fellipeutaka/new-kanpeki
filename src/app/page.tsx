@@ -8,6 +8,7 @@ import { CardDemo } from "~/demos/card-demo";
 import { CarouselDemo } from "~/demos/carousel-demo";
 import { ChartDemo } from "~/demos/chart-demo";
 import { CheckboxDemo } from "~/demos/checkbox-demo";
+import { CollapsibleDemo } from "~/demos/collapsible-demo";
 import { ComponentWrapper } from "~/demos/component-wrapper";
 import { HoverCardDemo } from "~/demos/hover-card-demo";
 import { InputDemo } from "~/demos/input-demo";
@@ -66,9 +67,9 @@ export default function SinkPage() {
       <ComponentWrapper name="checkbox">
         <CheckboxDemo />
       </ComponentWrapper>
-      {/* <ComponentWrapper name="collapsible">
+      <ComponentWrapper name="collapsible">
         <CollapsibleDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       {/* <ComponentWrapper name="combobox">
         <ComboboxDemo />
       </ComponentWrapper> */}
