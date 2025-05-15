@@ -16,6 +16,7 @@ import { InputDemo } from "~/demos/input-demo";
 import { InputOTPDemo } from "~/demos/input-otp-demo";
 import { LabelDemo } from "~/demos/label-demo";
 import { PaginationDemo } from "~/demos/pagination-demo";
+import { PopoverDemo } from "~/demos/popover-demo";
 import { ResizableDemo } from "~/demos/resizable-demo";
 import { SelectDemo } from "~/demos/select-demo";
 import { SeparatorDemo } from "~/demos/separator-demo";
@@ -117,9 +118,9 @@ export default function SinkPage() {
       <ComponentWrapper name="pagination">
         <PaginationDemo />
       </ComponentWrapper>
-      {/* <ComponentWrapper name="popover">
+      <ComponentWrapper name="popover">
         <PopoverDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       {/* <ComponentWrapper name="progress">
         <ProgressDemo />
       </ComponentWrapper> */}
