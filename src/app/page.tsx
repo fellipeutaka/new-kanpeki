@@ -19,6 +19,7 @@ import { LabelDemo } from "~/demos/label-demo";
 import { PaginationDemo } from "~/demos/pagination-demo";
 import { PopoverDemo } from "~/demos/popover-demo";
 import { ProgressDemo } from "~/demos/progress-demo";
+import { RadioGroupDemo } from "~/demos/radio-group-demo";
 import { ResizableDemo } from "~/demos/resizable-demo";
 import { SelectDemo } from "~/demos/select-demo";
 import { SeparatorDemo } from "~/demos/separator-demo";
@@ -126,9 +127,9 @@ export default function SinkPage() {
       <ComponentWrapper name="progress">
         <ProgressDemo />
       </ComponentWrapper>
-      {/* <ComponentWrapper name="radio-group">
+      <ComponentWrapper name="radio-group">
         <RadioGroupDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       <ComponentWrapper name="resizable">
         <ResizableDemo />
       </ComponentWrapper>

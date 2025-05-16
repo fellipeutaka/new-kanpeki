@@ -1,5 +1,9 @@
 import { Label } from "~/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
+import {
+  RadioGroup,
+  RadioGroupIndicator,
+  RadioGroupItem,
+} from "~/components/ui/radio-group";
 
 const plans = [
   {
@@ -21,37 +25,38 @@ export function RadioGroupDemo() {
   return (
     <div className="flex flex-col gap-6">
       <RadioGroup defaultValue="comfortable">
-        <div className="flex items-center gap-3">
-          <RadioGroupItem value="default" id="r1" />
-          <Label htmlFor="r1">Default</Label>
-        </div>
-        <div className="flex items-center gap-3">
-          <RadioGroupItem value="comfortable" id="r2" />
-          <Label htmlFor="r2">Comfortable</Label>
-        </div>
-        <div className="flex items-center gap-3">
-          <RadioGroupItem value="compact" id="r3" />
-          <Label htmlFor="r3">Compact</Label>
-        </div>
+        <RadioGroupItem value="default" id="r1">
+          <RadioGroupIndicator />
+          <Label>Default</Label>
+        </RadioGroupItem>
+
+        <RadioGroupItem value="comfortable" id="r2">
+          <RadioGroupIndicator />
+          <Label>Comfortable</Label>
+        </RadioGroupItem>
+
+        <RadioGroupItem value="compact" id="r3">
+          <RadioGroupIndicator />
+          <Label>Compact</Label>
+        </RadioGroupItem>
       </RadioGroup>
+
       <RadioGroup defaultValue="starter" className="max-w-sm">
         {plans.map((plan) => (
-          <Label
-            className="flex items-start gap-3 rounded-lg border p-4 hover:bg-accent/50 has-[[data-state=checked]]:border-green-600 has-[[data-state=checked]]:bg-green-50 dark:has-[[data-state=checked]]:border-green-900 dark:has-[[data-state=checked]]:bg-green-950"
+          <RadioGroupItem
+            className="items-start rounded-lg border selected:border-green-600 selected:bg-green-50 p-4 hover:bg-accent/50 dark:selected:border-green-900 dark:selected:bg-green-950"
             key={plan.id}
+            value={plan.id}
           >
-            <RadioGroupItem
-              value={plan.id}
-              id={plan.name}
-              className="shadow-none data-[state=checked]:border-green-600 data-[state=checked]:bg-green-600 *:data-[slot=radio-group-indicator]:[&>svg]:fill-white *:data-[slot=radio-group-indicator]:[&>svg]:stroke-white"
-            />
+            <RadioGroupIndicator className="group-selected:border-green-600 not-dark:group-selected:bg-green-600 [&_svg]:fill-white [&_svg]:stroke-white" />
+
             <div className="grid gap-1 font-normal">
               <div className="font-medium">{plan.name}</div>
               <div className="text-muted-foreground leading-snug">
                 {plan.description}
               </div>
             </div>
-          </Label>
+          </RadioGroupItem>
         ))}
       </RadioGroup>
     </div>
