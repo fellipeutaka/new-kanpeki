@@ -2,27 +2,33 @@ import { AppWindowIcon, CodeIcon } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
 import {
-  Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
+  CardRoot,
   CardTitle,
 } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
+import {
+  TabsContent,
+  TabsList,
+  TabsRoot,
+  TabsTrigger,
+} from "~/components/ui/tabs";
+import { Textfield } from "~/components/ui/textfield";
 
 export function TabsDemo() {
   return (
     <div className="flex flex-col gap-6">
-      <Tabs defaultValue="account" className="max-w-[400px]">
+      <TabsRoot defaultSelectedKey="account" className="max-w-[400px]">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="account">Account</TabsTrigger>
-          <TabsTrigger value="password">Password</TabsTrigger>
+          <TabsTrigger id="account">Account</TabsTrigger>
+          <TabsTrigger id="password">Password</TabsTrigger>
         </TabsList>
-        <TabsContent value="account">
-          <Card>
+        <TabsContent id="account">
+          <CardRoot>
             <CardHeader>
               <CardTitle>Account</CardTitle>
               <CardDescription>
@@ -31,22 +37,22 @@ export function TabsDemo() {
               </CardDescription>
             </CardHeader>
             <CardContent className="grid gap-6">
-              <div className="grid gap-3">
-                <Label htmlFor="tabs-demo-name">Name</Label>
-                <Input id="tabs-demo-name" defaultValue="Pedro Duarte" />
-              </div>
-              <div className="grid gap-3">
-                <Label htmlFor="tabs-demo-username">Username</Label>
-                <Input id="tabs-demo-username" defaultValue="@peduarte" />
-              </div>
+              <Textfield defaultValue="Pedro Duarte">
+                <Label>Name</Label>
+                <Input />
+              </Textfield>
+              <Textfield defaultValue="@peduarte">
+                <Label>Username</Label>
+                <Input />
+              </Textfield>
             </CardContent>
             <CardFooter>
               <Button>Save changes</Button>
             </CardFooter>
-          </Card>
+          </CardRoot>
         </TabsContent>
-        <TabsContent value="password">
-          <Card>
+        <TabsContent id="password">
+          <CardRoot>
             <CardHeader>
               <CardTitle>Password</CardTitle>
               <CardDescription>
@@ -55,47 +61,50 @@ export function TabsDemo() {
               </CardDescription>
             </CardHeader>
             <CardContent className="grid gap-6">
-              <div className="grid gap-3">
-                <Label htmlFor="tabs-demo-current">Current password</Label>
-                <Input id="tabs-demo-current" type="password" />
-              </div>
-              <div className="grid gap-3">
-                <Label htmlFor="tabs-demo-new">New password</Label>
-                <Input id="tabs-demo-new" type="password" />
-              </div>
+              <Textfield>
+                <Label>Current password</Label>
+                <Input type="password" />
+              </Textfield>
+              <Textfield>
+                <Label>New password</Label>
+                <Input type="password" />
+              </Textfield>
             </CardContent>
             <CardFooter>
               <Button>Save password</Button>
             </CardFooter>
-          </Card>
+          </CardRoot>
         </TabsContent>
-      </Tabs>
-      <Tabs defaultValue="home">
+      </TabsRoot>
+
+      <TabsRoot defaultSelectedKey="home">
         <TabsList>
-          <TabsTrigger value="home">Home</TabsTrigger>
-          <TabsTrigger value="settings">Settings</TabsTrigger>
+          <TabsTrigger id="home">Home</TabsTrigger>
+          <TabsTrigger id="settings">Settings</TabsTrigger>
         </TabsList>
-      </Tabs>
-      <Tabs defaultValue="home">
+      </TabsRoot>
+
+      <TabsRoot defaultSelectedKey="home">
         <TabsList>
-          <TabsTrigger value="home">Home</TabsTrigger>
-          <TabsTrigger value="settings" disabled>
+          <TabsTrigger id="home">Home</TabsTrigger>
+          <TabsTrigger id="settings" isDisabled>
             Disabled
           </TabsTrigger>
         </TabsList>
-      </Tabs>
-      <Tabs defaultValue="preview">
+      </TabsRoot>
+
+      <TabsRoot defaultSelectedKey="preview">
         <TabsList>
-          <TabsTrigger value="preview">
+          <TabsTrigger id="preview">
             <AppWindowIcon />
             Preview
           </TabsTrigger>
-          <TabsTrigger value="code">
+          <TabsTrigger id="code">
             <CodeIcon />
             Code
           </TabsTrigger>
         </TabsList>
-      </Tabs>
+      </TabsRoot>
     </div>
   );
 }
