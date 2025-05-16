@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Progress } from "~/components/ui/progress";
+import { Progress, ProgressIndicator } from "~/components/ui/progress";
 
 export function ProgressDemo() {
   const [progress, setProgress] = useState(13);
@@ -11,5 +11,9 @@ export function ProgressDemo() {
     return () => clearTimeout(timer);
   }, []);
 
-  return <Progress value={progress} className="w-[60%]" />;
+  return (
+    <Progress value={progress} className="w-[60%]">
+      <ProgressIndicator />
+    </Progress>
+  );
 }
