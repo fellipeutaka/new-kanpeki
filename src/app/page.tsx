@@ -12,6 +12,7 @@ import { CheckboxDemo } from "~/demos/checkbox-demo";
 import { CollapsibleDemo } from "~/demos/collapsible-demo";
 import { ComboboxDemo } from "~/demos/combobox-demo";
 import { ComponentWrapper } from "~/demos/component-wrapper";
+import { DropdownMenuDemo } from "~/demos/dropdown-menu-demo";
 import { HoverCardDemo } from "~/demos/hover-card-demo";
 import { InputDemo } from "~/demos/input-demo";
 import { InputOTPDemo } from "~/demos/input-otp-demo";
@@ -95,9 +96,9 @@ export default function SinkPage() {
       {/* <ComponentWrapper name="drawer">
         <DrawerDemo />
       </ComponentWrapper> */}
-      {/* <ComponentWrapper name="dropdown-menu">
+      <ComponentWrapper name="dropdown-menu">
         <DropdownMenuDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       {/* <ComponentWrapper name="form">
         <FormDemo />
       </ComponentWrapper> */}

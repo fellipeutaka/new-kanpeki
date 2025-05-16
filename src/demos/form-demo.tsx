@@ -1,11 +1,11 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
+import { standardSchemaResolver } from "@hookform/resolvers/standard-schema";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import { Button } from "~/components/ui/button";
 import { Calendar } from "~/components/ui/calendar";
@@ -97,14 +97,14 @@ const FormSchema = z.object({
 
 export function FormDemo() {
   const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+    resolver: standardSchemaResolver(FormSchema),
     defaultValues: {
       username: "",
       items: ["recents", "home"],
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  const onSubmit = form.handleSubmit((data) => {
     toast("You submitted the following values:", {
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
@@ -112,14 +112,11 @@ export function FormDemo() {
         </pre>
       ),
     });
-  }
+  });
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="grid w-full max-w-sm gap-6"
-      >
+      <form onSubmit={onSubmit} className="grid w-full max-w-sm gap-6">
         <FormField
           control={form.control}
           name="username"
