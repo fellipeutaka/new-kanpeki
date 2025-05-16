@@ -50,19 +50,26 @@ export const PopoverStyles = {
 export interface PopoverRootProps
   extends React.ComponentProps<typeof DialogTrigger> {}
 
-export function PopoverRoot({ ...props }: PopoverRootProps) {
+export function PopoverRoot(props: PopoverRootProps) {
   return <DialogTrigger data-slot="popover" {...props} />;
 }
 
 export interface PopoverTriggerProps
   extends React.ComponentProps<typeof Button> {}
 
-export function PopoverTrigger({ ...props }: PopoverTriggerProps) {
+export function PopoverTrigger(props: PopoverTriggerProps) {
   return <Button data-slot="popover-trigger" {...props} />;
 }
 
 export interface PopoverContentProps
-  extends React.ComponentProps<typeof Popover> {}
+  extends React.ComponentProps<typeof Popover> {
+  /**
+   * The additional offset applied along the main axis between the element and its
+   * anchor element.
+   * @default 4
+   */
+  offset?: number;
+}
 
 export function PopoverContent({
   className,
@@ -83,7 +90,7 @@ export function PopoverContent({
       className={composeRenderProps(className, (className) =>
         PopoverStyles.Content({
           className: [
-            popoverContext?.trigger === "ComboBox" ? "mx-5" : null,
+            popoverContext?.trigger === "ComboBox" ? "mx-5 mt-3" : null,
             className,
           ],
           isMenu,

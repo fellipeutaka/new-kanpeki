@@ -1,13 +1,25 @@
 "use client";
 
-import { ChevronsUpDownIcon } from "lucide-react";
+import { ChevronsUpDownIcon, SearchIcon } from "lucide-react";
+import { Autocomplete, SearchField, useFilter } from "react-aria-components";
+import {
+  AvatarFallback,
+  AvatarImage,
+  AvatarRoot,
+} from "~/components/ui/avatar";
 import {
   ComboboxInput,
   ComboboxRoot,
   ComboboxTrigger,
 } from "~/components/ui/combobox";
-import { ListboxItem, ListboxRoot } from "~/components/ui/list-box";
+import { Input } from "~/components/ui/input";
+import {
+  ListboxEmpty,
+  ListboxItem,
+  ListboxRoot,
+} from "~/components/ui/list-box";
 import { PopoverContent } from "~/components/ui/popover";
+import { SelectRoot, SelectTrigger, SelectValue } from "~/components/ui/select";
 
 const frameworks = [
   {
@@ -94,7 +106,7 @@ export function ComboboxDemo() {
     <div className="flex w-full flex-wrap items-start gap-4">
       <FrameworkCombobox frameworks={[...frameworks]} />
 
-      {/* <UserCombobox users={[...users]} selectedUserId={users[0].id} /> */}
+      <UserCombobox users={[...users]} selectedUserId={users[0].id} />
       {/* <TimezoneCombobox
         timezones={[...timezones]}
         selectedTimezone={timezones[0].timezones[0]}
@@ -106,15 +118,24 @@ export function ComboboxDemo() {
 
 function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
   return (
-    <ComboboxRoot className="w-full md:max-w-[200px]" aria-label="Frameworks">
+    <ComboboxRoot
+      allowsEmptyCollection
+      className="w-full md:max-w-[200px]"
+      aria-label="Frameworks"
+    >
       <ComboboxTrigger>
         <ComboboxInput placeholder="Select framework..." />
 
         <ChevronsUpDownIcon className="text-muted-foreground" />
       </ComboboxTrigger>
 
-      <PopoverContent offset={16}>
-        <ListboxRoot items={frameworks}>
+      <PopoverContent>
+        <ListboxRoot
+          renderEmptyState={() => (
+            <ListboxEmpty>No frameworks found.</ListboxEmpty>
+          )}
+          items={frameworks}
+        >
           {(framework) => (
             <ListboxItem id={framework.value}>{framework.label}</ListboxItem>
           )}
@@ -124,91 +145,57 @@ function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
   );
 }
 
-// function UserCombobox({
-//   users,
-//   selectedUserId,
-// }: {
-//   users: User[];
-//   selectedUserId: string;
-// }) {
-//   const [open, setOpen] = useState(false);
-//   const [value, setValue] = useState(selectedUserId);
+function UserCombobox({
+  users,
+  selectedUserId,
+}: {
+  users: User[];
+  selectedUserId: string;
+}) {
+  const { contains } = useFilter({ sensitivity: "base" });
 
-//   const selectedUser = useMemo(
-//     () => users.find((user) => user.id === value),
-//     [value, users]
-//   );
+  return (
+    <SelectRoot
+      className="w-full md:max-w-[200px]"
+      placeholder="Select user..."
+      aria-label="Users"
+      defaultSelectedKey={selectedUserId}
+    >
+      <SelectTrigger className="w-full">
+        <SelectValue />
+      </SelectTrigger>
 
-//   return (
-//     <Popover open={open} onOpenChange={setOpen}>
-//       <PopoverTrigger asChild>
-//         <Button
-//           variant="outline"
-//           // biome-ignore lint/a11y/useSemanticElements: <explanation>
-//           role="combobox"
-//           aria-expanded={open}
-//           className="w-full justify-between px-2 md:max-w-[200px]"
-//         >
-//           {selectedUser ? (
-//             <div className="flex items-center gap-2">
-//               <Avatar className="size-5">
-//                 <AvatarImage
-//                   src={`https://github.com/${selectedUser.username}.png`}
-//                 />
-//                 <AvatarFallback>{selectedUser.username[0]}</AvatarFallback>
-//               </Avatar>
-//               {selectedUser.username}
-//             </div>
-//           ) : (
-//             "Select user..."
-//           )}
-//           <ChevronsUpDown className="text-muted-foreground" />
-//         </Button>
-//       </PopoverTrigger>
-//       <PopoverContent className="w-(--radix-popover-trigger-width) p-0">
-//         <Command>
-//           <CommandInput placeholder="Search user..." />
-//           <CommandList>
-//             <CommandEmpty>No user found.</CommandEmpty>
-//             <CommandGroup>
-//               {users.map((user) => (
-//                 <CommandItem
-//                   key={user.id}
-//                   value={user.id}
-//                   onSelect={(currentValue) => {
-//                     setValue(currentValue === value ? "" : currentValue);
-//                     setOpen(false);
-//                   }}
-//                 >
-//                   <Avatar className="size-5">
-//                     <AvatarImage
-//                       src={`https://github.com/${user.username}.png`}
-//                     />
-//                     <AvatarFallback>{user.username[0]}</AvatarFallback>
-//                   </Avatar>
-//                   {user.username}
-//                   <CheckIcon
-//                     className={cn(
-//                       "ml-auto",
-//                       value === user.id ? "opacity-100" : "opacity-0"
-//                     )}
-//                   />
-//                 </CommandItem>
-//               ))}
-//             </CommandGroup>
-//             <CommandSeparator />
-//             <CommandGroup>
-//               <CommandItem>
-//                 <PlusCircleIcon />
-//                 Create user
-//               </CommandItem>
-//             </CommandGroup>
-//           </CommandList>
-//         </Command>
-//       </PopoverContent>
-//     </Popover>
-//   );
-// }
+      <PopoverContent>
+        <Autocomplete filter={contains}>
+          <SearchField
+            className="flex h-9 items-center gap-2 border px-3"
+            aria-label="Search"
+            autoFocus
+          >
+            <SearchIcon
+              aria-hidden
+              className="ml-2 h-4 w-4 text-gray-600 forced-colors:text-[ButtonText]"
+            />
+            <Input placeholder="Search languages" />
+          </SearchField>
+          <ListboxRoot items={users}>
+            {(user) => (
+              <ListboxItem textValue={user.username} id={user.id}>
+                <AvatarRoot className="size-5">
+                  <AvatarImage
+                    src={`https://github.com/${user.username}.png`}
+                  />
+                  <AvatarFallback>{user.username[0]}</AvatarFallback>
+                </AvatarRoot>
+                {user.username}
+              </ListboxItem>
+            )}
+          </ListboxRoot>
+        </Autocomplete>
+      </PopoverContent>
+    </SelectRoot>
+  );
+}
 
 // function TimezoneCombobox({
 //   timezones,
