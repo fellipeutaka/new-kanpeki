@@ -6,10 +6,11 @@ import {
   OverlayArrow,
   Popover,
   PopoverContext,
+  composeRenderProps,
   useSlottedContext,
 } from "react-aria-components";
 
-import { cn, cva } from "~/lib/cva";
+import { cva } from "~/lib/cva";
 
 export const PopoverStyles = {
   Content: cva({
@@ -63,8 +64,6 @@ export function PopoverTrigger({ ...props }: PopoverTriggerProps) {
 export interface PopoverContentProps
   extends React.ComponentProps<typeof Popover> {}
 
-const MENU_TRIGGERS = new Set(["MenuTrigger", "SubmenuTrigger", "Select"]);
-
 export function PopoverContent({
   className,
   offset = 4,
@@ -72,7 +71,7 @@ export function PopoverContent({
   ...props
 }: PopoverContentProps) {
   const popoverContext = useSlottedContext(PopoverContext);
-  const isMenu = MENU_TRIGGERS.has(popoverContext?.trigger ?? "");
+  const isMenu = popoverContext?.trigger !== "DialogTrigger";
   const isSubmenuTrigger = popoverContext?.trigger === "SubmenuTrigger";
   const _placement = placement ?? (isSubmenuTrigger ? "right" : "bottom");
 
@@ -81,7 +80,15 @@ export function PopoverContent({
       data-slot="popover-content"
       offset={offset}
       placement={_placement}
-      className={cn(PopoverStyles.Content({ className, isMenu }))}
+      className={composeRenderProps(className, (className) =>
+        PopoverStyles.Content({
+          className: [
+            popoverContext?.trigger === "ComboBox" ? "mx-5" : null,
+            className,
+          ],
+          isMenu,
+        })
+      )}
       {...props}
     />
   );

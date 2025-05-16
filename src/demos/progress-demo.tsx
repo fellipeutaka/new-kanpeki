@@ -12,7 +12,7 @@ export function ProgressDemo() {
   }, []);
 
   return (
-    <Progress value={progress} className="w-[60%]">
+    <Progress aria-label="Progress demo" value={progress} className="w-[60%]">
       <ProgressIndicator />
     </Progress>
   );
