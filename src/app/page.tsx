@@ -25,6 +25,7 @@ import { ResizableDemo } from "~/demos/resizable-demo";
 import { SelectDemo } from "~/demos/select-demo";
 import { SeparatorDemo } from "~/demos/separator-demo";
 import { SkeletonDemo } from "~/demos/skeleton-demo";
+import { SliderDemo } from "~/demos/slider-demo";
 import { SonnerDemo } from "~/demos/sonner-demo";
 import { TableDemo } from "~/demos/table-demo";
 import { TabsDemo } from "~/demos/tabs-demo";
@@ -150,9 +151,9 @@ export default function SinkPage() {
       <ComponentWrapper name="skeleton">
         <SkeletonDemo />
       </ComponentWrapper>
-      {/* <ComponentWrapper name="slider">
+      <ComponentWrapper name="slider">
         <SliderDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       <ComponentWrapper name="sonner">
         <SonnerDemo />
       </ComponentWrapper>

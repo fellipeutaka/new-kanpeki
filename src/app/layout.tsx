@@ -1,9 +1,11 @@
 import "~/styles/globals.css";
 
+import { cx } from "cva";
 import type { Metadata } from "next";
-import { Providers } from "./providers";
-import { Separator } from "~/components/ui/separator";
 import { ModeSwitcher } from "~/components/mode-switcher";
+import { Separator } from "~/components/ui/separator";
+import { fonts } from "~/config/fonts";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={cx(fonts)}>
       <body>
         <Providers>
           <header className="sticky inset-x-0 top-0 isolate z-10 flex shrink-0 items-center gap-2 border-b bg-background">

@@ -38,6 +38,7 @@ export const CalendarStyles = {
       "relative mt-2 grid size-8 select-none place-content-center whitespace-nowrap text-accent-foreground text-sm outline-hidden transition",
       "hover:bg-accent hover:text-accent-foreground",
       "disabled:cursor-not-allowed disabled:opacity-50",
+      "aria-disabled:cursor-not-allowed aria-disabled:opacity-50",
       "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
 
       "selected:bg-primary selected:text-primary-foreground",
