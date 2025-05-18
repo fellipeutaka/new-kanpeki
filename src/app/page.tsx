@@ -27,6 +27,7 @@ import { SeparatorDemo } from "~/demos/separator-demo";
 import { SkeletonDemo } from "~/demos/skeleton-demo";
 import { SliderDemo } from "~/demos/slider-demo";
 import { SonnerDemo } from "~/demos/sonner-demo";
+import { SwitchDemo } from "~/demos/switch-demo";
 import { TableDemo } from "~/demos/table-demo";
 import { TabsDemo } from "~/demos/tabs-demo";
 import { TextareaDemo } from "~/demos/textarea-demo";
@@ -157,9 +158,9 @@ export default function SinkPage() {
       <ComponentWrapper name="sonner">
         <SonnerDemo />
       </ComponentWrapper>
-      {/* <ComponentWrapper name="switch">
+      <ComponentWrapper name="switch">
         <SwitchDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       <ComponentWrapper name="table">
         <TableDemo />
       </ComponentWrapper>
