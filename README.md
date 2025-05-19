@@ -11,7 +11,7 @@
 - [⏳] Command (Autocomplete)
 - [⏳] Context Menu
 - [⏳] Date Picker
-- [⏳] Dialog
+- [⚠️] Dialog
 - [⏳] Drawer
 - [✅] Dropdown Menu
 - [⏳] Form
@@ -23,11 +23,11 @@
 - [✅] Pagination
 - [✅] Popover
 - [✅] Progress
-- [⏳] Radio Group
+- [✅] Radio Group
 - [⚠️] Select
 - [⏳] Sheet (just a dialog)
-- [⏳] Slider
-- [⏳] Switch
+- [✅] Slider
+- [✅] Switch
 - [✅] Table
 - [✅] Tabs
 - [✅] Textarea
