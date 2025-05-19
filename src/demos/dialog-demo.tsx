@@ -29,7 +29,7 @@ function DialogWithForm() {
     <DialogRoot>
       <Button variant="outline">Edit Profile</Button>
 
-      <DialogOverlay isDismissable>
+      <DialogOverlay>
         <DialogModal className="sm:max-w-[425px]">
           <DialogContent>
             <DialogHeader>
@@ -69,7 +69,7 @@ function DialogScrollableContent() {
     <DialogRoot>
       <Button variant="outline">Scrollable Content</Button>
 
-      <DialogOverlay isDismissable>
+      <DialogOverlay>
         <DialogModal className="sm:max-w-[425px]">
           <DialogContent>
             <DialogHeader>
@@ -110,7 +110,7 @@ function DialogWithStickyFooter() {
     <DialogRoot>
       <Button variant="outline">Sticky Footer</Button>
 
-      <DialogOverlay isDismissable>
+      <DialogOverlay>
         <DialogModal>
           <DialogContent className="sm:max-w-lg">
             <DialogHeader>

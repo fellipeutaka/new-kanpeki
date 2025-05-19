@@ -1,7 +1,7 @@
 # TODO
 
 - [✅] Accordion
-- [⏳] Alert Dialog (just dialog)
+- [⚠️] Alert Dialog (just dialog)
 - [✅] Breadcrumb
 - [⚠️] Calendar
 - [⚠️] Checkbox

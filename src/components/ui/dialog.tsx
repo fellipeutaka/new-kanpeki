@@ -107,15 +107,27 @@ export function DialogRoot(props: DialogRootProps) {
 
 export interface DialogModalProps
   extends React.ComponentProps<typeof Modal>,
-    VariantProps<typeof DialogStyles.Modal> {}
+    VariantProps<typeof DialogStyles.Modal> {
+  /**
+   * Whether to close the modal when the user interacts outside it.
+   * @default true
+   */
+  isDismissable?: boolean;
+}
 
-export function DialogModal({ className, side, ...props }: DialogModalProps) {
+export function DialogModal({
+  className,
+  side,
+  isDismissable = true,
+  ...props
+}: DialogModalProps) {
   return (
     <Modal
       data-slot="dialog-modal"
       className={composeRenderProps(className, (className) =>
         DialogStyles.Modal({ className, side })
       )}
+      isDismissable={isDismissable}
       {...props}
     />
   );
@@ -123,11 +135,18 @@ export function DialogModal({ className, side, ...props }: DialogModalProps) {
 
 export interface DialogOverlayProps
   extends React.ComponentProps<typeof ModalOverlay>,
-    VariantProps<typeof DialogStyles.Overlay> {}
+    VariantProps<typeof DialogStyles.Overlay> {
+  /**
+   * Whether to close the modal when the user interacts outside it.
+   * @default true
+   */
+  isDismissable?: boolean;
+}
 
 export function DialogOverlay({
   className,
   isBlurred,
+  isDismissable = true,
   ...props
 }: DialogOverlayProps) {
   return (
@@ -136,6 +155,7 @@ export function DialogOverlay({
       className={composeRenderProps(className, (className) =>
         DialogStyles.Overlay({ className, isBlurred })
       )}
+      isDismissable={isDismissable}
       {...props}
     />
   );
