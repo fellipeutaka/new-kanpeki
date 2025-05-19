@@ -13,6 +13,7 @@ import { CheckboxDemo } from "~/demos/checkbox-demo";
 import { CollapsibleDemo } from "~/demos/collapsible-demo";
 import { ComboboxDemo } from "~/demos/combobox-demo";
 import { ComponentWrapper } from "~/demos/component-wrapper";
+import { DatePickerDemo } from "~/demos/date-picker-demo";
 import { DialogDemo } from "~/demos/dialog-demo";
 import { DropdownMenuDemo } from "~/demos/dropdown-menu-demo";
 import { HoverCardDemo } from "~/demos/hover-card-demo";
@@ -91,9 +92,9 @@ export default function SinkPage() {
       {/* <ComponentWrapper name="context-menu">
         <ContextMenuDemo />
       </ComponentWrapper> */}
-      {/* <ComponentWrapper name="date-picker">
+      <ComponentWrapper name="date-picker">
         <DatePickerDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       <ComponentWrapper name="dialog">
         <DialogDemo />
       </ComponentWrapper>

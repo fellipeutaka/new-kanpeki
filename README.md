@@ -10,7 +10,7 @@
 - [⚠️] Combobox
 - [⏳] Command (Autocomplete)
 - [⏳] Context Menu
-- [⏳] Date Picker
+- [⚠️] Date Picker
 - [⚠️] Dialog
 - [⏳] Drawer
 - [✅] Dropdown Menu

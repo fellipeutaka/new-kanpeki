@@ -67,7 +67,7 @@ export function SelectTrigger({
         <>
           {children}
           <span data-slot="select-icon" aria-hidden="true">
-            <ChevronDownIcon className="size-4 opacity-50 transition group-pressed:rotate-180" />
+            <ChevronDownIcon className="size-4 transition group-pressed:rotate-180" />
           </span>
         </>
       ))}

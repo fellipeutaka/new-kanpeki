@@ -30,6 +30,9 @@ export const CalendarStyles = {
   Nav: cva({
     base: ["flex w-full items-center justify-between gap-1"],
   }),
+  Grid: cva({
+    base: ["w-full"],
+  }),
   HeaderCell: cva({
     base: ["w-8 rounded-md font-normal text-[0.8rem] text-muted-foreground"],
   }),
@@ -143,8 +146,14 @@ export function CalendarNav({ className, ...props }: CalendarNavProps) {
 
 export interface CalendarGridProps
   extends React.ComponentProps<typeof CalendarGridPrimitive> {}
-export function CalendarGrid(props: CalendarGridProps) {
-  return <CalendarGridPrimitive {...props} data-slot="calendar-grid" />;
+export function CalendarGrid({ className, ...props }: CalendarGridProps) {
+  return (
+    <CalendarGridPrimitive
+      {...props}
+      data-slot="calendar-grid"
+      className={CalendarStyles.Grid({ className })}
+    />
+  );
 }
 
 export interface CalendarGridHeaderProps
