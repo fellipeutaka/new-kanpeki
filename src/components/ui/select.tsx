@@ -24,8 +24,8 @@ const SelectStyles = {
     ],
     variants: {
       size: {
-        default: "h-9",
-        sm: "h-8",
+        default: "min-h-9",
+        sm: "min-h-8",
       },
     },
     defaultVariants: {

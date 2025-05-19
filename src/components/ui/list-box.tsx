@@ -2,8 +2,10 @@
 
 import { CheckIcon } from "lucide-react";
 import {
+  Header,
   ListBox,
   ListBoxItem,
+  ListBoxSection,
   composeRenderProps,
 } from "react-aria-components";
 import { cn } from "~/lib/cva";
@@ -37,7 +39,7 @@ export function ListboxItem({
   ...props
 }: ListboxItemProps) {
   const _textValue =
-    textValue ?? typeof children === "string" ? String(children) : undefined;
+    (textValue ?? typeof children === "string") ? String(children) : undefined;
 
   return (
     <ListBoxItem
@@ -79,6 +81,29 @@ export function ListboxEmpty({ className, ...props }: ListboxEmptyProps) {
     <div
       data-slot="listbox-empty"
       className={cn("pointer-events-none py-6 text-center text-sm", className)}
+      {...props}
+    />
+  );
+}
+
+export interface ListboxGroupProps<T extends object>
+  extends React.ComponentProps<typeof ListBoxSection<T>> {}
+
+export function ListboxGroup<T extends object>(props: ListboxGroupProps<T>) {
+  return <ListBoxSection data-slot="listbox-group" {...props} />;
+}
+
+export interface ListboxLabelProps
+  extends React.ComponentProps<typeof Header> {}
+
+export function ListboxLabel({ className, ...props }: ListboxLabelProps) {
+  return (
+    <Header
+      data-slot="listbox-label"
+      className={cn(
+        "px-2 py-1.5 font-medium text-muted-foreground text-xs",
+        className
+      )}
       {...props}
     />
   );

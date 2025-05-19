@@ -81,7 +81,6 @@ export const DialogStyles = {
       "hover:opacity-100",
       "focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2",
       "disabled:pointer-events-none",
-      "data-[state=open]:bg-accent data-[state=open]:text-muted-foreground",
       "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
     ],
   }),

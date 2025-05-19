@@ -1,7 +1,9 @@
 "use client";
 
 import { ChevronsUpDownIcon, SearchIcon } from "lucide-react";
-import { Autocomplete, SearchField, useFilter } from "react-aria-components";
+import { useMemo, useState } from "react";
+import type { Key } from "react-aria-components";
+import { Autocomplete } from "~/components/ui/autocomplete";
 import {
   AvatarFallback,
   AvatarImage,
@@ -12,13 +14,19 @@ import {
   ComboboxRoot,
   ComboboxTrigger,
 } from "~/components/ui/combobox";
-import { Input } from "~/components/ui/input";
 import {
   ListboxEmpty,
+  ListboxGroup,
   ListboxItem,
+  ListboxLabel,
   ListboxRoot,
 } from "~/components/ui/list-box";
 import { PopoverContent } from "~/components/ui/popover";
+import {
+  SearchFieldButton,
+  SearchFieldInput,
+  SearchFieldRoot,
+} from "~/components/ui/search-field";
 import { SelectRoot, SelectTrigger, SelectValue } from "~/components/ui/select";
 
 const frameworks = [
@@ -97,7 +105,7 @@ const timezones = [
       { value: "Asia/Seoul", label: "(GMT+9) Seoul" },
     ],
   },
-] as const;
+];
 
 type Timezone = (typeof timezones)[number];
 
@@ -107,10 +115,10 @@ export function ComboboxDemo() {
       <FrameworkCombobox frameworks={[...frameworks]} />
 
       <UserCombobox users={[...users]} selectedUserId={users[0].id} />
-      {/* <TimezoneCombobox
+      <TimezoneCombobox
         timezones={[...timezones]}
         selectedTimezone={timezones[0].timezones[0]}
-      /> */}
+      />
       {/* <ComboboxWithCheckbox frameworks={[...frameworks]} /> */}
     </div>
   );
@@ -119,9 +127,9 @@ export function ComboboxDemo() {
 function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
   return (
     <ComboboxRoot
-      allowsEmptyCollection
       className="w-full md:max-w-[200px]"
       aria-label="Frameworks"
+      allowsEmptyCollection
     >
       <ComboboxTrigger>
         <ComboboxInput placeholder="Select framework..." />
@@ -152,8 +160,6 @@ function UserCombobox({
   users: User[];
   selectedUserId: string;
 }) {
-  const { contains } = useFilter({ sensitivity: "base" });
-
   return (
     <SelectRoot
       className="w-full md:max-w-[200px]"
@@ -165,20 +171,18 @@ function UserCombobox({
         <SelectValue />
       </SelectTrigger>
 
-      <PopoverContent>
-        <Autocomplete filter={contains}>
-          <SearchField
-            className="flex h-9 items-center gap-2 border px-3"
-            aria-label="Search"
-            autoFocus
+      <PopoverContent className="rounded-md border bg-popover shadow-md">
+        <Autocomplete>
+          <SearchFieldRoot aria-label="Search" autoFocus>
+            <SearchIcon />
+            <SearchFieldInput placeholder="Search user..." />
+            <SearchFieldButton />
+          </SearchFieldRoot>
+          <ListboxRoot
+            className="rounded-none border-none shadow-none"
+            items={users}
+            renderEmptyState={() => <ListboxEmpty>No user found.</ListboxEmpty>}
           >
-            <SearchIcon
-              aria-hidden
-              className="ml-2 h-4 w-4 text-gray-600 forced-colors:text-[ButtonText]"
-            />
-            <Input placeholder="Search languages" />
-          </SearchField>
-          <ListboxRoot items={users}>
             {(user) => (
               <ListboxItem textValue={user.username} id={user.id}>
                 <AvatarRoot className="size-5">
@@ -197,89 +201,83 @@ function UserCombobox({
   );
 }
 
-// function TimezoneCombobox({
-//   timezones,
-//   selectedTimezone,
-// }: {
-//   timezones: Timezone[];
-//   selectedTimezone: Timezone["timezones"][number];
-// }) {
-//   const [open, setOpen] = useState(false);
-//   const [value, setValue] = useState(selectedTimezone.value);
+function TimezoneCombobox({
+  timezones,
+  selectedTimezone,
+}: {
+  timezones: Timezone[];
+  selectedTimezone: Timezone["timezones"][number];
+}) {
+  const [value, setValue] = useState<Key>(selectedTimezone.value);
 
-//   const selectedGroup = useMemo(
-//     () =>
-//       timezones.find((group) =>
-//         group.timezones.find((tz) => tz.value === value)
-//       ),
-//     [value, timezones]
-//   );
+  const selectedGroup = useMemo(
+    () =>
+      timezones.find((group) =>
+        group.timezones.find((tz) => tz.value === value)
+      ),
+    [value, timezones]
+  );
 
-//   const selectedTimezoneLabel = useMemo(
-//     () => selectedGroup?.timezones.find((tz) => tz.value === value)?.label,
-//     [value, selectedGroup]
-//   );
+  const selectedTimezoneLabel = useMemo(
+    () => selectedGroup?.timezones.find((tz) => tz.value === value)?.label,
+    [value, selectedGroup]
+  );
 
-//   return (
-//     <Popover open={open} onOpenChange={setOpen}>
-//       <PopoverTrigger asChild>
-//         <Button
-//           variant="outline"
-//           className="h-12 w-full justify-between px-2.5 md:max-w-[200px]"
-//         >
-//           {selectedTimezone ? (
-//             <div className="flex flex-col items-start gap-0.5">
-//               <span className="font-normal text-muted-foreground text-xs">
-//                 {selectedGroup?.label}
-//               </span>
-//               <span>{selectedTimezoneLabel}</span>
-//             </div>
-//           ) : (
-//             "Select timezone"
-//           )}
-//           <ChevronDownIcon className="text-muted-foreground" />
-//         </Button>
-//       </PopoverTrigger>
-//       <PopoverContent className="p-0" align="start">
-//         <Command>
-//           <CommandInput placeholder="Search timezone..." />
-//           <CommandList className="scroll-pb-12">
-//             <CommandEmpty>No timezone found.</CommandEmpty>
-//             {timezones.map((region) => (
-//               <CommandGroup key={region.label} heading={region.label}>
-//                 {region.timezones.map((timezone) => (
-//                   <CommandItem
-//                     key={timezone.value}
-//                     value={timezone.value}
-//                     onSelect={(currentValue) => {
-//                       setValue(
-//                         currentValue as Timezone["timezones"][number]["value"]
-//                       );
-//                       setOpen(false);
-//                     }}
-//                   >
-//                     {timezone.label}
-//                     <CheckIcon
-//                       className="ml-auto opacity-0 data-[selected=true]:opacity-100"
-//                       data-selected={value === timezone.value}
-//                     />
-//                   </CommandItem>
-//                 ))}
-//               </CommandGroup>
-//             ))}
-//             <CommandSeparator className="sticky bottom-10" />
-//             <CommandGroup className="sticky bottom-0 bg-popover">
-//               <CommandItem>
-//                 <PlusCircleIcon />
-//                 Create timezone
-//               </CommandItem>
-//             </CommandGroup>
-//           </CommandList>
-//         </Command>
-//       </PopoverContent>
-//     </Popover>
-//   );
-// }
+  return (
+    <SelectRoot
+      className="w-full md:max-w-[200px]"
+      placeholder="Select timezone"
+      aria-label="Timezone"
+      selectedKey={value}
+      onSelectionChange={setValue}
+    >
+      <SelectTrigger className="w-full">
+        <SelectValue>
+          {(values) =>
+            selectedTimezone ? (
+              <div className="grid justify-items-start gap-0.5">
+                <span className="font-normal text-muted-foreground text-xs">
+                  {selectedGroup?.label}
+                </span>
+                <span>{selectedTimezoneLabel}</span>
+              </div>
+            ) : (
+              values.defaultChildren
+            )
+          }
+        </SelectValue>
+      </SelectTrigger>
+
+      <PopoverContent className="rounded-md border bg-popover shadow-md">
+        <Autocomplete>
+          <SearchFieldRoot aria-label="Search" autoFocus>
+            <SearchIcon />
+            <SearchFieldInput placeholder="Search timezone..." />
+            <SearchFieldButton />
+          </SearchFieldRoot>
+          <ListboxRoot
+            className="max-h-[300px] rounded-none border-none shadow-none"
+            items={timezones}
+            renderEmptyState={() => (
+              <ListboxEmpty>No timezone found.</ListboxEmpty>
+            )}
+          >
+            {(region) => (
+              <ListboxGroup id={region.label}>
+                <ListboxLabel>{region.label}</ListboxLabel>
+                {region.timezones.map((timezone) => (
+                  <ListboxItem key={timezone.value} id={timezone.value}>
+                    {timezone.label}
+                  </ListboxItem>
+                ))}
+              </ListboxGroup>
+            )}
+          </ListboxRoot>
+        </Autocomplete>
+      </PopoverContent>
+    </SelectRoot>
+  );
+}
 
 // function ComboboxWithCheckbox({ frameworks }: { frameworks: Framework[] }) {
 //   const [open, setOpen] = useState(false);
