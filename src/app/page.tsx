@@ -12,6 +12,7 @@ import { ChartDemo } from "~/demos/chart-demo";
 import { CheckboxDemo } from "~/demos/checkbox-demo";
 import { CollapsibleDemo } from "~/demos/collapsible-demo";
 import { ComboboxDemo } from "~/demos/combobox-demo";
+import { CommandDemo } from "~/demos/command-demo";
 import { ComponentWrapper } from "~/demos/component-wrapper";
 import { DatePickerDemo } from "~/demos/date-picker-demo";
 import { DialogDemo } from "~/demos/dialog-demo";
@@ -86,9 +87,9 @@ export default function SinkPage() {
       <ComponentWrapper name="combobox">
         <ComboboxDemo />
       </ComponentWrapper>
-      {/* <ComponentWrapper name="command">
+      <ComponentWrapper name="command">
         <CommandDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       {/* <ComponentWrapper name="context-menu">
         <ContextMenuDemo />
       </ComponentWrapper> */}

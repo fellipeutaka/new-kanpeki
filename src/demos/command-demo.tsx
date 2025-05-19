@@ -4,84 +4,117 @@ import {
   Calculator,
   Calendar,
   CreditCard,
+  SearchIcon,
   Settings,
   Smile,
   User,
 } from "lucide-react";
 
 import { useEffect, useState } from "react";
+import { Autocomplete } from "~/components/ui/autocomplete";
 import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from "~/components/ui/command";
+  DialogContent,
+  DialogModal,
+  DialogOverlay,
+  DialogRoot,
+} from "~/components/ui/dialog";
+import {
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+} from "~/components/ui/dropdown-menu";
+import {
+  SearchFieldButton,
+  SearchFieldInput,
+  SearchFieldRoot,
+} from "~/components/ui/search-field";
 
 export function CommandDemo() {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen((open) => !open);
-      }
-    };
+    const controller = new AbortController();
 
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
+    document.addEventListener(
+      "keydown",
+      (e) => {
+        if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
+          e.preventDefault();
+          setIsOpen((isOpen) => !isOpen);
+        }
+      },
+      {
+        signal: controller.signal,
+      }
+    );
+
+    return () => controller.abort();
   }, []);
 
   return (
-    <>
+    <DialogRoot isOpen={isOpen} onOpenChange={setIsOpen}>
       <p className="text-muted-foreground text-sm">
         Press{" "}
         <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-medium font-mono text-[10px] text-muted-foreground opacity-100">
           <span className="text-xs">⌘</span>J
         </kbd>
       </p>
-      <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
-            <CommandItem>
-              <Calendar />
-              <span>Calendar</span>
-            </CommandItem>
-            <CommandItem>
-              <Smile />
-              <span>Search Emoji</span>
-            </CommandItem>
-            <CommandItem>
-              <Calculator />
-              <span>Calculator</span>
-            </CommandItem>
-          </CommandGroup>
-          <CommandSeparator />
-          <CommandGroup heading="Settings">
-            <CommandItem>
-              <User />
-              <span>Profile</span>
-              <CommandShortcut>⌘P</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <CreditCard />
-              <span>Billing</span>
-              <CommandShortcut>⌘B</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <Settings />
-              <span>Settings</span>
-              <CommandShortcut>⌘S</CommandShortcut>
-            </CommandItem>
-          </CommandGroup>
-        </CommandList>
-      </CommandDialog>
-    </>
+
+      <DialogOverlay>
+        <DialogModal>
+          <DialogContent>
+            <Autocomplete>
+              <SearchFieldRoot aria-label="Search" autoFocus>
+                <SearchIcon />
+                <SearchFieldInput placeholder="Type a command or search..." />
+                <SearchFieldButton />
+              </SearchFieldRoot>
+
+              <DropdownMenuContent renderEmptyState={() => "No results found."}>
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>Suggestions</DropdownMenuLabel>
+
+                  <DropdownMenuItem textValue="Calendar">
+                    <Calendar />
+                    <span>Calendar</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem textValue="Search Emoji">
+                    <Smile />
+                    <span>Search Emoji</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem textValue="Calculator">
+                    <Calculator />
+                    <span>Calculator</span>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>Settings</DropdownMenuLabel>
+
+                  <DropdownMenuItem textValue="Profile">
+                    <User />
+                    <span>Profile</span>
+                    <DropdownMenuShortcut>⌘P</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem textValue="Billing">
+                    <CreditCard />
+                    <span>Billing</span>
+                    <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem textValue="Settings">
+                    <Settings />
+                    <span>Settings</span>
+                    <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </Autocomplete>
+          </DialogContent>
+        </DialogModal>
+      </DialogOverlay>
+    </DialogRoot>
   );
 }

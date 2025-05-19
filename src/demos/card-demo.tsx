@@ -138,7 +138,7 @@ export function CardDemo() {
           <div className="ml-auto font-medium tabular-nums">$135,000</div>
         </CardFooter>
       </CardRoot>
-      <div className="flex w-full flex-wrap items-start gap-8 md:*:data-[slot=card]:basis-1/4">
+      <div className="flex w-full flex-wrap items-start gap-8 md:*:data-[slot=card-root]:basis-1/4">
         <CardRoot>
           <CardContent className="text-sm">Content Only</CardContent>
         </CardRoot>
