@@ -8,7 +8,7 @@
   - "By clicking this checkbox, you agree to the terms and conditions."
 - [✅] Collapsible
 - [⚠️] Combobox
-- [⏳] Command (Autocomplete)
+- [⚠️] Command (Autocomplete)
 - [⏳] Context Menu
 - [⚠️] Date Picker
 - [⚠️] Dialog

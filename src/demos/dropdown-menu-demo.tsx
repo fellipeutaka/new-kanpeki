@@ -24,168 +24,164 @@ import {
 } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
 import {
-  // DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  // DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuRoot,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-} from "~/components/ui/dropdown-menu";
+  // MenuCheckboxItem,
+  MenuContent,
+  MenuGroup,
+  // MenuGroup,
+  MenuItem,
+  MenuLabel,
+  MenuRoot,
+  MenuSeparator,
+  MenuShortcut,
+  MenuSub,
+} from "~/components/ui/menu";
 import { PopoverContent } from "~/components/ui/popover";
 
 export function DropdownMenuDemo() {
   return (
     <div className="flex flex-wrap items-start gap-4">
-      <DropdownMenuSimple />
-      <DropdownMenuCheckboxes />
-      <DropdownMenuRadioGroupDemo />
-      <DropdownMenuWithAvatar />
-      <DropdownMenuAvatarOnly />
-      <DropdownMenuIconColor />
+      <MenuSimple />
+      <MenuCheckboxes />
+      <MenuRadioGroupDemo />
+      <MenuWithAvatar />
+      <MenuAvatarOnly />
+      <MenuIconColor />
     </div>
   );
 }
 
-function DropdownMenuSimple() {
+function MenuSimple() {
   return (
-    <DropdownMenuRoot>
+    <MenuRoot>
       <Button variant="outline">Open</Button>
 
       <PopoverContent placement="bottom start">
-        <DropdownMenuContent className="w-56">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuGroup>
-            <DropdownMenuItem textValue="Profile">
+        <MenuContent className="w-56">
+          <MenuLabel>My Account</MenuLabel>
+          <MenuGroup>
+            <MenuItem textValue="Profile">
               Profile
-              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem textValue="Billing">
+              <MenuShortcut>⇧⌘P</MenuShortcut>
+            </MenuItem>
+            <MenuItem textValue="Billing">
               Billing
-              <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem textValue="Settings">
+              <MenuShortcut>⌘B</MenuShortcut>
+            </MenuItem>
+            <MenuItem textValue="Settings">
               Settings
-              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem textValue="Keyboard shortcuts">
+              <MenuShortcut>⌘S</MenuShortcut>
+            </MenuItem>
+            <MenuItem textValue="Keyboard shortcuts">
               Keyboard shortcuts
-              <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuItem textValue="Team">Team</DropdownMenuItem>
-            <DropdownMenuSub>
-              <DropdownMenuItem textValue="Invite users">
-                Invite users
-              </DropdownMenuItem>
+              <MenuShortcut>⌘K</MenuShortcut>
+            </MenuItem>
+          </MenuGroup>
+          <MenuSeparator />
+          <MenuGroup>
+            <MenuItem textValue="Team">Team</MenuItem>
+            <MenuSub>
+              <MenuItem textValue="Invite users">Invite users</MenuItem>
               <PopoverContent>
-                <DropdownMenuContent>
-                  <DropdownMenuItem textValue="Email">Email</DropdownMenuItem>
-                  <DropdownMenuItem textValue="Message">
-                    Message
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem textValue="More">More...</DropdownMenuItem>
-                </DropdownMenuContent>
+                <MenuContent>
+                  <MenuItem textValue="Email">Email</MenuItem>
+                  <MenuItem textValue="Message">Message</MenuItem>
+                  <MenuSeparator />
+                  <MenuItem textValue="More">More...</MenuItem>
+                </MenuContent>
               </PopoverContent>
-            </DropdownMenuSub>
-            <DropdownMenuItem textValue="New Team">
+            </MenuSub>
+            <MenuItem textValue="New Team">
               New Team
-              <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>GitHub</DropdownMenuItem>
-          <DropdownMenuItem>Support</DropdownMenuItem>
-          <DropdownMenuItem isDisabled>API</DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem textValue="Log out">
+              <MenuShortcut>⌘+T</MenuShortcut>
+            </MenuItem>
+          </MenuGroup>
+          <MenuSeparator />
+          <MenuItem>GitHub</MenuItem>
+          <MenuItem>Support</MenuItem>
+          <MenuItem isDisabled>API</MenuItem>
+          <MenuSeparator />
+          <MenuItem textValue="Log out">
             Log out
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
+            <MenuShortcut>⇧⌘Q</MenuShortcut>
+          </MenuItem>
+        </MenuContent>
       </PopoverContent>
-    </DropdownMenuRoot>
+    </MenuRoot>
   );
 }
 
-function DropdownMenuCheckboxes() {
+function MenuCheckboxes() {
   const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set([]));
 
   return (
-    <DropdownMenuRoot>
+    <MenuRoot>
       <Button variant="outline">Checkboxes</Button>
 
       <PopoverContent placement="bottom start">
-        <DropdownMenuContent className="w-56">
-          <DropdownMenuGroup>
-            <DropdownMenuLabel>Account</DropdownMenuLabel>
-            <DropdownMenuItem>
+        <MenuContent className="w-56">
+          <MenuGroup>
+            <MenuLabel>Account</MenuLabel>
+            <MenuItem>
               <UserIcon /> Profile
-            </DropdownMenuItem>
-            <DropdownMenuItem>
+            </MenuItem>
+            <MenuItem>
               <CreditCardIcon /> Billing
-            </DropdownMenuItem>
-            <DropdownMenuItem>
+            </MenuItem>
+            <MenuItem>
               <Settings2Icon /> Settings
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup
+            </MenuItem>
+          </MenuGroup>
+          <MenuSeparator />
+          <MenuGroup
             selectionMode="multiple"
             selectedKeys={selectedKeys}
             onSelectionChange={setSelectedKeys}
           >
-            <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-            <DropdownMenuItem>Status Bar</DropdownMenuItem>
-            <DropdownMenuItem isDisabled>Activity Bar</DropdownMenuItem>
-            <DropdownMenuItem>Panel</DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuItem>
+            <MenuLabel>Appearance</MenuLabel>
+            <MenuItem>Status Bar</MenuItem>
+            <MenuItem isDisabled>Activity Bar</MenuItem>
+            <MenuItem>Panel</MenuItem>
+          </MenuGroup>
+          <MenuSeparator />
+          <MenuGroup>
+            <MenuItem>
               <LogOutIcon /> Sign Out
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
+            </MenuItem>
+          </MenuGroup>
+        </MenuContent>
       </PopoverContent>
-    </DropdownMenuRoot>
+    </MenuRoot>
   );
 }
 
-function DropdownMenuRadioGroupDemo() {
+function MenuRadioGroupDemo() {
   const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set([]));
 
   return (
-    <DropdownMenuRoot>
+    <MenuRoot>
       <Button variant="outline">Radio Group</Button>
 
       <PopoverContent placement="bottom start">
-        <DropdownMenuContent className="w-56">
-          <DropdownMenuLabel inset>Panel Position</DropdownMenuLabel>
-          <DropdownMenuGroup
+        <MenuContent className="w-56">
+          <MenuLabel inset>Panel Position</MenuLabel>
+          <MenuGroup
             selectionMode="single"
             selectedKeys={selectedKeys}
             onSelectionChange={setSelectedKeys}
           >
-            <DropdownMenuItem>Top</DropdownMenuItem>
-            <DropdownMenuItem>Bottom</DropdownMenuItem>
-            <DropdownMenuItem isDisabled>Right</DropdownMenuItem>
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
+            <MenuItem>Top</MenuItem>
+            <MenuItem>Bottom</MenuItem>
+            <MenuItem isDisabled>Right</MenuItem>
+          </MenuGroup>
+        </MenuContent>
       </PopoverContent>
-    </DropdownMenuRoot>
+    </MenuRoot>
   );
 }
 
-function DropdownMenuWithAvatar() {
+function MenuWithAvatar() {
   return (
-    <DropdownMenuRoot>
+    <MenuRoot>
       <Button
         variant="outline"
         className="h-12 justify-start px-2 md:max-w-[200px]"
@@ -204,8 +200,8 @@ function DropdownMenuWithAvatar() {
       </Button>
 
       <PopoverContent placement="bottom start">
-        <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56">
-          <DropdownMenuLabel className="p-0 font-normal">
+        <MenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56">
+          <MenuLabel className="p-0 font-normal">
             <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
               <AvatarRoot>
                 <AvatarImage src="https://github.com/shadcn.png" alt="Shadcn" />
@@ -218,43 +214,43 @@ function DropdownMenuWithAvatar() {
                 </span>
               </div>
             </div>
-          </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuItem>
+          </MenuLabel>
+          <MenuSeparator />
+          <MenuGroup>
+            <MenuItem>
               <SparklesIcon />
               Upgrade to Pro
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuItem>
+            </MenuItem>
+          </MenuGroup>
+          <MenuSeparator />
+          <MenuGroup>
+            <MenuItem>
               <BadgeCheckIcon />
               Account
-            </DropdownMenuItem>
-            <DropdownMenuItem>
+            </MenuItem>
+            <MenuItem>
               <CreditCardIcon />
               Billing
-            </DropdownMenuItem>
-            <DropdownMenuItem>
+            </MenuItem>
+            <MenuItem>
               <BellIcon />
               Notifications
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
+            </MenuItem>
+          </MenuGroup>
+          <MenuSeparator />
+          <MenuItem>
             <LogOut />
             Sign Out
-          </DropdownMenuItem>
-        </DropdownMenuContent>
+          </MenuItem>
+        </MenuContent>
       </PopoverContent>
-    </DropdownMenuRoot>
+    </MenuRoot>
   );
 }
 
-function DropdownMenuAvatarOnly() {
+function MenuAvatarOnly() {
   return (
-    <DropdownMenuRoot>
+    <MenuRoot>
       <Button variant="outline" className="size-8 rounded-full border-none p-0">
         <AvatarRoot>
           <AvatarImage src="https://github.com/leerob.png" alt="leerob" />
@@ -263,8 +259,8 @@ function DropdownMenuAvatarOnly() {
       </Button>
 
       <PopoverContent placement="bottom start">
-        <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56">
-          <DropdownMenuLabel className="p-0 font-normal">
+        <MenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56">
+          <MenuLabel className="p-0 font-normal">
             <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
               <AvatarRoot>
                 <AvatarImage src="https://github.com/leerob.png" alt="leerob" />
@@ -277,67 +273,67 @@ function DropdownMenuAvatarOnly() {
                 </span>
               </div>
             </div>
-          </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuItem>
+          </MenuLabel>
+          <MenuSeparator />
+          <MenuGroup>
+            <MenuItem>
               <SparklesIcon />
               Upgrade to Pro
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuItem>
+            </MenuItem>
+          </MenuGroup>
+          <MenuSeparator />
+          <MenuGroup>
+            <MenuItem>
               <BadgeCheckIcon />
               Account
-            </DropdownMenuItem>
-            <DropdownMenuItem>
+            </MenuItem>
+            <MenuItem>
               <CreditCardIcon />
               Billing
-            </DropdownMenuItem>
-            <DropdownMenuItem>
+            </MenuItem>
+            <MenuItem>
               <BellIcon />
               Notifications
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
+            </MenuItem>
+          </MenuGroup>
+          <MenuSeparator />
+          <MenuItem>
             <LogOut />
             Sign Out
-          </DropdownMenuItem>
-        </DropdownMenuContent>
+          </MenuItem>
+        </MenuContent>
       </PopoverContent>
-    </DropdownMenuRoot>
+    </MenuRoot>
   );
 }
 
-function DropdownMenuIconColor() {
+function MenuIconColor() {
   return (
-    <DropdownMenuRoot>
+    <MenuRoot>
       <Button variant="ghost" size="icon">
         <MoreHorizontalIcon />
         <span className="sr-only">Toggle menu</span>
       </Button>
 
       <PopoverContent placement="bottom start">
-        <DropdownMenuContent>
-          <DropdownMenuGroup className="*:data-[slot=dropdown-menu-item]:[&>svg]:text-muted-foreground">
-            <DropdownMenuItem>
+        <MenuContent>
+          <MenuGroup className="*:data-[slot=dropdown-menu-item]:[&>svg]:text-muted-foreground">
+            <MenuItem>
               <PencilIcon />
               Edit
-            </DropdownMenuItem>
-            <DropdownMenuItem>
+            </MenuItem>
+            <MenuItem>
               <ShareIcon />
               Share
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem variant="destructive">
+            </MenuItem>
+            <MenuSeparator />
+            <MenuItem variant="destructive">
               <TrashIcon />
               Delete
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
+            </MenuItem>
+          </MenuGroup>
+        </MenuContent>
       </PopoverContent>
-    </DropdownMenuRoot>
+    </MenuRoot>
   );
 }

@@ -5,11 +5,11 @@ import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 import {
   Button,
   Header,
+  MenuItem as Item,
   Keyboard,
   Menu,
-  MenuItem,
   MenuSection,
-  MenuTrigger,
+  MenuTrigger as Root,
   Separator,
   SubmenuTrigger,
   composeRenderProps,
@@ -17,7 +17,7 @@ import {
 
 import { cn, cva } from "~/lib/cva";
 
-const DropdownMenuStyles = {
+const MenuStyles = {
   Item: cva({
     base: [
       "group relative flex select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm",
@@ -37,72 +37,72 @@ const DropdownMenuStyles = {
       },
     },
   }),
+  Content: cva({
+    base: [
+      "z-50 min-w-32 overflow-y-auto overflow-x-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
+    ],
+  }),
 };
 
-export interface DropdownMenuRootProps
-  extends React.ComponentProps<typeof MenuTrigger> {}
+export interface MenuRootProps extends React.ComponentProps<typeof Root> {}
 
-export function DropdownMenuRoot(props: DropdownMenuRootProps) {
-  return <MenuTrigger data-slot="dropdown-menu" {...props} />;
+export function MenuRoot(props: MenuRootProps) {
+  return <Root data-slot="menu-root" {...props} />;
 }
 
-export interface DropdownMenuTriggerProps
-  extends React.ComponentProps<typeof Button> {}
+export interface MenuTriggerProps extends React.ComponentProps<typeof Button> {}
 
-export function DropdownMenuTrigger(props: DropdownMenuTriggerProps) {
-  return <Button data-slot="dropdown-menu-trigger" {...props} />;
+export function MenuTrigger(props: MenuTriggerProps) {
+  return <Button data-slot="menu-trigger" {...props} />;
 }
 
-export interface DropdownMenuContentProps<T extends object>
+export interface MenuContentProps<T extends object>
   extends React.ComponentProps<typeof Menu<T>> {}
 
-export function DropdownMenuContent<T extends object>({
+export function MenuContent<T extends object>({
   className,
   ...props
-}: DropdownMenuContentProps<T>) {
+}: MenuContentProps<T>) {
   return (
     <Menu
-      data-slot="dropdown-menu-content"
-      className={cn(
-        "z-50 min-w-32 overflow-y-auto overflow-x-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
-        className
-      )}
+      data-slot="menu-content"
+      className={MenuStyles.Content({ className })}
       {...props}
     />
   );
 }
 
-export interface DropdownMenuGroupProps
+export interface MenuGroupProps
   extends React.ComponentProps<typeof MenuSection> {}
 
-export function DropdownMenuGroup(props: DropdownMenuGroupProps) {
-  return <MenuSection data-slot="dropdown-menu-group" {...props} />;
+export function MenuGroup(props: MenuGroupProps) {
+  return <MenuSection data-slot="menu-group" {...props} />;
 }
 
-export interface DropdownMenuItemProps
-  extends React.ComponentProps<typeof MenuItem>,
-    VariantProps<typeof DropdownMenuStyles.Item> {}
+export interface MenuItemProps
+  extends React.ComponentProps<typeof Item>,
+    VariantProps<typeof MenuStyles.Item> {}
 
-export function DropdownMenuItem({
+export function MenuItem({
   className,
   inset,
   variant,
   children,
   ...props
-}: DropdownMenuItemProps) {
+}: MenuItemProps) {
   return (
-    <MenuItem
-      data-slot="dropdown-menu-item"
+    <Item
+      data-slot="menu-item"
       data-inset={inset}
       className={composeRenderProps(className, (className) =>
-        DropdownMenuStyles.Item({ className, variant, inset })
+        MenuStyles.Item({ className, variant, inset })
       )}
       {...props}
     >
       {composeRenderProps(children, (children, values) => (
         <>
           <span
-            data-slot="dropdown-menu-item-indicator"
+            data-slot="menu-item-indicator"
             className="flex size-3.5 items-center justify-center empty:hidden"
           >
             {values.selectionMode === "single" && (
@@ -126,23 +126,18 @@ export function DropdownMenuItem({
           )}
         </>
       ))}
-    </MenuItem>
+    </Item>
   );
 }
 
-export interface DropdownMenuLabelProps
-  extends React.ComponentProps<typeof Header> {
+export interface MenuLabelProps extends React.ComponentProps<typeof Header> {
   inset?: boolean;
 }
 
-export function DropdownMenuLabel({
-  className,
-  inset,
-  ...props
-}: DropdownMenuLabelProps) {
+export function MenuLabel({ className, inset, ...props }: MenuLabelProps) {
   return (
     <Header
-      data-slot="dropdown-menu-label"
+      data-slot="menu-label"
       data-inset={inset}
       className={cn(
         "px-2 py-1.5 font-medium text-sm data-[inset]:pl-8",
@@ -153,32 +148,26 @@ export function DropdownMenuLabel({
   );
 }
 
-export interface DropdownMenuSeparatorProps
+export interface MenuSeparatorProps
   extends React.ComponentProps<typeof Separator> {}
 
-export function DropdownMenuSeparator({
-  className,
-  ...props
-}: DropdownMenuSeparatorProps) {
+export function MenuSeparator({ className, ...props }: MenuSeparatorProps) {
   return (
     <Separator
-      data-slot="dropdown-menu-separator"
+      data-slot="menu-separator"
       className={cn("-mx-1 my-1 h-px bg-border", className)}
       {...props}
     />
   );
 }
 
-export interface DropdownMenuShortcutProps
+export interface MenuShortcutProps
   extends React.ComponentProps<typeof Keyboard> {}
 
-export function DropdownMenuShortcut({
-  className,
-  ...props
-}: DropdownMenuShortcutProps) {
+export function MenuShortcut({ className, ...props }: MenuShortcutProps) {
   return (
     <Keyboard
-      data-slot="dropdown-menu-shortcut"
+      data-slot="menu-shortcut"
       className={cn(
         "ml-auto text-muted-foreground text-xs tracking-widest",
         className
@@ -188,9 +177,21 @@ export function DropdownMenuShortcut({
   );
 }
 
-export interface DropdownMenuSubProps
+export interface MenuSubProps
   extends React.ComponentProps<typeof SubmenuTrigger> {}
 
-export function DropdownMenuSub(props: DropdownMenuSubProps) {
-  return <SubmenuTrigger data-slot="dropdown-menu-sub" {...props} />;
+export function MenuSub(props: MenuSubProps) {
+  return <SubmenuTrigger data-slot="menu-sub" {...props} />;
+}
+
+export interface MenuEmptyProps extends React.ComponentProps<"div"> {}
+
+export function MenuEmpty({ className, ...props }: MenuEmptyProps) {
+  return (
+    <div
+      data-slot="menu-empty"
+      className={cn("py-6 text-center text-sm", className)}
+      {...props}
+    />
+  );
 }

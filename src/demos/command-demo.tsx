@@ -1,16 +1,17 @@
 "use client";
 
 import {
-  Calculator,
-  Calendar,
-  CreditCard,
+  CalculatorIcon,
+  CalendarIcon,
+  CreditCardIcon,
   SearchIcon,
-  Settings,
-  Smile,
-  User,
+  SettingsIcon,
+  SmileIcon,
+  UserIcon,
 } from "lucide-react";
 
 import { useEffect, useState } from "react";
+import { Keyboard } from "react-aria-components";
 import { Autocomplete } from "~/components/ui/autocomplete";
 import {
   DialogContent,
@@ -19,13 +20,14 @@ import {
   DialogRoot,
 } from "~/components/ui/dialog";
 import {
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-} from "~/components/ui/dropdown-menu";
+  MenuContent,
+  MenuEmpty,
+  MenuGroup,
+  MenuItem,
+  MenuLabel,
+  MenuSeparator,
+  MenuShortcut,
+} from "~/components/ui/menu";
 import {
   SearchFieldButton,
   SearchFieldInput,
@@ -58,59 +60,67 @@ export function CommandDemo() {
     <DialogRoot isOpen={isOpen} onOpenChange={setIsOpen}>
       <p className="text-muted-foreground text-sm">
         Press{" "}
-        <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-medium font-mono text-[10px] text-muted-foreground opacity-100">
+        <Keyboard className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-medium font-mono text-[10px] text-muted-foreground opacity-100">
           <span className="text-xs">⌘</span>J
-        </kbd>
+        </Keyboard>
       </p>
 
       <DialogOverlay>
-        <DialogModal>
-          <DialogContent>
+        <DialogModal className="bg-popover p-0 text-popover-foreground">
+          <DialogContent className="gap-0">
             <Autocomplete>
-              <SearchFieldRoot aria-label="Search" autoFocus>
+              <SearchFieldRoot className="h-12" aria-label="Search" autoFocus>
                 <SearchIcon />
-                <SearchFieldInput placeholder="Type a command or search..." />
+                <SearchFieldInput
+                  className="flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder="Type a command or search..."
+                />
                 <SearchFieldButton />
               </SearchFieldRoot>
 
-              <DropdownMenuContent renderEmptyState={() => "No results found."}>
-                <DropdownMenuGroup>
-                  <DropdownMenuLabel>Suggestions</DropdownMenuLabel>
+              <MenuContent
+                className="max-h-[300px] border-none **:data-[slot=menu-item]:py-3 **:data-[slot=menu-label]:text-muted-foreground **:data-[slot=menu-label]:text-xs"
+                renderEmptyState={() => (
+                  <MenuEmpty>No results found.</MenuEmpty>
+                )}
+              >
+                <MenuGroup>
+                  <MenuLabel>Suggestions</MenuLabel>
 
-                  <DropdownMenuItem textValue="Calendar">
-                    <Calendar />
+                  <MenuItem textValue="Calendar">
+                    <CalendarIcon />
                     <span>Calendar</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem textValue="Search Emoji">
-                    <Smile />
+                  </MenuItem>
+                  <MenuItem textValue="Search Emoji">
+                    <SmileIcon />
                     <span>Search Emoji</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem textValue="Calculator">
-                    <Calculator />
+                  </MenuItem>
+                  <MenuItem textValue="Calculator">
+                    <CalculatorIcon />
                     <span>Calculator</span>
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuLabel>Settings</DropdownMenuLabel>
+                  </MenuItem>
+                </MenuGroup>
+                <MenuSeparator />
+                <MenuGroup>
+                  <MenuLabel>Settings</MenuLabel>
 
-                  <DropdownMenuItem textValue="Profile">
-                    <User />
+                  <MenuItem textValue="Profile">
+                    <UserIcon />
                     <span>Profile</span>
-                    <DropdownMenuShortcut>⌘P</DropdownMenuShortcut>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem textValue="Billing">
-                    <CreditCard />
+                    <MenuShortcut>⌘P</MenuShortcut>
+                  </MenuItem>
+                  <MenuItem textValue="Billing">
+                    <CreditCardIcon />
                     <span>Billing</span>
-                    <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem textValue="Settings">
-                    <Settings />
+                    <MenuShortcut>⌘B</MenuShortcut>
+                  </MenuItem>
+                  <MenuItem textValue="Settings">
+                    <SettingsIcon />
                     <span>Settings</span>
-                    <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
+                    <MenuShortcut>⌘S</MenuShortcut>
+                  </MenuItem>
+                </MenuGroup>
+              </MenuContent>
             </Autocomplete>
           </DialogContent>
         </DialogModal>

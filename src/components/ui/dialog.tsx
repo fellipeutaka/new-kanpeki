@@ -62,7 +62,8 @@ export const DialogStyles = {
           "exiting:motion-translate-x-out-100",
         ],
         center: [
-          "-translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 max-w-lg border [&_[data-slot=dialog-content]]:grid [&_[data-slot=dialog-content]]:gap-4",
+          "-translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 max-w-lg border",
+          "[&_[data-slot=dialog-content]:not([class*='gap-'])]:gap-4 [&_[data-slot=dialog-content]]:grid",
           "entering:motion-scale-in-95",
           "exiting:motion-scale-out-95",
         ],
