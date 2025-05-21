@@ -28,6 +28,7 @@ import { RadioGroupDemo } from "~/demos/radio-group-demo";
 import { ResizableDemo } from "~/demos/resizable-demo";
 import { SelectDemo } from "~/demos/select-demo";
 import { SeparatorDemo } from "~/demos/separator-demo";
+import { SheetDemo } from "~/demos/sheet-demo";
 import { SkeletonDemo } from "~/demos/skeleton-demo";
 import { SliderDemo } from "~/demos/slider-demo";
 import { SonnerDemo } from "~/demos/sonner-demo";
@@ -150,9 +151,9 @@ export default function SinkPage() {
       <ComponentWrapper name="separator">
         <SeparatorDemo />
       </ComponentWrapper>
-      {/* <ComponentWrapper name="sheet">
+      <ComponentWrapper name="sheet">
         <SheetDemo />
-      </ComponentWrapper> */}
+      </ComponentWrapper>
       <ComponentWrapper name="skeleton">
         <SkeletonDemo />
       </ComponentWrapper>

@@ -51,3 +51,8 @@
 ## Tooltip
 
 - In shadcn/ui (side) vs In RAC (placement)
+- If you are using <Textfield /> and <Input /> with a default value, you need to set the `defaultValue` prop only on the <Textfield /> component. The <Input /> component will automatically inherit the value from the <Textfield /> component.
+
+# Points
+
+- Separator (`<Separator />`, `<MenuSeparator />`)

@@ -34,7 +34,7 @@ export const DialogStyles = {
   }),
   Modal: cva({
     base: [
-      "data-[side=center]:motion-duration-150! fixed z-50 w-full bg-background p-6 shadow-lg outline-none",
+      "data-[side=center]:motion-duration-150! fixed z-50 w-full bg-background p-4 shadow-lg outline-none",
       "entering:motion-opacity-in entering:motion-duration-500",
       "exiting:motion-opacity-out exiting:motion-duration-300",
       "sm:rounded-lg",
@@ -62,8 +62,7 @@ export const DialogStyles = {
           "exiting:motion-translate-x-out-100",
         ],
         center: [
-          "-translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 max-w-lg border",
-          "[&_[data-slot=dialog-content]:not([class*='gap-'])]:gap-4 [&_[data-slot=dialog-content]]:grid",
+          "-translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 max-w-lg border p-6",
           "entering:motion-scale-in-95",
           "exiting:motion-scale-out-95",
         ],
@@ -74,7 +73,7 @@ export const DialogStyles = {
     },
   }),
   Content: cva({
-    base: ["outline-none"],
+    base: ["grid gap-4 outline-none"],
   }),
   Close: cva({
     base: [
