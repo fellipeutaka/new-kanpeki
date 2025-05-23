@@ -1,8 +1,8 @@
 "use client";
 
-import { ChevronsUpDownIcon, SearchIcon } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import { useMemo, useState } from "react";
-import { Button, type Key } from "react-aria-components";
+import type { Key } from "react-aria-components";
 import { Autocomplete } from "~/components/ui/autocomplete";
 import {
   AvatarFallback,
@@ -10,6 +10,7 @@ import {
   AvatarRoot,
 } from "~/components/ui/avatar";
 import {
+  ComboboxIcon,
   ComboboxInput,
   ComboboxRoot,
   ComboboxTrigger,
@@ -130,13 +131,11 @@ function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
       className="w-full md:max-w-[200px]"
       aria-label="Frameworks"
       allowsEmptyCollection
+      menuTrigger="focus"
     >
       <ComboboxTrigger>
         <ComboboxInput placeholder="Select framework..." />
-
-        <Button>
-          <ChevronsUpDownIcon className="text-muted-foreground" />
-        </Button>
+        <ComboboxIcon />
       </ComboboxTrigger>
 
       <PopoverContent>

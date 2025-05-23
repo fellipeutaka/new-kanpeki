@@ -1,7 +1,9 @@
 "use client";
 
+import { ChevronsUpDownIcon } from "lucide-react";
 import { ComboBox, Input, composeRenderProps } from "react-aria-components";
 import { cn } from "~/lib/cva";
+import { Button } from "./button";
 
 export interface ComboboxRootProps<T extends object>
   extends React.ComponentProps<typeof ComboBox<T>> {}
@@ -54,5 +56,18 @@ export function ComboboxInput({ className, ...props }: ComboboxInputProps) {
         cn("size-full flex-1 bg-transparent py-2 outline-none", className)
       )}
     />
+  );
+}
+
+export interface ComboboxIcon extends React.ComponentProps<"svg"> {}
+
+export function ComboboxIcon({ className, ...props }: ComboboxIcon) {
+  return (
+    <Button variant="unstyled">
+      <ChevronsUpDownIcon
+        {...props}
+        className={cn("text-muted-foreground", className)}
+      />
+    </Button>
   );
 }
