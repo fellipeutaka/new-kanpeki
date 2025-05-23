@@ -32,7 +32,9 @@ export const PopoverStyles = {
     ],
     variants: {
       isMenu: {
-        true: ["min-w-(--trigger-width) overflow-y-auto"],
+        true: [
+          "min-w-(--trigger-width) overflow-hidden *:data-[slot=listbox-root]:max-h-[inherit]",
+        ],
         false: [
           "min-w-72 rounded-md border bg-popover p-4 text-popover-foreground",
         ],
