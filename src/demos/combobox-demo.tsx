@@ -2,7 +2,7 @@
 
 import { ChevronsUpDownIcon, SearchIcon } from "lucide-react";
 import { useMemo, useState } from "react";
-import type { Key } from "react-aria-components";
+import { Button, type Key } from "react-aria-components";
 import { Autocomplete } from "~/components/ui/autocomplete";
 import {
   AvatarFallback,
@@ -134,7 +134,9 @@ function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
       <ComboboxTrigger>
         <ComboboxInput placeholder="Select framework..." />
 
-        <ChevronsUpDownIcon className="text-muted-foreground" />
+        <Button>
+          <ChevronsUpDownIcon className="text-muted-foreground" />
+        </Button>
       </ComboboxTrigger>
 
       <PopoverContent>
@@ -208,7 +210,7 @@ function TimezoneCombobox({
   timezones: Timezone[];
   selectedTimezone: Timezone["timezones"][number];
 }) {
-  const [value, setValue] = useState<Key>(selectedTimezone.value);
+  const [value, setValue] = useState<Key | null>(selectedTimezone.value);
 
   const selectedGroup = useMemo(
     () =>

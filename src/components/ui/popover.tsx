@@ -80,7 +80,7 @@ export function PopoverContent({
   const popoverContext = useSlottedContext(PopoverContext);
   const isMenu = popoverContext?.trigger !== "DialogTrigger";
   const isSubmenuTrigger = popoverContext?.trigger === "SubmenuTrigger";
-  const _placement = placement ?? (isSubmenuTrigger ? "right" : "bottom");
+  const _placement = placement ?? (isSubmenuTrigger ? "right" : "bottom start");
 
   return (
     <Popover
@@ -89,10 +89,7 @@ export function PopoverContent({
       placement={_placement}
       className={composeRenderProps(className, (className) =>
         PopoverStyles.Content({
-          className: [
-            popoverContext?.trigger === "ComboBox" ? "mx-5 mt-3" : null,
-            className,
-          ],
+          className,
           isMenu,
         })
       )}

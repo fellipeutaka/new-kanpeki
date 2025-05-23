@@ -85,13 +85,13 @@ export const DialogStyles = {
     ],
   }),
   Header: cva({
-    base: ["flex flex-col space-y-1.5 text-center", "sm:text-left"],
+    base: ["flex flex-col gap-2 text-center sm:text-left"],
   }),
   Footer: cva({
     base: ["flex flex-col-reverse", "sm:flex-row sm:justify-end sm:space-x-2"],
   }),
   Title: cva({
-    base: ["font-semibold text-lg leading-none tracking-tight"],
+    base: ["font-semibold text-lg leading-none"],
   }),
   Description: cva({
     base: ["text-muted-foreground text-sm"],

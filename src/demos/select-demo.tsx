@@ -12,6 +12,8 @@ import { PopoverContent } from "~/components/ui/popover";
 
 import { SelectRoot, SelectTrigger, SelectValue } from "~/components/ui/select";
 
+const LARGE_LIST_ITEMS = Array.from({ length: 100 }, (_, i) => ({ id: i }));
+
 export function SelectDemo() {
   return (
     <div className="flex flex-wrap items-start gap-4">
@@ -38,9 +40,7 @@ export function SelectDemo() {
           <SelectValue />
         </SelectTrigger>
         <PopoverContent>
-          <ListboxRoot
-            items={Array.from({ length: 100 }, (_, i) => ({ id: i }))}
-          >
+          <ListboxRoot items={LARGE_LIST_ITEMS}>
             {({ id }) => <ListboxItem id={id}>Item {id}</ListboxItem>}
           </ListboxRoot>
         </PopoverContent>
