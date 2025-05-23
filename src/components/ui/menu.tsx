@@ -6,7 +6,6 @@ import {
   Button,
   Header,
   MenuItem as Item,
-  Keyboard,
   Menu,
   MenuSection,
   MenuTrigger as Root,
@@ -156,22 +155,6 @@ export function MenuSeparator({ className, ...props }: MenuSeparatorProps) {
     <Separator
       data-slot="menu-separator"
       className={cn("-mx-1 my-1 h-px bg-border", className)}
-      {...props}
-    />
-  );
-}
-
-export interface MenuShortcutProps
-  extends React.ComponentProps<typeof Keyboard> {}
-
-export function MenuShortcut({ className, ...props }: MenuShortcutProps) {
-  return (
-    <Keyboard
-      data-slot="menu-shortcut"
-      className={cn(
-        "ml-auto text-muted-foreground text-xs tracking-widest",
-        className
-      )}
       {...props}
     />
   );

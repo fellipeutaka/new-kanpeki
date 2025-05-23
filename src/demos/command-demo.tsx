@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 
 import { useEffect, useState } from "react";
-import { Keyboard } from "react-aria-components";
 import { Autocomplete } from "~/components/ui/autocomplete";
 import {
   DialogContent,
@@ -19,6 +18,7 @@ import {
   DialogOverlay,
   DialogRoot,
 } from "~/components/ui/dialog";
+import { Keyboard } from "~/components/ui/keyboard";
 import {
   MenuContent,
   MenuEmpty,
@@ -26,7 +26,6 @@ import {
   MenuItem,
   MenuLabel,
   MenuSeparator,
-  MenuShortcut,
 } from "~/components/ui/menu";
 import {
   SearchFieldButton,
@@ -60,7 +59,7 @@ export function CommandDemo() {
     <DialogRoot isOpen={isOpen} onOpenChange={setIsOpen}>
       <p className="text-muted-foreground text-sm">
         Press{" "}
-        <Keyboard className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-medium font-mono text-[10px] text-muted-foreground opacity-100">
+        <Keyboard>
           <span className="text-xs">⌘</span>J
         </Keyboard>
       </p>
@@ -107,17 +106,17 @@ export function CommandDemo() {
                   <MenuItem textValue="Profile">
                     <UserIcon />
                     <span>Profile</span>
-                    <MenuShortcut>⌘P</MenuShortcut>
+                    <Keyboard variant="menu">⌘P</Keyboard>
                   </MenuItem>
                   <MenuItem textValue="Billing">
                     <CreditCardIcon />
                     <span>Billing</span>
-                    <MenuShortcut>⌘B</MenuShortcut>
+                    <Keyboard variant="menu">⌘B</Keyboard>
                   </MenuItem>
                   <MenuItem textValue="Settings">
                     <SettingsIcon />
                     <span>Settings</span>
-                    <MenuShortcut>⌘S</MenuShortcut>
+                    <Keyboard variant="menu">⌘S</Keyboard>
                   </MenuItem>
                 </MenuGroup>
               </MenuContent>

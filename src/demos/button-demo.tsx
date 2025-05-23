@@ -9,7 +9,7 @@ export function ButtonDemo() {
         <Button>Button</Button>
         <Button variant="outline">Outline</Button>
         <Button variant="ghost">Ghost</Button>
-        <Button variant="danger">Danger</Button>
+        <Button variant="destructive">Danger</Button>
         <Button variant="secondary">Secondary</Button>
         <Button variant="link">Link</Button>
         <Button variant="outline">
@@ -31,7 +31,7 @@ export function ButtonDemo() {
         <Button variant="ghost" size="sm">
           Ghost
         </Button>
-        <Button variant="danger" size="sm">
+        <Button variant="destructive" size="sm">
           Danger
         </Button>
         <Button variant="secondary" size="sm">
@@ -59,7 +59,7 @@ export function ButtonDemo() {
         <Button variant="ghost" size="lg">
           Ghost
         </Button>
-        <Button variant="danger" size="lg">
+        <Button variant="destructive" size="lg">
           Danger
         </Button>
         <Button variant="secondary" size="lg">

@@ -23,6 +23,7 @@ import {
   AvatarRoot,
 } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
+import { Keyboard } from "~/components/ui/keyboard";
 import {
   // MenuCheckboxItem,
   MenuContent,
@@ -32,7 +33,6 @@ import {
   MenuLabel,
   MenuRoot,
   MenuSeparator,
-  MenuShortcut,
   MenuSub,
 } from "~/components/ui/menu";
 import { PopoverContent } from "~/components/ui/popover";
@@ -61,19 +61,19 @@ function MenuSimple() {
           <MenuGroup>
             <MenuItem textValue="Profile">
               Profile
-              <MenuShortcut>⇧⌘P</MenuShortcut>
+              <Keyboard variant="menu">⇧⌘P</Keyboard>
             </MenuItem>
             <MenuItem textValue="Billing">
               Billing
-              <MenuShortcut>⌘B</MenuShortcut>
+              <Keyboard variant="menu">⌘B</Keyboard>
             </MenuItem>
             <MenuItem textValue="Settings">
               Settings
-              <MenuShortcut>⌘S</MenuShortcut>
+              <Keyboard variant="menu">⌘S</Keyboard>
             </MenuItem>
             <MenuItem textValue="Keyboard shortcuts">
               Keyboard shortcuts
-              <MenuShortcut>⌘K</MenuShortcut>
+              <Keyboard variant="menu">⌘K</Keyboard>
             </MenuItem>
           </MenuGroup>
           <MenuSeparator />
@@ -92,7 +92,7 @@ function MenuSimple() {
             </MenuSub>
             <MenuItem textValue="New Team">
               New Team
-              <MenuShortcut>⌘+T</MenuShortcut>
+              <Keyboard variant="menu">⌘+T</Keyboard>
             </MenuItem>
           </MenuGroup>
           <MenuSeparator />
@@ -102,7 +102,7 @@ function MenuSimple() {
           <MenuSeparator />
           <MenuItem textValue="Log out">
             Log out
-            <MenuShortcut>⇧⌘Q</MenuShortcut>
+            <Keyboard variant="menu">⇧⌘Q</Keyboard>
           </MenuItem>
         </MenuContent>
       </PopoverContent>
