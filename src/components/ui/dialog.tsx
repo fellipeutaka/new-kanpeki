@@ -18,9 +18,7 @@ export const DialogStyles = {
   Overlay: cva({
     base: [
       "fixed inset-0 z-50",
-      "entering:motion-opacity-in entering:motion-duration-500",
-      "exiting:motion-opacity-out exiting:motion-duration-300",
-      "has-[[data-side=center]]:motion-duration-150!",
+      "entering:motion-opacity-in motion-duration-200 motion-ease exiting:motion-opacity-out",
     ],
     variants: {
       isBlurred: {
@@ -34,43 +32,13 @@ export const DialogStyles = {
   }),
   Modal: cva({
     base: [
-      "data-[side=center]:motion-duration-150! fixed z-50 w-full bg-background p-4 shadow-lg outline-none",
-      "entering:motion-opacity-in entering:motion-duration-500",
-      "exiting:motion-opacity-out exiting:motion-duration-300",
+      "fixed z-50 w-full bg-background p-4 shadow-lg outline-none",
+      "entering:motion-opacity-in motion-duration-200 exiting:motion-opacity-out motion-ease",
       "sm:rounded-lg",
+      "-translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 max-w-lg border p-6",
+      "entering:motion-scale-in-95",
+      "exiting:motion-scale-out-95",
     ],
-    variants: {
-      side: {
-        top: [
-          "inset-x-0 top-0 left-0 border-b",
-          "entering:-motion-translate-y-in-100",
-          "exiting:-motion-translate-y-out-100",
-        ],
-        bottom: [
-          "inset-x-0 bottom-0 border-t ease-in-out",
-          "entering:motion-translate-y-in-100",
-          "exiting:motion-translate-y-out-100",
-        ],
-        left: [
-          "inset-y-0 left-0 h-full w-3/4 border-r ease-in-out sm:max-w-sm",
-          "entering:-motion-translate-x-in-100",
-          "exiting:-motion-translate-x-out-100",
-        ],
-        right: [
-          "inset-y-0 right-0 h-full w-3/4 border-l ease-in-out sm:max-w-sm",
-          "entering:motion-translate-x-in-100",
-          "exiting:motion-translate-x-out-100",
-        ],
-        center: [
-          "-translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 max-w-lg border p-6",
-          "entering:motion-scale-in-95",
-          "exiting:motion-scale-out-95",
-        ],
-      },
-    },
-    defaultVariants: {
-      side: "center",
-    },
   }),
   Content: cva({
     base: ["grid gap-4 outline-none"],
@@ -117,7 +85,6 @@ export interface DialogModalProps
 
 export function DialogModal({
   className,
-  side,
   isDismissable = true,
   ...props
 }: DialogModalProps) {
@@ -125,7 +92,7 @@ export function DialogModal({
     <Modal
       data-slot="dialog-modal"
       className={composeRenderProps(className, (className) =>
-        DialogStyles.Modal({ className, side })
+        DialogStyles.Modal({ className })
       )}
       isDismissable={isDismissable}
       {...props}

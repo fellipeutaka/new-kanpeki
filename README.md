@@ -49,6 +49,10 @@
 
 # Annotations
 
+# Dialog
+
+- Animation on exit
+
 ## Tooltip
 
 - In shadcn/ui (side) vs In RAC (placement)

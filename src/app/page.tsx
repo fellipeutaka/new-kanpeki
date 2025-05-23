@@ -5,12 +5,12 @@ const SINK_COMPONENTS: [
   string,
   React.LazyExoticComponent<() => React.JSX.Element>
 ][] = [
-  [
-    "chart",
-    lazy(() =>
-      import("~/demos/chart-demo").then((mod) => ({ default: mod.ChartDemo }))
-    ),
-  ],
+  // [
+  //   "chart",
+  //   lazy(() =>
+  //     import("~/demos/chart-demo").then((mod) => ({ default: mod.ChartDemo }))
+  //   ),
+  // ],
   [
     "accordion",
     lazy(() =>
@@ -68,44 +68,44 @@ const SINK_COMPONENTS: [
       }))
     ),
   ],
-  [
-    "card",
-    lazy(() =>
-      import("~/demos/card-demo").then((mod) => ({ default: mod.CardDemo }))
-    ),
-  ],
-  [
-    "carousel",
-    lazy(() =>
-      import("~/demos/carousel-demo").then((mod) => ({
-        default: mod.CarouselDemo,
-      }))
-    ),
-  ],
-  [
-    "checkbox",
-    lazy(() =>
-      import("~/demos/checkbox-demo").then((mod) => ({
-        default: mod.CheckboxDemo,
-      }))
-    ),
-  ],
-  [
-    "collapsible",
-    lazy(() =>
-      import("~/demos/collapsible-demo").then((mod) => ({
-        default: mod.CollapsibleDemo,
-      }))
-    ),
-  ],
-  [
-    "combobox",
-    lazy(() =>
-      import("~/demos/combobox-demo").then((mod) => ({
-        default: mod.ComboboxDemo,
-      }))
-    ),
-  ],
+  // [
+  //   "card",
+  //   lazy(() =>
+  //     import("~/demos/card-demo").then((mod) => ({ default: mod.CardDemo }))
+  //   ),
+  // ],
+  // [
+  //   "carousel",
+  //   lazy(() =>
+  //     import("~/demos/carousel-demo").then((mod) => ({
+  //       default: mod.CarouselDemo,
+  //     }))
+  //   ),
+  // ],
+  // [
+  //   "checkbox",
+  //   lazy(() =>
+  //     import("~/demos/checkbox-demo").then((mod) => ({
+  //       default: mod.CheckboxDemo,
+  //     }))
+  //   ),
+  // ],
+  // [
+  //   "collapsible",
+  //   lazy(() =>
+  //     import("~/demos/collapsible-demo").then((mod) => ({
+  //       default: mod.CollapsibleDemo,
+  //     }))
+  //   ),
+  // ],
+  // [
+  //   "combobox",
+  //   lazy(() =>
+  //     import("~/demos/combobox-demo").then((mod) => ({
+  //       default: mod.ComboboxDemo,
+  //     }))
+  //   ),
+  // ],
   [
     "command",
     lazy(() =>
@@ -130,61 +130,61 @@ const SINK_COMPONENTS: [
     ),
   ],
   // ["drawer"],
-  [
-    "dropdown-menu",
-    lazy(() =>
-      import("~/demos/dropdown-menu-demo").then((mod) => ({
-        default: mod.DropdownMenuDemo,
-      }))
-    ),
-  ],
+  // [
+  //   "dropdown-menu",
+  //   lazy(() =>
+  //     import("~/demos/dropdown-menu-demo").then((mod) => ({
+  //       default: mod.DropdownMenuDemo,
+  //     }))
+  //   ),
+  // ],
   // ["form"],
-  [
-    "hover-card",
-    lazy(() =>
-      import("~/demos/hover-card-demo").then((mod) => ({
-        default: mod.HoverCardDemo,
-      }))
-    ),
-  ],
-  [
-    "input",
-    lazy(() =>
-      import("~/demos/input-demo").then((mod) => ({ default: mod.InputDemo }))
-    ),
-  ],
-  [
-    "input-otp",
-    lazy(() =>
-      import("~/demos/input-otp-demo").then((mod) => ({
-        default: mod.InputOTPDemo,
-      }))
-    ),
-  ],
-  [
-    "label",
-    lazy(() =>
-      import("~/demos/label-demo").then((mod) => ({ default: mod.LabelDemo }))
-    ),
-  ],
+  // [
+  //   "hover-card",
+  //   lazy(() =>
+  //     import("~/demos/hover-card-demo").then((mod) => ({
+  //       default: mod.HoverCardDemo,
+  //     }))
+  //   ),
+  // ],
+  // [
+  //   "input",
+  //   lazy(() =>
+  //     import("~/demos/input-demo").then((mod) => ({ default: mod.InputDemo }))
+  //   ),
+  // ],
+  // [
+  //   "input-otp",
+  //   lazy(() =>
+  //     import("~/demos/input-otp-demo").then((mod) => ({
+  //       default: mod.InputOTPDemo,
+  //     }))
+  //   ),
+  // ],
+  // [
+  //   "label",
+  //   lazy(() =>
+  //     import("~/demos/label-demo").then((mod) => ({ default: mod.LabelDemo }))
+  //   ),
+  // ],
   // ["menubar"],
   // ["navigation-menu"],
-  [
-    "pagination",
-    lazy(() =>
-      import("~/demos/pagination-demo").then((mod) => ({
-        default: mod.PaginationDemo,
-      }))
-    ),
-  ],
-  [
-    "popover",
-    lazy(() =>
-      import("~/demos/popover-demo").then((mod) => ({
-        default: mod.PopoverDemo,
-      }))
-    ),
-  ],
+  // [
+  //   "pagination",
+  //   lazy(() =>
+  //     import("~/demos/pagination-demo").then((mod) => ({
+  //       default: mod.PaginationDemo,
+  //     }))
+  //   ),
+  // ],
+  // [
+  //   "popover",
+  //   lazy(() =>
+  //     import("~/demos/popover-demo").then((mod) => ({
+  //       default: mod.PopoverDemo,
+  //     }))
+  //   ),
+  // ],
   // [
   //   "progress",
   //   lazy(() =>
@@ -210,12 +210,12 @@ const SINK_COMPONENTS: [
   //   ),
   // ],
   // ["scroll-area"],
-  [
-    "select",
-    lazy(() =>
-      import("~/demos/select-demo").then((mod) => ({ default: mod.SelectDemo }))
-    ),
-  ],
+  // [
+  //   "select",
+  //   lazy(() =>
+  //     import("~/demos/select-demo").then((mod) => ({ default: mod.SelectDemo }))
+  //   ),
+  // ],
   // [
   //   "separator",
   //   lazy(() =>
