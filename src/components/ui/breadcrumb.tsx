@@ -45,7 +45,8 @@ export function BreadcrumbLink({ className, ...props }: BreadcrumbLinkProps) {
     <Link
       data-slot="breadcrumb-link"
       className={cn(
-        "current:font-normal current:text-foreground transition-colors hover:text-foreground",
+        "rounded-md current:font-normal current:text-foreground outline-none transition-all hover:text-foreground",
+        "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
         className
       )}
       {...props}

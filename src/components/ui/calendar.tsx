@@ -31,14 +31,18 @@ export const CalendarStyles = {
     base: ["flex w-full items-center justify-between gap-1"],
   }),
   Grid: cva({
-    base: ["w-full"],
+    base: [
+      "w-full",
+      "[&_tr]:mt-2 [&_tr]:flex [&_tr]:w-full [&_tr]:justify-between",
+      "[&_tr_td[aria-selected=true]]:bg-accent",
+    ],
   }),
   HeaderCell: cva({
     base: ["w-8 rounded-md font-normal text-[0.8rem] text-muted-foreground"],
   }),
   Cell: cva({
     base: [
-      "relative mt-2 grid size-8 select-none place-content-center whitespace-nowrap text-accent-foreground text-sm outline-hidden transition",
+      "relative grid size-8 select-none place-content-center whitespace-nowrap text-accent-foreground text-sm outline-hidden transition",
       "hover:bg-accent hover:text-accent-foreground",
       "disabled:cursor-not-allowed disabled:opacity-50",
       "aria-disabled:cursor-not-allowed aria-disabled:opacity-50",
@@ -59,7 +63,8 @@ export const CalendarStyles = {
       shape: {
         rounded: "rounded-full",
         default: [
-          "not-selected:rounded-md selection-start:rounded-s-md selection-end:rounded-e-md [td:first-child_&]:rounded-s-md [td:last-child_&]:rounded-e-md",
+          // "not-selected:rounded-md selection-start:rounded-s-md selection-end:rounded-e-md [td:first-child_&]:rounded-s-md [td:last-child_&]:rounded-e-md",
+          "rounded-md group-data-[slot=range-calendar-root]:not-selection-start:not-selection-end:selected:rounded-none",
         ],
       },
     },
