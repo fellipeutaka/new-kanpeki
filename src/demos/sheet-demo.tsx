@@ -1,8 +1,9 @@
 import { Button } from "~/components/ui/button";
-import { DialogContent } from "~/components/ui/dialog";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import {
+  SheetClose,
+  SheetContent,
   SheetDescription,
   SheetFooter,
   SheetHeader,
@@ -23,7 +24,7 @@ export function SheetDemo() {
 
         <SheetOverlay>
           <SheetModal side="right">
-            <DialogContent className="flex h-full flex-col">
+            <SheetContent>
               <SheetHeader>
                 <SheetTitle>Edit profile</SheetTitle>
                 <SheetDescription>
@@ -47,27 +48,29 @@ export function SheetDemo() {
                   Close
                 </Button>
               </SheetFooter>
-            </DialogContent>
+
+              <SheetClose />
+            </SheetContent>
           </SheetModal>
         </SheetOverlay>
       </SheetRoot>
-      {/* <div className="flex gap-2">
+      <div className="flex gap-2">
         {SHEET_SIDES.map((side) => (
-          <DialogRoot key={side}>
+          <SheetRoot key={side}>
             <Button variant="outline" className="capitalize">
               {side}
             </Button>
 
-            <DialogOverlay>
-              <DialogModal side={side}>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>Edit profile</DialogTitle>
-                    <DialogDescription>
+            <SheetOverlay>
+              <SheetModal side={side}>
+                <SheetContent>
+                  <SheetHeader>
+                    <SheetTitle>Edit profile</SheetTitle>
+                    <SheetDescription>
                       Make changes to your profile here. Click save when
                       you&apos;re done.
-                    </DialogDescription>
-                  </DialogHeader>
+                    </SheetDescription>
+                  </SheetHeader>
                   <div className="overflow-y-auto px-4 text-sm">
                     <h4 className="mb-4 font-medium text-lg leading-none">
                       Lorem Ipsum
@@ -87,18 +90,20 @@ export function SheetDemo() {
                       </p>
                     ))}
                   </div>
-                  <DialogFooter>
+                  <SheetFooter>
                     <Button type="submit">Save changes</Button>
                     <Button slot="close" variant="outline">
                       Cancel
                     </Button>
-                  </DialogFooter>
-                </DialogContent>
-              </DialogModal>
-            </DialogOverlay>
-          </DialogRoot>
+                  </SheetFooter>
+
+                  <SheetClose />
+                </SheetContent>
+              </SheetModal>
+            </SheetOverlay>
+          </SheetRoot>
         ))}
-      </div> */}
+      </div>
     </div>
   );
 }

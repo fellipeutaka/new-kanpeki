@@ -148,6 +148,7 @@ export function DialogClose({ className, ...props }: DialogCloseProps) {
   return (
     <Button
       {...props}
+      data-slot="dialog-close"
       slot="close"
       className={composeRenderProps(className, (className) =>
         DialogStyles.Close({ className })
