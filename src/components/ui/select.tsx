@@ -9,17 +9,17 @@ import {
   composeRenderProps,
 } from "react-aria-components";
 
-import { cva } from "~/lib/cva";
+import { cn, cva } from "~/lib/cva";
 
 const SelectStyles = {
   Trigger: cva({
     base: [
       "group flex w-fit items-center justify-between gap-2 whitespace-nowrap rounded-md border border-input bg-transparent",
       "px-3 py-2 text-sm shadow-xs outline-none transition-[color,box-shadow]",
-      "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+      "focus:border-ring focus:ring-[3px] focus:ring-ring/50",
       "disabled:cursor-not-allowed disabled:opacity-50",
-      "aria-invalid:border-destructive aria-invalid:ring-destructive/20",
-      "dark:bg-input/30 dark:aria-invalid:ring-destructive/40 dark:hover:bg-input/50",
+      "group-invalid:border-destructive group-invalid:ring-destructive/20",
+      "dark:bg-input/30 dark:group-invalid:ring-destructive/40 dark:hover:bg-input/50",
       "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
     ],
     variants: {
@@ -41,8 +41,16 @@ const SelectStyles = {
 
 export interface SelectRootProps extends React.ComponentProps<typeof Select> {}
 
-export function SelectRoot({ ...props }: SelectRootProps) {
-  return <Select data-slot="select" {...props} />;
+export function SelectRoot({ className, ...props }: SelectRootProps) {
+  return (
+    <Select
+      data-slot="select"
+      className={composeRenderProps(className, (className) =>
+        cn("group grid gap-3", className)
+      )}
+      {...props}
+    />
+  );
 }
 
 export interface SelectTriggerProps

@@ -110,7 +110,7 @@ function DatePickerSimple() {
           <span>Pick a date</span>
         )}
       </Button>
-      <PopoverContent placement="bottom start">
+      <PopoverContent className="min-w-auto p-3" placement="bottom start">
         <CalendarRoot value={date} onChange={setDate}>
           <CalendarHeader>
             <CalendarNav>

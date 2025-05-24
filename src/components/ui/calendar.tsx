@@ -34,6 +34,7 @@ export const CalendarStyles = {
     base: [
       "w-full",
       "[&_tr]:mt-2 [&_tr]:flex [&_tr]:w-full [&_tr]:justify-between",
+
       "[&_tr_td[aria-selected=true]]:bg-accent",
       "[&_tr_td[aria-selected=true]:has([data-selection-start])]:rounded-l-md",
       "[&_tr_td[aria-selected=true]:has([data-selection-end])]:rounded-r-md",
@@ -41,7 +42,7 @@ export const CalendarStyles = {
 
       "[&_tr_td[aria-selected=true]:has([data-selection-start][data-shape=rounded])]:rounded-l-full",
       "[&_tr_td[aria-selected=true]:has([data-selection-end][data-shape=rounded])]:rounded-r-full",
-      "group-data-[slot=calendar-root]:[&_tr_td[aria-selected=true]:has([data-slot=rounded])]:rounded-full",
+      "group-data-[slot=calendar-root]:[&_tr_td:has([data-shape=rounded])[aria-selected=true]]:rounded-full",
     ],
   }),
   HeaderCell: cva({

@@ -50,7 +50,7 @@ export function CalendarDemo() {
           </CalendarGridHeader>
 
           <CalendarGridBody>
-            {(date) => <CalendarCell date={date} />}
+            {(date) => <CalendarCell shape="rounded" date={date} />}
           </CalendarGridBody>
         </CalendarGrid>
       </CalendarRoot>
