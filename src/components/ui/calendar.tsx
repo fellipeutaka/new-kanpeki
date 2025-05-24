@@ -35,6 +35,13 @@ export const CalendarStyles = {
       "w-full",
       "[&_tr]:mt-2 [&_tr]:flex [&_tr]:w-full [&_tr]:justify-between",
       "[&_tr_td[aria-selected=true]]:bg-accent",
+      "[&_tr_td[aria-selected=true]:has([data-selection-start])]:rounded-l-md",
+      "[&_tr_td[aria-selected=true]:has([data-selection-end])]:rounded-r-md",
+      "group-data-[slot=calendar-root]:[&_tr_td[aria-selected=true]]:rounded-md",
+
+      "[&_tr_td[aria-selected=true]:has([data-selection-start][data-shape=rounded])]:rounded-l-full",
+      "[&_tr_td[aria-selected=true]:has([data-selection-end][data-shape=rounded])]:rounded-r-full",
+      "group-data-[slot=calendar-root]:[&_tr_td[aria-selected=true]:has([data-slot=rounded])]:rounded-full",
     ],
   }),
   HeaderCell: cva({
@@ -63,7 +70,6 @@ export const CalendarStyles = {
       shape: {
         rounded: "rounded-full",
         default: [
-          // "not-selected:rounded-md selection-start:rounded-s-md selection-end:rounded-e-md [td:first-child_&]:rounded-s-md [td:last-child_&]:rounded-e-md",
           "rounded-md group-data-[slot=range-calendar-root]:not-selection-start:not-selection-end:selected:rounded-none",
         ],
       },
@@ -206,6 +212,7 @@ export function CalendarCell({
     <CalendarCellPrimitive
       {...props}
       data-slot="calendar-cell"
+      data-shape={shape}
       className={composeRenderProps(className, (className, values) =>
         CalendarStyles.Cell({
           isToday: isToday(values.date, getLocalTimeZone()),
