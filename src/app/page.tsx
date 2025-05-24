@@ -33,7 +33,14 @@ const SINK_COMPONENTS: [
       }))
     ),
   ],
-  // ["aspect-ratio"],
+  [
+    "aspect-ratio",
+    lazy(() =>
+      import("~/demos/aspect-ratio-demo").then((mod) => ({
+        default: mod.AspectRatioDemo,
+      }))
+    ),
+  ],
   [
     "avatar",
     lazy(() =>
