@@ -3,9 +3,9 @@ import {
   CheckboxProvider,
   CheckboxRoot,
 } from "~/components/ui/checkbox/checkbox";
-import { Input } from "~/components/ui/input";
+import { Input } from "~/components/ui/input/input";
 import { Label } from "~/components/ui/label/label";
-import { Textarea } from "~/components/ui/textarea";
+import { Textarea } from "~/components/ui/textarea/textarea";
 
 export function LabelDemo() {
   return (

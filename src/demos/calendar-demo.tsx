@@ -3,7 +3,7 @@
 import { getLocalTimeZone, today } from "@internationalized/date";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { Button } from "~/components/ui/button/button";
-import { Calendar } from "~/components/ui/calendar";
+import * as Calendar from "~/components/ui/calendar/namespace";
 
 export function CalendarDemo() {
   return (

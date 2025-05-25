@@ -2,7 +2,7 @@
 
 // import { Fragment } from "react";
 // import { ScrollArea, ScrollBar } from "~/components/ui/scroll-area";
-// import { Separator } from "~/components/ui/separator";
+// import { Separator } from "~/components/ui/separator/separator";
 
 // export function ScrollAreaDemo() {
 //   return (

@@ -3,8 +3,8 @@
 import { ChevronsUpDownIcon } from "lucide-react";
 
 import { useState } from "react";
-import { ButtonStyles } from "~/components/ui/button";
-import { Collapsible } from "~/components/ui/collapsible";
+import { ButtonStyles } from "~/components/ui/button/styles";
+import * as Collapsible from "~/components/ui/collapsible/namespace";
 
 export function CollapsibleDemo() {
   const [isOpen, setIsOpen] = useState(false);

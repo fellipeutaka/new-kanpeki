@@ -1,6 +1,6 @@
 "use client";
 
-import { Checkbox } from "~/components/ui/checkbox";
+import * as Checkbox from "~/components/ui/checkbox/namespace";
 
 export function CheckboxDemo() {
   return (

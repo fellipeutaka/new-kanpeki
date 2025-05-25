@@ -3,7 +3,7 @@ import "~/styles/globals.css";
 import { cx } from "cva";
 import type { Metadata } from "next";
 import { ModeSwitcher } from "~/components/mode-switcher";
-import { Separator } from "~/components/ui/separator";
+import { Separator } from "~/components/ui/separator/separator";
 import { fonts } from "~/config/fonts";
 import { Providers } from "./providers";
 

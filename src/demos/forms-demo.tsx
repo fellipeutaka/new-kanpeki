@@ -12,8 +12,8 @@
 //   CardHeader,
 //   CardTitle,
 // } from "~/components/ui/card";
-// import { Checkbox } from "~/components/ui/checkbox";
-// import { Input } from "~/components/ui/input";
+// import * as Checkbox from "~/components/ui/checkbox/namespace";
+// import { Input } from "~/components/ui/input/input";
 // import { Label } from "~/components/ui/label";
 // import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 // import {
@@ -23,7 +23,7 @@
 //   SelectTrigger,
 //   SelectValue,
 // } from "~/components/ui/select";
-// import { Textarea } from "~/components/ui/textarea";
+// import { Textarea } from "~/components/ui/textarea/textarea";
 
 // const plans = [
 //   {

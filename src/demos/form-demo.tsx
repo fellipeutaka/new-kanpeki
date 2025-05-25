@@ -6,14 +6,14 @@ import { toast } from "sonner";
 import { z } from "zod/v4";
 
 import { Button } from "~/components/ui/button/button";
-import { FormDescription, FormMessage, FormRoot } from "~/components/ui/form";
-import { Input } from "~/components/ui/input";
+import * as Form from "~/components/ui/form/namespace";
+import { Input } from "~/components/ui/input/input";
 import { Label } from "~/components/ui/label/label";
-import { Listbox } from "~/components/ui/list-box";
-import { Popover } from "~/components/ui/popover";
-import { Select } from "~/components/ui/select";
-import { Textarea } from "~/components/ui/textarea";
-import { Textfield } from "~/components/ui/textfield";
+import * as Listbox from "~/components/ui/list-box/namespace";
+import * as Popover from "~/components/ui/popover/namespace";
+import * as Select from "~/components/ui/select/namespace";
+import { Textarea } from "~/components/ui/textarea/textarea";
+import { Textfield } from "~/components/ui/textfield/textfield";
 
 const items = [
   {
@@ -89,7 +89,7 @@ export function FormDemo() {
   });
 
   return (
-    <FormRoot
+    <Form.Root
       validationBehavior="aria"
       onSubmit={onSubmit}
       autoComplete="off"
@@ -103,8 +103,10 @@ export function FormDemo() {
             <Label>Username</Label>
             <Input placeholder="shadcn" ref={ref} />
 
-            <FormDescription>This is your public display name.</FormDescription>
-            <FormMessage>{fieldState.error?.message}</FormMessage>
+            <Form.Description>
+              This is your public display name.
+            </Form.Description>
+            <Form.Message>{fieldState.error?.message}</Form.Message>
           </Textfield>
         )}
       />
@@ -136,10 +138,10 @@ export function FormDemo() {
               </Listbox.Root>
             </Popover.Content>
 
-            <FormDescription>
+            <Form.Description>
               You can manage email addresses in your email settings.
-            </FormDescription>
-            <FormMessage>{fieldState.error?.message}</FormMessage>
+            </Form.Description>
+            <Form.Message>{fieldState.error?.message}</Form.Message>
           </Select.Root>
         )}
       />
@@ -154,10 +156,10 @@ export function FormDemo() {
               ref={ref}
             />
 
-            <FormDescription>
+            <Form.Description>
               You can <span>@mention</span> other users and organizations.
-            </FormDescription>
-            <FormMessage>{fieldState.error?.message}</FormMessage>
+            </Form.Description>
+            <Form.Message>{fieldState.error?.message}</Form.Message>
           </Textfield>
         )}
       />
@@ -198,7 +200,7 @@ export function FormDemo() {
                 </FormItem>
               </RadioGroup>
             </FormControl>
-            <FormMessage />
+            <Form.Message />
           </FormItem>
         )}
       /> */}
@@ -217,10 +219,10 @@ export function FormDemo() {
               <FormLabel className="leading-snug">
                 Use different settings for my mobile devices
               </FormLabel>
-              <FormDescription className="leading-snug">
+              <Form.Description className="leading-snug">
                 You can manage your mobile notifications in the mobile settings
                 page.
-              </FormDescription>
+              </Form.Description>
             </div>
           </FormItem>
         )}
@@ -232,9 +234,9 @@ export function FormDemo() {
           <FormItem className="flex flex-col gap-4">
             <div>
               <FormLabel className="text-base">Sidebar</FormLabel>
-              <FormDescription>
+              <Form.Description>
                 Select the items you want to display in the sidebar.
-              </FormDescription>
+              </Form.Description>
             </div>
             <div className="flex flex-col gap-2">
               {items.map((item) => (
@@ -271,7 +273,7 @@ export function FormDemo() {
                 />
               ))}
             </div>
-            <FormMessage />
+            <Form.Message />
           </FormItem>
         )}
       /> */}
@@ -312,10 +314,10 @@ export function FormDemo() {
                 />
               </Popover.Content>
             </Popover>
-            <FormDescription>
+            <Form.Description>
               Your date of birth is used to calculate your age.
-            </FormDescription>
-            <FormMessage />
+            </Form.Description>
+            <Form.Message />
           </FormItem>
         )}
       /> */}
@@ -331,9 +333,9 @@ export function FormDemo() {
                   <FormLabel className="leading-normal">
                     Marketing emails
                   </FormLabel>
-                  <FormDescription className="leading-snug">
+                  <Form.Description className="leading-snug">
                     Receive emails about new products, features, and more.
-                  </FormDescription>
+                  </Form.Description>
                 </div>
                 <FormControl>
                   <Switch
@@ -353,9 +355,9 @@ export function FormDemo() {
                   <FormLabel className="leading-normal">
                     Security emails
                   </FormLabel>
-                  <FormDescription className="leading-snug">
+                  <Form.Description className="leading-snug">
                     Receive emails about your account security.
-                  </FormDescription>
+                  </Form.Description>
                 </div>
                 <FormControl>
                   <Switch
@@ -371,6 +373,6 @@ export function FormDemo() {
         </div>
       </div> */}
       <Button type="submit">Submit</Button>
-    </FormRoot>
+    </Form.Root>
   );
 }

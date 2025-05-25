@@ -5,11 +5,11 @@ import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useState } from "react";
 import { type DateValue, Group } from "react-aria-components";
 import { Button } from "~/components/ui/button/button";
-import { Calendar } from "~/components/ui/calendar";
-import { DateField } from "~/components/ui/date-field";
-import { DatePicker } from "~/components/ui/date-picker";
+import * as Calendar from "~/components/ui/calendar/namespace";
+import * as DateField from "~/components/ui/date-field/namespace";
+import * as DatePicker from "~/components/ui/date-picker/namespace";
 import { DialogContent } from "~/components/ui/dialog/dialog";
-import { Popover } from "~/components/ui/popover";
+import * as Popover from "~/components/ui/popover/namespace";
 import { cn } from "~/lib/cva";
 
 export function DatePickerDemo() {

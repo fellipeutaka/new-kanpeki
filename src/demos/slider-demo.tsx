@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Label } from "~/components/ui/label/label";
-import { Slider } from "~/components/ui/slider";
+import * as Slider from "~/components/ui/slider/namespace";
 
 export function SliderDemo() {
   return (

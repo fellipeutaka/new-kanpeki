@@ -1,5 +1,5 @@
 import { Label } from "~/components/ui/label/label";
-import { RadioGroup } from "~/components/ui/radio-group";
+import * as RadioGroup from "~/components/ui/radio-group/namespace";
 
 const plans = [
   {

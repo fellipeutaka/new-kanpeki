@@ -1,4 +1,4 @@
-import { Resizable } from "~/components/ui/resizable";
+import * as Resizable from "~/components/ui/resizable/namespace";
 
 export function ResizableDemo() {
   return (

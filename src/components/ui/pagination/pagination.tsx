@@ -7,7 +7,8 @@ import {
 } from "lucide-react";
 import { Link, composeRenderProps } from "react-aria-components";
 
-import { type Button, ButtonStyles } from "~/components/ui/button";
+import type { Button } from "../button/button";
+import { ButtonStyles } from "../button/styles";
 import { PaginationStyles } from "./styles";
 
 export interface PaginationRootProps extends React.ComponentProps<"nav"> {}

@@ -1,8 +1,8 @@
 import { Button } from "~/components/ui/button/button";
-import { Input } from "~/components/ui/input";
+import { Input } from "~/components/ui/input/input";
 import { Label } from "~/components/ui/label/label";
-import { Sheet } from "~/components/ui/sheet";
-import { Textfield } from "~/components/ui/textfield";
+import * as Sheet from "~/components/ui/sheet/namespace";
+import { Textfield } from "~/components/ui/textfield/textfield";
 
 const SHEET_SIDES = ["top", "right", "bottom", "left"] as const;
 

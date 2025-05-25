@@ -1,4 +1,4 @@
-import { Accordion } from "~/components/ui/accordion";
+import * as Accordion from "~/components/ui/accordion/namespace";
 
 export function AccordionDemo() {
   return (

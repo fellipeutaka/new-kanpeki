@@ -4,12 +4,12 @@ import { SearchIcon } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { Key } from "react-aria-components";
 import { Autocomplete } from "~/components/ui/autocomplete";
-import { Avatar } from "~/components/ui/avatar";
-import { Combobox } from "~/components/ui/combobox";
-import { Listbox } from "~/components/ui/list-box";
-import { Popover } from "~/components/ui/popover";
-import { SearchField } from "~/components/ui/search-field";
-import { Select } from "~/components/ui/select";
+import * as Avatar from "~/components/ui/avatar/namespace";
+import * as Combobox from "~/components/ui/combobox/namespace";
+import * as Listbox from "~/components/ui/list-box/namespace";
+import * as Popover from "~/components/ui/popover/namespace";
+import * as SearchField from "~/components/ui/search-field/namespace";
+import * as Select from "~/components/ui/select/namespace";
 
 const frameworks = [
   {

@@ -6,7 +6,7 @@ import {
   PopcornIcon,
   ShieldAlertIcon,
 } from "lucide-react";
-import { Alert } from "~/components/ui/alert";
+import * as Alert from "~/components/ui/alert/namespace";
 
 import { Button } from "~/components/ui/button/button";
 

@@ -1,4 +1,4 @@
-import { Pagination } from "~/components/ui/pagination";
+import * as Pagination from "~/components/ui/pagination/namespace";
 
 export function PaginationDemo() {
   return (

@@ -1,5 +1,5 @@
 import { Button } from "~/components/ui/button/button";
-import { Dialog } from "~/components/ui/dialog";
+import * as Dialog from "~/components/ui/dialog/namespace";
 
 export function AlertDialogDemo() {
   return (

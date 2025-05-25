@@ -1,4 +1,4 @@
-import { Table } from "~/components/ui/table";
+import * as Table from "~/components/ui/table/namespace";
 
 const invoices = [
   {

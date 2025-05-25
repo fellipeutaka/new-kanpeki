@@ -1,8 +1,8 @@
 import { Button } from "~/components/ui/button/button";
-import { Input } from "~/components/ui/input";
+import { Input } from "~/components/ui/input/input";
 import { Label } from "~/components/ui/label/label";
-import { Popover } from "~/components/ui/popover";
-import { Textfield } from "~/components/ui/textfield";
+import * as Popover from "~/components/ui/popover/namespace";
+import { Textfield } from "~/components/ui/textfield/textfield";
 
 export function PopoverDemo() {
   return (

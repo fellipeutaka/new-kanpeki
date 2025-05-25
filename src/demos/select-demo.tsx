@@ -7,10 +7,10 @@ import {
   CircleDashedIcon,
 } from "lucide-react";
 import { Text } from "react-aria-components";
-import { Listbox } from "~/components/ui/list-box";
-import { Popover } from "~/components/ui/popover";
+import * as Listbox from "~/components/ui/list-box/namespace";
+import * as Popover from "~/components/ui/popover/namespace";
 
-import { Select } from "~/components/ui/select";
+import * as Select from "~/components/ui/select/namespace";
 
 const LARGE_LIST_ITEMS = Array.from({ length: 100 }, (_, i) => ({ id: i }));
 

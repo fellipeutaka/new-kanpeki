@@ -1,6 +1,6 @@
 import { AlertCircleIcon, ArrowRightIcon, CheckIcon } from "lucide-react";
-
-import { Badge, BadgeStyles } from "~/components/ui/badge";
+import { Badge } from "~/components/ui/badge/badge";
+import { BadgeStyles } from "~/components/ui/badge/styles";
 
 export function BadgeDemo() {
   return (

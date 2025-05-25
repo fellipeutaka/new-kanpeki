@@ -1,8 +1,8 @@
 import Image from "next/image";
 
 import { Button } from "~/components/ui/button/button";
-import { Card } from "~/components/ui/card";
-import { Input } from "~/components/ui/input";
+import * as Card from "~/components/ui/card/namespace";
+import { Input } from "~/components/ui/input/input";
 import { Label } from "~/components/ui/label/label";
 import { cn } from "~/lib/cva";
 

@@ -1,8 +1,8 @@
 import { CalendarIcon } from "lucide-react";
 
-import { Avatar } from "~/components/ui/avatar";
+import * as Avatar from "~/components/ui/avatar/namespace";
 import { Button } from "~/components/ui/button/button";
-import { Tooltip } from "~/components/ui/tooltip";
+import * as Tooltip from "~/components/ui/tooltip/namespace";
 
 export function HoverCardDemo() {
   return (

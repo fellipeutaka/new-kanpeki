@@ -1,11 +1,11 @@
 import { BathIcon, BedIcon, LandPlotIcon } from "lucide-react";
 import Image from "next/image";
 
-import { Avatar } from "~/components/ui/avatar";
+import * as Avatar from "~/components/ui/avatar/namespace";
 import { Badge } from "~/components/ui/badge/badge";
 import { Button } from "~/components/ui/button/button";
-import { Card } from "~/components/ui/card";
-import { Input } from "~/components/ui/input";
+import * as Card from "~/components/ui/card/namespace";
+import { Input } from "~/components/ui/input/input";
 import { Label } from "~/components/ui/label/label";
 
 export function CardDemo() {

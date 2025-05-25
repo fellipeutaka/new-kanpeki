@@ -17,11 +17,11 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import type { Selection } from "react-aria-components";
-import { Avatar } from "~/components/ui/avatar";
+import * as Avatar from "~/components/ui/avatar/namespace";
 import { Button } from "~/components/ui/button/button";
-import { Keyboard } from "~/components/ui/keyboard";
-import { Menu } from "~/components/ui/menu";
-import { Popover } from "~/components/ui/popover";
+import { Keyboard } from "~/components/ui/keyboard/keyboard";
+import * as Menu from "~/components/ui/menu/namespace";
+import * as Popover from "~/components/ui/popover/namespace";
 
 export function DropdownMenuDemo() {
   return (

@@ -1,6 +1,6 @@
 import { Label } from "~/components/ui/label/label";
-import { Textarea } from "~/components/ui/textarea";
-import { Textfield } from "~/components/ui/textfield";
+import { Textarea } from "~/components/ui/textarea/textarea";
+import { Textfield } from "~/components/ui/textfield/textfield";
 
 export function TextareaDemo() {
   return (

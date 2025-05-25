@@ -1,7 +1,7 @@
 import { InfoIcon } from "lucide-react";
 
 import { Button } from "~/components/ui/button/button";
-import { Tooltip } from "~/components/ui/tooltip";
+import * as Tooltip from "~/components/ui/tooltip/namespace";
 
 const positions = ["top", "right", "bottom", "left"] as const;
 

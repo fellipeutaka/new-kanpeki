@@ -1,11 +1,11 @@
 import { AppWindowIcon, CodeIcon } from "lucide-react";
 
 import { Button } from "~/components/ui/button/button";
-import { Card } from "~/components/ui/card";
-import { Input } from "~/components/ui/input";
+import * as Card from "~/components/ui/card/namespace";
+import { Input } from "~/components/ui/input/input";
 import { Label } from "~/components/ui/label/label";
-import { Tabs } from "~/components/ui/tabs";
-import { Textfield } from "~/components/ui/textfield";
+import * as Tabs from "~/components/ui/tabs/namespace";
+import { Textfield } from "~/components/ui/textfield/textfield";
 
 export function TabsDemo() {
   return (

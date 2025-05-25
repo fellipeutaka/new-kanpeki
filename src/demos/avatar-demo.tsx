@@ -1,4 +1,4 @@
-import { Avatar } from "~/components/ui/avatar";
+import * as Avatar from "~/components/ui/avatar/namespace";
 
 export function AvatarDemo() {
   return (

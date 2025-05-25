@@ -7,7 +7,7 @@ import {
   ToggleButtonGroup,
   composeRenderProps,
 } from "react-aria-components";
-import { ToggleStyles } from "~/components/ui/toggle";
+import { ToggleStyles } from "../toggle/styles";
 import { ToggleGroupStyles } from "./styles";
 
 const ToggleGroupContext = createContext<VariantProps<typeof ToggleStyles>>({

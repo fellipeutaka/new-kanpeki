@@ -3,7 +3,7 @@
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 
 import { useId, useState } from "react";
-import { InputOTP } from "~/components/ui/input-otp";
+import * as InputOTP from "~/components/ui/input-otp/namespace";
 import { Label } from "~/components/ui/label/label";
 
 export function InputOTPDemo() {

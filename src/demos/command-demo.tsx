@@ -12,10 +12,10 @@ import {
 
 import { useEffect, useState } from "react";
 import { Autocomplete } from "~/components/ui/autocomplete";
-import { Dialog } from "~/components/ui/dialog";
-import { Keyboard } from "~/components/ui/keyboard";
-import { Menu } from "~/components/ui/menu";
-import { SearchField } from "~/components/ui/search-field";
+import * as Dialog from "~/components/ui/dialog/namespace";
+import { Keyboard } from "~/components/ui/keyboard/keyboard";
+import * as Menu from "~/components/ui/menu/namespace";
+import * as SearchField from "~/components/ui/search-field/namespace";
 
 export function CommandDemo() {
   const [isOpen, setIsOpen] = useState(false);

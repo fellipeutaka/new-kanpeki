@@ -1,5 +1,5 @@
 import { compose, cva } from "~/lib/cva";
-import { LabelStyles } from "../label";
+import { LabelStyles } from "../label/styles";
 
 export const RadioGroupStyles = {
   Root: cva({

@@ -1,8 +1,8 @@
 import { Button } from "~/components/ui/button/button";
-import { Dialog } from "~/components/ui/dialog";
-import { Input } from "~/components/ui/input";
+import * as Dialog from "~/components/ui/dialog/namespace";
+import { Input } from "~/components/ui/input/input";
 import { Label } from "~/components/ui/label/label";
-import { Textfield } from "~/components/ui/textfield";
+import { Textfield } from "~/components/ui/textfield/textfield";
 
 export function DialogDemo() {
   return (

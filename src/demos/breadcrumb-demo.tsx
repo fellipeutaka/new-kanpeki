@@ -1,7 +1,7 @@
-import { Breadcrumb } from "~/components/ui/breadcrumb";
+import * as Breadcrumb from "~/components/ui/breadcrumb/namespace";
 import { Button } from "~/components/ui/button/button";
-import { Menu } from "~/components/ui/menu";
-import { Popover } from "~/components/ui/popover";
+import * as Menu from "~/components/ui/menu/namespace";
+import * as Popover from "~/components/ui/popover/namespace";
 
 export function BreadcrumbDemo() {
   return (

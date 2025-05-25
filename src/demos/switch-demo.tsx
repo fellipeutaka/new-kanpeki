@@ -1,5 +1,5 @@
 import { Label } from "~/components/ui/label/label";
-import { Switch } from "~/components/ui/switch";
+import * as Switch from "~/components/ui/switch/namespace";
 
 export function SwitchDemo() {
   return (

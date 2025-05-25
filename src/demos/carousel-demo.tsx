@@ -1,5 +1,5 @@
-import { Card } from "~/components/ui/card";
-import { Carousel } from "~/components/ui/carousel";
+import * as Card from "~/components/ui/card/namespace";
+import * as Carousel from "~/components/ui/carousel/namespace";
 
 export function CarouselDemo() {
   return (

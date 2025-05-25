@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Progress } from "~/components/ui/progress";
+import * as Progress from "~/components/ui/progress/namespace";
 
 export function ProgressDemo() {
   const [progress, setProgress] = useState(13);
