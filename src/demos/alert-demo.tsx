@@ -6,91 +6,91 @@ import {
   PopcornIcon,
   ShieldAlertIcon,
 } from "lucide-react";
-import { AlertDescription, AlertRoot, AlertTitle } from "~/components/ui/alert";
+import { Alert } from "~/components/ui/alert";
 
-import { Button } from "~/components/ui/button";
+import { Button } from "~/components/ui/button/button";
 
 export function AlertDemo() {
   return (
     <div className="grid max-w-xl items-start gap-4">
-      <AlertRoot>
+      <Alert.Root>
         <CheckCircle2Icon />
-        <AlertTitle>Success! Your changes have been saved</AlertTitle>
-        <AlertDescription>
-          This is an alert with icon, title and description.
-        </AlertDescription>
-      </AlertRoot>
-      <AlertRoot>
+        <Alert.Title>Success! Your changes have been saved</Alert.Title>
+        <Alert.Description>
+          This is an alert. with icon, title and description.
+        </Alert.Description>
+      </Alert.Root>
+      <Alert.Root>
         <BookmarkCheckIcon>Heads up!</BookmarkCheckIcon>
-        <AlertDescription>
+        <Alert.Description>
           This one has an icon and a description only. No title.
-        </AlertDescription>
-      </AlertRoot>
-      <AlertRoot>
-        <AlertDescription>
+        </Alert.Description>
+      </Alert.Root>
+      <Alert.Root>
+        <Alert.Description>
           This one has a description only. No title. No icon.
-        </AlertDescription>
-      </AlertRoot>
-      <AlertRoot>
+        </Alert.Description>
+      </Alert.Root>
+      <Alert.Root>
         <PopcornIcon />
-        <AlertTitle>Let&apos;s try one with icon and title.</AlertTitle>
-      </AlertRoot>
-      <AlertRoot>
+        <Alert.Title>Let&apos;s try one with icon and title.</Alert.Title>
+      </Alert.Root>
+      <Alert.Root>
         <ShieldAlertIcon />
-        <AlertTitle>
-          This is a very long alert title that demonstrates how the component
+        <Alert.Title>
+          This is a very long alert. title that demonstrates how the component
           handles extended text content and potentially wraps across multiple
           lines
-        </AlertTitle>
-      </AlertRoot>
-      <AlertRoot>
+        </Alert.Title>
+      </Alert.Root>
+      <Alert.Root>
         <GiftIcon />
-        <AlertDescription>
-          This is a very long alert description that demonstrates how the
+        <Alert.Description>
+          This is a very long alert. description that demonstrates how the
           component handles extended text content and potentially wraps across
           multiple lines
-        </AlertDescription>
-      </AlertRoot>
-      <AlertRoot>
+        </Alert.Description>
+      </Alert.Root>
+      <Alert.Root>
         <AlertCircleIcon />
-        <AlertTitle>
-          This is an extremely long alert title that spans multiple lines to
+        <Alert.Title>
+          This is an extremely long alert. title that spans multiple lines to
           demonstrate how the component handles very lengthy headings while
           maintaining readability and proper text wrapping behavior
-        </AlertTitle>
-        <AlertDescription>
+        </Alert.Title>
+        <Alert.Description>
           This is an equally long description that contains detailed information
-          about the alert. It shows how the component can accommodate extensive
+          about the alert.. It shows how the component can accommodate extensive
           content while preserving proper spacing, alignment, and readability
           across different screen sizes and viewport widths. This helps ensure
           the user experience remains consistent regardless of the content
           length.
-        </AlertDescription>
-      </AlertRoot>
-      <AlertRoot variant="destructive">
+        </Alert.Description>
+      </Alert.Root>
+      <Alert.Root variant="destructive">
         <AlertCircleIcon />
-        <AlertTitle>Something went wrong!</AlertTitle>
-        <AlertDescription>
+        <Alert.Title>Something went wrong!</Alert.Title>
+        <Alert.Description>
           Your session has expired. Please log in again.
-        </AlertDescription>
-      </AlertRoot>
-      <AlertRoot variant="destructive">
+        </Alert.Description>
+      </Alert.Root>
+      <Alert.Root variant="destructive">
         <AlertCircleIcon />
-        <AlertTitle>Unable to process your payment.</AlertTitle>
-        <AlertDescription>
+        <Alert.Title>Unable to process your payment.</Alert.Title>
+        <Alert.Description>
           <p>Please verify your billing information and try again.</p>
           <ul className="list-inside list-disc text-sm">
             <li>Check your card details</li>
             <li>Ensure sufficient funds</li>
             <li>Verify billing address</li>
           </ul>
-        </AlertDescription>
-      </AlertRoot>
-      <AlertRoot>
+        </Alert.Description>
+      </Alert.Root>
+      <Alert.Root>
         <CheckCircle2Icon />
-        <AlertTitle className="max-w-[calc(100%-4rem)] overflow-ellipsis">
+        <Alert.Title className="max-w-[calc(100%-4rem)] overflow-ellipsis">
           The selected emails have been marked as spam.
-        </AlertTitle>
+        </Alert.Title>
         <Button
           size="sm"
           variant="outline"
@@ -98,14 +98,14 @@ export function AlertDemo() {
         >
           Undo
         </Button>
-      </AlertRoot>
-      <AlertRoot className="border-amber-50 bg-amber-50 text-amber-900 dark:border-amber-950 dark:bg-amber-950 dark:text-amber-100">
+      </Alert.Root>
+      <Alert.Root className="border-amber-50 bg-amber-50 text-amber-900 dark:border-amber-950 dark:bg-amber-950 dark:text-amber-100">
         <CheckCircle2Icon />
-        <AlertTitle>Plot Twist: This Alert is Actually Amber!</AlertTitle>
-        <AlertDescription>
+        <Alert.Title>Plot Twist: This Alert. is Actually Amber!</Alert.Title>
+        <Alert.Description>
           This one has custom colors for light and dark mode.
-        </AlertDescription>
-      </AlertRoot>
+        </Alert.Description>
+      </Alert.Root>
     </div>
   );
 }

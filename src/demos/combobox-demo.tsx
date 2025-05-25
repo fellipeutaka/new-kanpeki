@@ -4,31 +4,12 @@ import { SearchIcon } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { Key } from "react-aria-components";
 import { Autocomplete } from "~/components/ui/autocomplete";
-import {
-  AvatarFallback,
-  AvatarImage,
-  AvatarRoot,
-} from "~/components/ui/avatar";
-import {
-  ComboboxIcon,
-  ComboboxInput,
-  ComboboxRoot,
-  ComboboxTrigger,
-} from "~/components/ui/combobox";
-import {
-  ListboxEmpty,
-  ListboxGroup,
-  ListboxItem,
-  ListboxLabel,
-  ListboxRoot,
-} from "~/components/ui/list-box";
-import { PopoverContent } from "~/components/ui/popover";
-import {
-  SearchFieldButton,
-  SearchFieldInput,
-  SearchFieldRoot,
-} from "~/components/ui/search-field";
-import { SelectRoot, SelectTrigger, SelectValue } from "~/components/ui/select";
+import { Avatar } from "~/components/ui/avatar";
+import { Combobox } from "~/components/ui/combobox";
+import { Listbox } from "~/components/ui/list-box";
+import { Popover } from "~/components/ui/popover";
+import { SearchField } from "~/components/ui/search-field";
+import { Select } from "~/components/ui/select";
 
 const frameworks = [
   {
@@ -120,37 +101,37 @@ export function ComboboxDemo() {
         timezones={[...timezones]}
         selectedTimezone={timezones[0].timezones[0]}
       />
-      {/* <ComboboxWithCheckbox frameworks={[...frameworks]} /> */}
+      {/* <Combobox.WithCheckbox frameworks={[...frameworks]} /> */}
     </div>
   );
 }
 
 function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
   return (
-    <ComboboxRoot
+    <Combobox.Root
       className="w-full md:max-w-[200px]"
       aria-label="Frameworks"
       allowsEmptyCollection
       menuTrigger="focus"
     >
-      <ComboboxTrigger>
-        <ComboboxInput placeholder="Select framework..." />
-        <ComboboxIcon />
-      </ComboboxTrigger>
+      <Combobox.Trigger>
+        <Combobox.Input placeholder="Select framework..." />
+        <Combobox.Icon />
+      </Combobox.Trigger>
 
-      <PopoverContent>
-        <ListboxRoot
+      <Popover.Content>
+        <Listbox.Root
           renderEmptyState={() => (
-            <ListboxEmpty>No frameworks found.</ListboxEmpty>
+            <Listbox.Empty>No frameworks found.</Listbox.Empty>
           )}
           items={frameworks}
         >
           {(framework) => (
-            <ListboxItem id={framework.value}>{framework.label}</ListboxItem>
+            <Listbox.Item id={framework.value}>{framework.label}</Listbox.Item>
           )}
-        </ListboxRoot>
-      </PopoverContent>
-    </ComboboxRoot>
+        </Listbox.Root>
+      </Popover.Content>
+    </Combobox.Root>
   );
 }
 
@@ -162,43 +143,45 @@ function UserCombobox({
   selectedUserId: string;
 }) {
   return (
-    <SelectRoot
+    <Select.Root
       className="w-full md:max-w-[200px]"
       placeholder="Select user..."
       aria-label="Users"
       defaultSelectedKey={selectedUserId}
     >
-      <SelectTrigger className="w-full">
-        <SelectValue />
-      </SelectTrigger>
+      <Select.Trigger className="w-full">
+        <Select.Value />
+      </Select.Trigger>
 
-      <PopoverContent className="rounded-md border bg-popover shadow-md">
+      <Popover.Content className="rounded-md border bg-popover shadow-md">
         <Autocomplete>
-          <SearchFieldRoot aria-label="Search" autoFocus>
+          <SearchField.Root aria-label="Search" autoFocus>
             <SearchIcon />
-            <SearchFieldInput placeholder="Search user..." />
-            <SearchFieldButton />
-          </SearchFieldRoot>
-          <ListboxRoot
+            <SearchField.Input placeholder="Search user..." />
+            <SearchField.Button />
+          </SearchField.Root>
+          <Listbox.Root
             className="rounded-none border-none shadow-none"
             items={users}
-            renderEmptyState={() => <ListboxEmpty>No user found.</ListboxEmpty>}
+            renderEmptyState={() => (
+              <Listbox.Empty>No user found.</Listbox.Empty>
+            )}
           >
             {(user) => (
-              <ListboxItem textValue={user.username} id={user.id}>
-                <AvatarRoot className="size-5">
-                  <AvatarImage
+              <Listbox.Item textValue={user.username} id={user.id}>
+                <Avatar.Root className="size-5">
+                  <Avatar.Image
                     src={`https://github.com/${user.username}.png`}
                   />
-                  <AvatarFallback>{user.username[0]}</AvatarFallback>
-                </AvatarRoot>
+                  <Avatar.Fallback>{user.username[0]}</Avatar.Fallback>
+                </Avatar.Root>
                 {user.username}
-              </ListboxItem>
+              </Listbox.Item>
             )}
-          </ListboxRoot>
+          </Listbox.Root>
         </Autocomplete>
-      </PopoverContent>
-    </SelectRoot>
+      </Popover.Content>
+    </Select.Root>
   );
 }
 
@@ -225,15 +208,15 @@ function TimezoneCombobox({
   );
 
   return (
-    <SelectRoot
+    <Select.Root
       className="w-full md:max-w-[200px]"
       placeholder="Select timezone"
       aria-label="Timezone"
       selectedKey={value}
       onSelectionChange={setValue}
     >
-      <SelectTrigger className="w-full">
-        <SelectValue>
+      <Select.Trigger className="w-full">
+        <Select.Value>
           {(values) =>
             selectedTimezone ? (
               <div className="grid justify-items-start gap-0.5">
@@ -246,41 +229,41 @@ function TimezoneCombobox({
               values.defaultChildren
             )
           }
-        </SelectValue>
-      </SelectTrigger>
+        </Select.Value>
+      </Select.Trigger>
 
-      <PopoverContent className="rounded-md border bg-popover shadow-md">
+      <Popover.Content className="rounded-md border bg-popover shadow-md">
         <Autocomplete>
-          <SearchFieldRoot aria-label="Search" autoFocus>
+          <SearchField.Root aria-label="Search" autoFocus>
             <SearchIcon />
-            <SearchFieldInput placeholder="Search timezone..." />
-            <SearchFieldButton />
-          </SearchFieldRoot>
-          <ListboxRoot
+            <SearchField.Input placeholder="Search timezone..." />
+            <SearchField.Button />
+          </SearchField.Root>
+          <Listbox.Root
             className="max-h-[300px] rounded-none border-none shadow-none"
             items={timezones}
             renderEmptyState={() => (
-              <ListboxEmpty>No timezone found.</ListboxEmpty>
+              <Listbox.Empty>No timezone found.</Listbox.Empty>
             )}
           >
             {(region) => (
-              <ListboxGroup id={region.label}>
-                <ListboxLabel>{region.label}</ListboxLabel>
+              <Listbox.Group id={region.label}>
+                <Listbox.Label>{region.label}</Listbox.Label>
                 {region.timezones.map((timezone) => (
-                  <ListboxItem key={timezone.value} id={timezone.value}>
+                  <Listbox.Item key={timezone.value} id={timezone.value}>
                     {timezone.label}
-                  </ListboxItem>
+                  </Listbox.Item>
                 ))}
-              </ListboxGroup>
+              </Listbox.Group>
             )}
-          </ListboxRoot>
+          </Listbox.Root>
         </Autocomplete>
-      </PopoverContent>
-    </SelectRoot>
+      </Popover.Content>
+    </Select.Root>
   );
 }
 
-// function ComboboxWithCheckbox({ frameworks }: { frameworks: Framework[] }) {
+// function Combobox.WithCheckbox({ frameworks }: { frameworks: Framework[] }) {
 //   const [open, setOpen] = useState(false);
 //   const [selectedFrameworks, setSelectedFrameworks] = useState<Framework[]>([]);
 
@@ -290,7 +273,7 @@ function TimezoneCombobox({
 //         <Button
 //           variant="outline"
 //           // biome-ignore lint/a11y/useSemanticElements: <explanation>
-//           role="combobox"
+//           role="combobox."
 //           aria-expanded={open}
 //           className="w-fit min-w-[280px] justify-between"
 //         >
@@ -300,7 +283,7 @@ function TimezoneCombobox({
 //           <ChevronsUpDown className="text-muted-foreground" />
 //         </Button>
 //       </PopoverTrigger>
-//       <PopoverContent className="w-[300px] p-0" align="start">
+//       <Popover.Content className="w-[300px] p-0" align="start">
 //         <Command>
 //           <CommandInput placeholder="Search framework..." />
 //           <CommandList>
@@ -334,7 +317,7 @@ function TimezoneCombobox({
 //             </CommandGroup>
 //           </CommandList>
 //         </Command>
-//       </PopoverContent>
+//       </Popover.Content>
 //     </Popover>
 //   );
 // }

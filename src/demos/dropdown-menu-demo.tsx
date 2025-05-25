@@ -17,25 +17,11 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import type { Selection } from "react-aria-components";
-import {
-  AvatarFallback,
-  AvatarImage,
-  AvatarRoot,
-} from "~/components/ui/avatar";
-import { Button } from "~/components/ui/button";
+import { Avatar } from "~/components/ui/avatar";
+import { Button } from "~/components/ui/button/button";
 import { Keyboard } from "~/components/ui/keyboard";
-import {
-  // MenuCheckboxItem,
-  MenuContent,
-  MenuGroup,
-  // MenuGroup,
-  MenuItem,
-  MenuLabel,
-  MenuRoot,
-  MenuSeparator,
-  MenuSub,
-} from "~/components/ui/menu";
-import { PopoverContent } from "~/components/ui/popover";
+import { Menu } from "~/components/ui/menu";
+import { Popover } from "~/components/ui/popover";
 
 export function DropdownMenuDemo() {
   return (
@@ -52,61 +38,61 @@ export function DropdownMenuDemo() {
 
 function MenuSimple() {
   return (
-    <MenuRoot>
+    <Menu.Root>
       <Button variant="outline">Open</Button>
 
-      <PopoverContent placement="bottom start">
-        <MenuContent className="w-56">
-          <MenuLabel>My Account</MenuLabel>
-          <MenuGroup>
-            <MenuItem textValue="Profile">
+      <Popover.Content placement="bottom start">
+        <Menu.Content className="w-56">
+          <Menu.Label>My Account</Menu.Label>
+          <Menu.Group>
+            <Menu.Item textValue="Profile">
               Profile
               <Keyboard variant="menu">⇧⌘P</Keyboard>
-            </MenuItem>
-            <MenuItem textValue="Billing">
+            </Menu.Item>
+            <Menu.Item textValue="Billing">
               Billing
               <Keyboard variant="menu">⌘B</Keyboard>
-            </MenuItem>
-            <MenuItem textValue="Settings">
+            </Menu.Item>
+            <Menu.Item textValue="Settings">
               Settings
               <Keyboard variant="menu">⌘S</Keyboard>
-            </MenuItem>
-            <MenuItem textValue="Keyboard shortcuts">
+            </Menu.Item>
+            <Menu.Item textValue="Keyboard shortcuts">
               Keyboard shortcuts
               <Keyboard variant="menu">⌘K</Keyboard>
-            </MenuItem>
-          </MenuGroup>
-          <MenuSeparator />
-          <MenuGroup>
-            <MenuItem textValue="Team">Team</MenuItem>
-            <MenuSub>
-              <MenuItem textValue="Invite users">Invite users</MenuItem>
-              <PopoverContent>
-                <MenuContent>
-                  <MenuItem textValue="Email">Email</MenuItem>
-                  <MenuItem textValue="Message">Message</MenuItem>
-                  <MenuSeparator />
-                  <MenuItem textValue="More">More...</MenuItem>
-                </MenuContent>
-              </PopoverContent>
-            </MenuSub>
-            <MenuItem textValue="New Team">
+            </Menu.Item>
+          </Menu.Group>
+          <Menu.Separator />
+          <Menu.Group>
+            <Menu.Item textValue="Team">Team</Menu.Item>
+            <Menu.Sub>
+              <Menu.Item textValue="Invite users">Invite users</Menu.Item>
+              <Popover.Content>
+                <Menu.Content>
+                  <Menu.Item textValue="Email">Email</Menu.Item>
+                  <Menu.Item textValue="Message">Message</Menu.Item>
+                  <Menu.Separator />
+                  <Menu.Item textValue="More">More...</Menu.Item>
+                </Menu.Content>
+              </Popover.Content>
+            </Menu.Sub>
+            <Menu.Item textValue="New Team">
               New Team
               <Keyboard variant="menu">⌘+T</Keyboard>
-            </MenuItem>
-          </MenuGroup>
-          <MenuSeparator />
-          <MenuItem>GitHub</MenuItem>
-          <MenuItem>Support</MenuItem>
-          <MenuItem isDisabled>API</MenuItem>
-          <MenuSeparator />
-          <MenuItem textValue="Log out">
+            </Menu.Item>
+          </Menu.Group>
+          <Menu.Separator />
+          <Menu.Item>GitHub</Menu.Item>
+          <Menu.Item>Support</Menu.Item>
+          <Menu.Item isDisabled>API</Menu.Item>
+          <Menu.Separator />
+          <Menu.Item textValue="Log out">
             Log out
             <Keyboard variant="menu">⇧⌘Q</Keyboard>
-          </MenuItem>
-        </MenuContent>
-      </PopoverContent>
-    </MenuRoot>
+          </Menu.Item>
+        </Menu.Content>
+      </Popover.Content>
+    </Menu.Root>
   );
 }
 
@@ -114,43 +100,43 @@ function MenuCheckboxes() {
   const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set([]));
 
   return (
-    <MenuRoot>
+    <Menu.Root>
       <Button variant="outline">Checkboxes</Button>
 
-      <PopoverContent placement="bottom start">
-        <MenuContent className="w-56">
-          <MenuGroup>
-            <MenuLabel>Account</MenuLabel>
-            <MenuItem>
+      <Popover.Content placement="bottom start">
+        <Menu.Content className="w-56">
+          <Menu.Group>
+            <Menu.Label>Account</Menu.Label>
+            <Menu.Item>
               <UserIcon /> Profile
-            </MenuItem>
-            <MenuItem>
+            </Menu.Item>
+            <Menu.Item>
               <CreditCardIcon /> Billing
-            </MenuItem>
-            <MenuItem>
+            </Menu.Item>
+            <Menu.Item>
               <Settings2Icon /> Settings
-            </MenuItem>
-          </MenuGroup>
-          <MenuSeparator />
-          <MenuGroup
+            </Menu.Item>
+          </Menu.Group>
+          <Menu.Separator />
+          <Menu.Group
             selectionMode="multiple"
             selectedKeys={selectedKeys}
             onSelectionChange={setSelectedKeys}
           >
-            <MenuLabel>Appearance</MenuLabel>
-            <MenuItem>Status Bar</MenuItem>
-            <MenuItem isDisabled>Activity Bar</MenuItem>
-            <MenuItem>Panel</MenuItem>
-          </MenuGroup>
-          <MenuSeparator />
-          <MenuGroup>
-            <MenuItem>
+            <Menu.Label>Appearance</Menu.Label>
+            <Menu.Item>Status Bar</Menu.Item>
+            <Menu.Item isDisabled>Activity Bar</Menu.Item>
+            <Menu.Item>Panel</Menu.Item>
+          </Menu.Group>
+          <Menu.Separator />
+          <Menu.Group>
+            <Menu.Item>
               <LogOutIcon /> Sign Out
-            </MenuItem>
-          </MenuGroup>
-        </MenuContent>
-      </PopoverContent>
-    </MenuRoot>
+            </Menu.Item>
+          </Menu.Group>
+        </Menu.Content>
+      </Popover.Content>
+    </Menu.Root>
   );
 }
 
@@ -158,38 +144,38 @@ function MenuRadioGroupDemo() {
   const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set([]));
 
   return (
-    <MenuRoot>
+    <Menu.Root>
       <Button variant="outline">Radio Group</Button>
 
-      <PopoverContent placement="bottom start">
-        <MenuContent className="w-56">
-          <MenuLabel inset>Panel Position</MenuLabel>
-          <MenuGroup
+      <Popover.Content placement="bottom start">
+        <Menu.Content className="w-56">
+          <Menu.Label inset>Panel Position</Menu.Label>
+          <Menu.Group
             selectionMode="single"
             selectedKeys={selectedKeys}
             onSelectionChange={setSelectedKeys}
           >
-            <MenuItem>Top</MenuItem>
-            <MenuItem>Bottom</MenuItem>
-            <MenuItem isDisabled>Right</MenuItem>
-          </MenuGroup>
-        </MenuContent>
-      </PopoverContent>
-    </MenuRoot>
+            <Menu.Item>Top</Menu.Item>
+            <Menu.Item>Bottom</Menu.Item>
+            <Menu.Item isDisabled>Right</Menu.Item>
+          </Menu.Group>
+        </Menu.Content>
+      </Popover.Content>
+    </Menu.Root>
   );
 }
 
 function MenuWithAvatar() {
   return (
-    <MenuRoot>
+    <Menu.Root>
       <Button
         variant="outline"
         className="h-12 justify-start px-2 md:max-w-[200px]"
       >
-        <AvatarRoot>
-          <AvatarImage src="https://github.com/shadcn.png" alt="Shadcn" />
-          <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-        </AvatarRoot>
+        <Avatar.Root>
+          <Avatar.Image src="https://github.com/shadcn.png" alt="Shadcn" />
+          <Avatar.Fallback className="rounded-lg">CN</Avatar.Fallback>
+        </Avatar.Root>
         <div className="grid flex-1 text-left text-sm leading-tight">
           <span className="truncate font-semibold">shadcn</span>
           <span className="truncate text-muted-foreground text-xs">
@@ -199,14 +185,17 @@ function MenuWithAvatar() {
         <ChevronsUpDownIcon className="ml-auto text-muted-foreground" />
       </Button>
 
-      <PopoverContent placement="bottom start">
-        <MenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56">
-          <MenuLabel className="p-0 font-normal">
+      <Popover.Content placement="bottom start">
+        <Menu.Content className="w-(--radix-dropdown-menu.-trigger-width) min-w-56">
+          <Menu.Label className="p-0 font-normal">
             <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-              <AvatarRoot>
-                <AvatarImage src="https://github.com/shadcn.png" alt="Shadcn" />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-              </AvatarRoot>
+              <Avatar.Root>
+                <Avatar.Image
+                  src="https://github.com/shadcn.png"
+                  alt="Shadcn"
+                />
+                <Avatar.Fallback className="rounded-lg">CN</Avatar.Fallback>
+              </Avatar.Root>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">shadcn</span>
                 <span className="truncate text-muted-foreground text-xs">
@@ -214,58 +203,61 @@ function MenuWithAvatar() {
                 </span>
               </div>
             </div>
-          </MenuLabel>
-          <MenuSeparator />
-          <MenuGroup>
-            <MenuItem>
+          </Menu.Label>
+          <Menu.Separator />
+          <Menu.Group>
+            <Menu.Item>
               <SparklesIcon />
               Upgrade to Pro
-            </MenuItem>
-          </MenuGroup>
-          <MenuSeparator />
-          <MenuGroup>
-            <MenuItem>
+            </Menu.Item>
+          </Menu.Group>
+          <Menu.Separator />
+          <Menu.Group>
+            <Menu.Item>
               <BadgeCheckIcon />
               Account
-            </MenuItem>
-            <MenuItem>
+            </Menu.Item>
+            <Menu.Item>
               <CreditCardIcon />
               Billing
-            </MenuItem>
-            <MenuItem>
+            </Menu.Item>
+            <Menu.Item>
               <BellIcon />
               Notifications
-            </MenuItem>
-          </MenuGroup>
-          <MenuSeparator />
-          <MenuItem>
+            </Menu.Item>
+          </Menu.Group>
+          <Menu.Separator />
+          <Menu.Item>
             <LogOut />
             Sign Out
-          </MenuItem>
-        </MenuContent>
-      </PopoverContent>
-    </MenuRoot>
+          </Menu.Item>
+        </Menu.Content>
+      </Popover.Content>
+    </Menu.Root>
   );
 }
 
 function MenuAvatarOnly() {
   return (
-    <MenuRoot>
+    <Menu.Root>
       <Button variant="outline" className="size-8 rounded-full border-none p-0">
-        <AvatarRoot>
-          <AvatarImage src="https://github.com/leerob.png" alt="leerob" />
-          <AvatarFallback className="rounded-lg">LR</AvatarFallback>
-        </AvatarRoot>
+        <Avatar.Root>
+          <Avatar.Image src="https://github.com/leerob.png" alt="leerob" />
+          <Avatar.Fallback className="rounded-lg">LR</Avatar.Fallback>
+        </Avatar.Root>
       </Button>
 
-      <PopoverContent placement="bottom start">
-        <MenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56">
-          <MenuLabel className="p-0 font-normal">
+      <Popover.Content placement="bottom start">
+        <Menu.Content className="w-(--radix-dropdown-menu.-trigger-width) min-w-56">
+          <Menu.Label className="p-0 font-normal">
             <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-              <AvatarRoot>
-                <AvatarImage src="https://github.com/leerob.png" alt="leerob" />
-                <AvatarFallback className="rounded-lg">LR</AvatarFallback>
-              </AvatarRoot>
+              <Avatar.Root>
+                <Avatar.Image
+                  src="https://github.com/leerob.png"
+                  alt="leerob"
+                />
+                <Avatar.Fallback className="rounded-lg">LR</Avatar.Fallback>
+              </Avatar.Root>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">leerob</span>
                 <span className="truncate text-muted-foreground text-xs">
@@ -273,67 +265,67 @@ function MenuAvatarOnly() {
                 </span>
               </div>
             </div>
-          </MenuLabel>
-          <MenuSeparator />
-          <MenuGroup>
-            <MenuItem>
+          </Menu.Label>
+          <Menu.Separator />
+          <Menu.Group>
+            <Menu.Item>
               <SparklesIcon />
               Upgrade to Pro
-            </MenuItem>
-          </MenuGroup>
-          <MenuSeparator />
-          <MenuGroup>
-            <MenuItem>
+            </Menu.Item>
+          </Menu.Group>
+          <Menu.Separator />
+          <Menu.Group>
+            <Menu.Item>
               <BadgeCheckIcon />
               Account
-            </MenuItem>
-            <MenuItem>
+            </Menu.Item>
+            <Menu.Item>
               <CreditCardIcon />
               Billing
-            </MenuItem>
-            <MenuItem>
+            </Menu.Item>
+            <Menu.Item>
               <BellIcon />
               Notifications
-            </MenuItem>
-          </MenuGroup>
-          <MenuSeparator />
-          <MenuItem>
+            </Menu.Item>
+          </Menu.Group>
+          <Menu.Separator />
+          <Menu.Item>
             <LogOut />
             Sign Out
-          </MenuItem>
-        </MenuContent>
-      </PopoverContent>
-    </MenuRoot>
+          </Menu.Item>
+        </Menu.Content>
+      </Popover.Content>
+    </Menu.Root>
   );
 }
 
 function MenuIconColor() {
   return (
-    <MenuRoot>
+    <Menu.Root>
       <Button variant="ghost" size="icon">
         <MoreHorizontalIcon />
-        <span className="sr-only">Toggle menu</span>
+        <span className="sr-only">Toggle menu.</span>
       </Button>
 
-      <PopoverContent placement="bottom start">
-        <MenuContent>
-          <MenuGroup className="*:data-[slot=dropdown-menu-item]:[&>svg]:text-muted-foreground">
-            <MenuItem>
+      <Popover.Content placement="bottom start">
+        <Menu.Content>
+          <Menu.Group className="*:data-[slot=dropdown-menu.-item]:[&>svg]:text-muted-foreground">
+            <Menu.Item>
               <PencilIcon />
               Edit
-            </MenuItem>
-            <MenuItem>
+            </Menu.Item>
+            <Menu.Item>
               <ShareIcon />
               Share
-            </MenuItem>
-            <MenuSeparator />
-            <MenuItem variant="destructive">
+            </Menu.Item>
+            <Menu.Separator />
+            <Menu.Item variant="destructive">
               <TrashIcon />
               Delete
-            </MenuItem>
-          </MenuGroup>
-        </MenuContent>
-      </PopoverContent>
-    </MenuRoot>
+            </Menu.Item>
+          </Menu.Group>
+        </Menu.Content>
+      </Popover.Content>
+    </Menu.Root>
   );
 }

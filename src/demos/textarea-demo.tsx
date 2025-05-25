@@ -1,4 +1,4 @@
-import { Label } from "~/components/ui/label";
+import { Label } from "~/components/ui/label/label";
 import { Textarea } from "~/components/ui/textarea";
 import { Textfield } from "~/components/ui/textfield";
 

@@ -3,7 +3,7 @@
 import { toast } from "sonner";
 
 import { useState } from "react";
-import { Button } from "~/components/ui/button";
+import { Button } from "~/components/ui/button/button";
 
 const promiseCode = "`${data.name} toast has been added`";
 

@@ -7,65 +7,65 @@ import {
   CircleDashedIcon,
 } from "lucide-react";
 import { Text } from "react-aria-components";
-import { ListboxItem, ListboxRoot } from "~/components/ui/list-box";
-import { PopoverContent } from "~/components/ui/popover";
+import { Listbox } from "~/components/ui/list-box";
+import { Popover } from "~/components/ui/popover";
 
-import { SelectRoot, SelectTrigger, SelectValue } from "~/components/ui/select";
+import { Select } from "~/components/ui/select";
 
 const LARGE_LIST_ITEMS = Array.from({ length: 100 }, (_, i) => ({ id: i }));
 
 export function SelectDemo() {
   return (
     <div className="flex flex-wrap items-start gap-4">
-      <SelectRoot aria-label="Fruits" placeholder="Select a fruit">
-        <SelectTrigger className="w-[180px]">
-          <SelectValue />
-        </SelectTrigger>
-        <PopoverContent>
-          <ListboxRoot>
+      <Select.Root aria-label="Fruits" placeholder="Select a fruit">
+        <Select.Trigger className="w-[180px]">
+          <Select.Value />
+        </Select.Trigger>
+        <Popover.Content>
+          <Listbox.Root>
             {/* <SelectLabel>Fruits</SelectLabel> */}
-            <ListboxItem id="apple">Apple</ListboxItem>
-            <ListboxItem id="banana">Banana</ListboxItem>
-            <ListboxItem id="blueberry">Blueberry</ListboxItem>
-            <ListboxItem id="grapes" isDisabled>
+            <Listbox.Item id="apple">Apple</Listbox.Item>
+            <Listbox.Item id="banana">Banana</Listbox.Item>
+            <Listbox.Item id="blueberry">Blueberry</Listbox.Item>
+            <Listbox.Item id="grapes" isDisabled>
               Grapes
-            </ListboxItem>
-            <ListboxItem id="pineapple">Pineapple</ListboxItem>
-          </ListboxRoot>
-        </PopoverContent>
-      </SelectRoot>
+            </Listbox.Item>
+            <Listbox.Item id="pineapple">Pineapple</Listbox.Item>
+          </Listbox.Root>
+        </Popover.Content>
+      </Select.Root>
 
-      <SelectRoot aria-label="Large List" placeholder="Large List">
-        <SelectTrigger className="w-[180px]">
-          <SelectValue />
-        </SelectTrigger>
-        <PopoverContent>
-          <ListboxRoot items={LARGE_LIST_ITEMS}>
-            {({ id }) => <ListboxItem id={id}>Item {id}</ListboxItem>}
-          </ListboxRoot>
-        </PopoverContent>
-      </SelectRoot>
+      <Select.Root aria-label="Large List" placeholder="Large List">
+        <Select.Trigger className="w-[180px]">
+          <Select.Value />
+        </Select.Trigger>
+        <Popover.Content>
+          <Listbox.Root items={LARGE_LIST_ITEMS}>
+            {({ id }) => <Listbox.Item id={id}>Item {id}</Listbox.Item>}
+          </Listbox.Root>
+        </Popover.Content>
+      </Select.Root>
 
-      <SelectRoot aria-label="Fruits" placeholder="Disabled" isDisabled>
-        <SelectTrigger className="w-[180px]">
-          <SelectValue />
-        </SelectTrigger>
-        <PopoverContent>
-          <ListboxRoot>
-            <ListboxItem id="apple">Apple</ListboxItem>
-            <ListboxItem id="banana">Banana</ListboxItem>
-            <ListboxItem id="blueberry">Blueberry</ListboxItem>
-            <ListboxItem id="grapes" isDisabled>
+      <Select.Root aria-label="Fruits" placeholder="Disabled" isDisabled>
+        <Select.Trigger className="w-[180px]">
+          <Select.Value />
+        </Select.Trigger>
+        <Popover.Content>
+          <Listbox.Root>
+            <Listbox.Item id="apple">Apple</Listbox.Item>
+            <Listbox.Item id="banana">Banana</Listbox.Item>
+            <Listbox.Item id="blueberry">Blueberry</Listbox.Item>
+            <Listbox.Item id="grapes" isDisabled>
               Grapes
-            </ListboxItem>
-            <ListboxItem id="pineapple">Pineapple</ListboxItem>
-          </ListboxRoot>
-        </PopoverContent>
-      </SelectRoot>
+            </Listbox.Item>
+            <Listbox.Item id="pineapple">Pineapple</Listbox.Item>
+          </Listbox.Root>
+        </Popover.Content>
+      </Select.Root>
 
-      <SelectRoot aria-label="Charts" placeholder="With Icon">
-        <SelectTrigger className="w-[180px]">
-          <SelectValue>
+      <Select.Root aria-label="Charts" placeholder="With Icon">
+        <Select.Trigger className="w-[180px]">
+          <Select.Value>
             {(values) => (
               <>
                 {values.isPlaceholder && (
@@ -74,25 +74,25 @@ export function SelectDemo() {
                 {values.defaultChildren}
               </>
             )}
-          </SelectValue>
-        </SelectTrigger>
-        <PopoverContent>
-          <ListboxRoot>
-            <ListboxItem id="line">
+          </Select.Value>
+        </Select.Trigger>
+        <Popover.Content>
+          <Listbox.Root>
+            <Listbox.Item id="line">
               <ChartLineIcon />
               <Text slot="label">Line</Text>
-            </ListboxItem>
-            <ListboxItem id="bar">
+            </Listbox.Item>
+            <Listbox.Item id="bar">
               <ChartBarIcon />
               <Text slot="label">Bar</Text>
-            </ListboxItem>
-            <ListboxItem id="pie">
+            </Listbox.Item>
+            <Listbox.Item id="pie">
               <ChartPieIcon />
               <Text slot="label">Pie</Text>
-            </ListboxItem>
-          </ListboxRoot>
-        </PopoverContent>
-      </SelectRoot>
+            </Listbox.Item>
+          </Listbox.Root>
+        </Popover.Content>
+      </Select.Root>
     </div>
   );
 }

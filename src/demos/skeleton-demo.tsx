@@ -1,4 +1,4 @@
-import { CardContent, CardHeader, CardRoot } from "~/components/ui/card";
+import { Card } from "~/components/ui/card";
 import { Skeleton } from "~/components/ui/skeleton";
 
 export function SkeletonDemo() {
@@ -14,15 +14,15 @@ export function SkeletonDemo() {
       <div className="flex w-full flex-wrap items-start gap-4">
         {Array.from({ length: 3 }).map((_, index) => (
           // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-          <CardRoot key={index} className="@md:w-auto w-full @md:min-w-sm">
-            <CardHeader>
+          <Card.Root key={index} className="@md:w-auto w-full @md:min-w-sm">
+            <Card.Header>
               <Skeleton className="h-4 w-2/3" />
               <Skeleton className="h-4 w-1/2" />
-            </CardHeader>
-            <CardContent>
+            </Card.Header>
+            <Card.Content>
               <Skeleton className="aspect-square w-full" />
-            </CardContent>
-          </CardRoot>
+            </Card.Content>
+          </Card.Root>
         ))}
       </div>
     </div>

@@ -1,47 +1,43 @@
 "use client";
 
-import {
-  CheckboxIndicator,
-  CheckboxProvider,
-  CheckboxRoot,
-} from "~/components/ui/checkbox";
+import { Checkbox } from "~/components/ui/checkbox";
 
 export function CheckboxDemo() {
   return (
     <div className="flex flex-col gap-6">
-      <CheckboxProvider>
-        <CheckboxRoot>
-          <CheckboxIndicator />
-        </CheckboxRoot>
+      <Checkbox.Provider>
+        <Checkbox.Root>
+          <Checkbox.Indicator />
+        </Checkbox.Root>
         Accept terms and conditions
-      </CheckboxProvider>
+      </Checkbox.Provider>
 
-      <CheckboxProvider defaultSelected>
-        <CheckboxRoot>
-          <CheckboxIndicator />
-        </CheckboxRoot>
+      <Checkbox.Provider defaultSelected>
+        <Checkbox.Root>
+          <Checkbox.Indicator />
+        </Checkbox.Root>
         <div className="grid gap-2">
           Accept terms and conditions
           <p className="text-muted-foreground text-sm">
-            By clicking this checkbox, you agree to the terms and conditions.
+            By clicking this checkbox., you agree to the terms and conditions.
           </p>
         </div>
-      </CheckboxProvider>
+      </Checkbox.Provider>
 
-      <CheckboxProvider isDisabled>
-        <CheckboxRoot>
-          <CheckboxIndicator />
-        </CheckboxRoot>
+      <Checkbox.Provider isDisabled>
+        <Checkbox.Root>
+          <Checkbox.Indicator />
+        </Checkbox.Root>
         Enable notifications
-      </CheckboxProvider>
+      </Checkbox.Provider>
 
-      <CheckboxProvider
+      <Checkbox.Provider
         className="items-start rounded-lg border selected:border-blue-600 selected:bg-blue-50 p-3 hover:bg-accent/50 dark:selected:border-blue-900 dark:selected:bg-blue-950"
         defaultSelected
       >
-        <CheckboxRoot className="group-selected:border-blue-600 group-selected:bg-blue-600 group-selected:text-white dark:group-selected:border-blue-700 dark:group-selected:bg-blue-700">
-          <CheckboxIndicator />
-        </CheckboxRoot>
+        <Checkbox.Root className="group-selected:border-blue-600 group-selected:bg-blue-600 group-selected:text-white dark:group-selected:border-blue-700 dark:group-selected:bg-blue-700">
+          <Checkbox.Indicator />
+        </Checkbox.Root>
         <div className="grid gap-1.5 font-normal">
           <p className="font-medium text-sm leading-none">
             Enable notifications
@@ -50,7 +46,7 @@ export function CheckboxDemo() {
             You can enable or disable notifications at any time.
           </p>
         </div>
-      </CheckboxProvider>
+      </Checkbox.Provider>
     </div>
   );
 }

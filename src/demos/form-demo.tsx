@@ -5,13 +5,13 @@ import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod/v4";
 
-import { Button } from "~/components/ui/button";
+import { Button } from "~/components/ui/button/button";
 import { FormDescription, FormMessage, FormRoot } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
-import { Label } from "~/components/ui/label";
-import { ListboxItem, ListboxRoot } from "~/components/ui/list-box";
-import { PopoverContent } from "~/components/ui/popover";
-import { SelectRoot, SelectTrigger, SelectValue } from "~/components/ui/select";
+import { Label } from "~/components/ui/label/label";
+import { Listbox } from "~/components/ui/list-box";
+import { Popover } from "~/components/ui/popover";
+import { Select } from "~/components/ui/select";
 import { Textarea } from "~/components/ui/textarea";
 import { Textfield } from "~/components/ui/textfield";
 
@@ -113,7 +113,7 @@ export function FormDemo() {
         control={form.control}
         name="email"
         render={({ field, fieldState }) => (
-          <SelectRoot
+          <Select.Root
             aria-label="Email"
             placeholder="Select a verified email to display"
             name={field.name}
@@ -125,22 +125,22 @@ export function FormDemo() {
           >
             <Label>Email</Label>
 
-            <SelectTrigger ref={field.ref}>
-              <SelectValue />
-            </SelectTrigger>
-            <PopoverContent>
-              <ListboxRoot>
-                <ListboxItem id="m@example.com">m@example.com</ListboxItem>
-                <ListboxItem id="m@google.com">m@google.com</ListboxItem>
-                <ListboxItem id="m@support.com">m@support.com</ListboxItem>
-              </ListboxRoot>
-            </PopoverContent>
+            <Select.Trigger ref={field.ref}>
+              <Select.Value />
+            </Select.Trigger>
+            <Popover.Content>
+              <Listbox.Root>
+                <Listbox.Item id="m@example.com">m@example.com</Listbox.Item>
+                <Listbox.Item id="m@google.com">m@google.com</Listbox.Item>
+                <Listbox.Item id="m@support.com">m@support.com</Listbox.Item>
+              </Listbox.Root>
+            </Popover.Content>
 
             <FormDescription>
               You can manage email addresses in your email settings.
             </FormDescription>
             <FormMessage>{fieldState.error?.message}</FormMessage>
-          </SelectRoot>
+          </Select.Root>
         )}
       />
       <Controller
@@ -300,7 +300,7 @@ export function FormDemo() {
                   </Button>
                 </FormControl>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
+              <Popover.Content className="w-auto p-0" align="start">
                 <Calendar
                   mode="single"
                   selected={field.value}
@@ -310,7 +310,7 @@ export function FormDemo() {
                   }
                   initialFocus
                 />
-              </PopoverContent>
+              </Popover.Content>
             </Popover>
             <FormDescription>
               Your date of birth is used to calculate your age.

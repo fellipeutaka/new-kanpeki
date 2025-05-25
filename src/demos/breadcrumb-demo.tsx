@@ -1,44 +1,38 @@
-import {
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbRoot,
-  BreadcrumbSeparator,
-} from "~/components/ui/breadcrumb";
-import { Button } from "~/components/ui/button";
-import { MenuContent, MenuItem, MenuRoot } from "~/components/ui/menu";
-import { PopoverContent } from "~/components/ui/popover";
+import { Breadcrumb } from "~/components/ui/breadcrumb";
+import { Button } from "~/components/ui/button/button";
+import { Menu } from "~/components/ui/menu";
+import { Popover } from "~/components/ui/popover";
 
 export function BreadcrumbDemo() {
   return (
-    <BreadcrumbRoot>
-      <BreadcrumbItem>
-        <BreadcrumbLink href="/">Home</BreadcrumbLink>
-      </BreadcrumbItem>
-      <BreadcrumbSeparator />
-      <BreadcrumbItem>
-        <MenuRoot>
+    <Breadcrumb.Root>
+      <Breadcrumb.Item>
+        <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+      </Breadcrumb.Item>
+      <Breadcrumb.Separator />
+      <Breadcrumb.Item>
+        <Menu.Root>
           <Button variant="unstyled" size="icon">
-            <BreadcrumbEllipsis />
+            <Breadcrumb.Ellipsis />
           </Button>
 
-          <PopoverContent>
-            <MenuContent>
-              <MenuItem>Documentation</MenuItem>
-              <MenuItem>Themes</MenuItem>
-              <MenuItem>GitHub</MenuItem>
-            </MenuContent>
-          </PopoverContent>
-        </MenuRoot>
-      </BreadcrumbItem>
-      <BreadcrumbSeparator />
-      <BreadcrumbItem>
-        <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
-      </BreadcrumbItem>
-      <BreadcrumbSeparator />
-      <BreadcrumbItem>
-        <BreadcrumbLink>Breadcrumb</BreadcrumbLink>
-      </BreadcrumbItem>
-    </BreadcrumbRoot>
+          <Popover.Content>
+            <Menu.Content>
+              <Menu.Item>Documentation</Menu.Item>
+              <Menu.Item>Themes</Menu.Item>
+              <Menu.Item>GitHub</Menu.Item>
+            </Menu.Content>
+          </Popover.Content>
+        </Menu.Root>
+      </Breadcrumb.Item>
+      <Breadcrumb.Separator />
+      <Breadcrumb.Item>
+        <Breadcrumb.Link href="/docs/components">Components</Breadcrumb.Link>
+      </Breadcrumb.Item>
+      <Breadcrumb.Separator />
+      <Breadcrumb.Item>
+        <Breadcrumb.Link>Breadcrumb</Breadcrumb.Link>
+      </Breadcrumb.Item>
+    </Breadcrumb.Root>
   );
 }

@@ -1,17 +1,7 @@
-import { Button } from "~/components/ui/button";
-import {
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogModal,
-  DialogOverlay,
-  DialogRoot,
-  DialogTitle,
-} from "~/components/ui/dialog";
+import { Button } from "~/components/ui/button/button";
+import { Dialog } from "~/components/ui/dialog";
 import { Input } from "~/components/ui/input";
-import { Label } from "~/components/ui/label";
+import { Label } from "~/components/ui/label/label";
 import { Textfield } from "~/components/ui/textfield";
 
 export function DialogDemo() {
@@ -26,19 +16,19 @@ export function DialogDemo() {
 
 function DialogWithForm() {
   return (
-    <DialogRoot>
+    <Dialog.Root>
       <Button variant="outline">Edit Profile</Button>
 
-      <DialogOverlay>
-        <DialogModal className="sm:max-w-[425px]">
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Edit profile</DialogTitle>
-              <DialogDescription>
+      <Dialog.Overlay>
+        <Dialog.Modal className="sm:max-w-[425px]">
+          <Dialog.Content>
+            <Dialog.Header>
+              <Dialog.Title>Edit profile</Dialog.Title>
+              <Dialog.Description>
                 Make changes to your profile here. Click save when you&apos;re
                 done.
-              </DialogDescription>
-            </DialogHeader>
+              </Dialog.Description>
+            </Dialog.Header>
             <div className="grid gap-4">
               <Textfield name="name" defaultValue="Pedro Duarte" autoFocus>
                 <Label>Name</Label>
@@ -49,35 +39,35 @@ function DialogWithForm() {
                 <Input />
               </Textfield>
             </div>
-            <DialogFooter>
+            <Dialog.Footer>
               <Button slot="close" variant="outline">
                 Cancel
               </Button>
               <Button type="submit">Save changes</Button>
-            </DialogFooter>
+            </Dialog.Footer>
 
-            <DialogClose />
-          </DialogContent>
-        </DialogModal>
-      </DialogOverlay>
-    </DialogRoot>
+            <Dialog.Close />
+          </Dialog.Content>
+        </Dialog.Modal>
+      </Dialog.Overlay>
+    </Dialog.Root>
   );
 }
 
 function DialogScrollableContent() {
   return (
-    <DialogRoot>
+    <Dialog.Root>
       <Button variant="outline">Scrollable Content</Button>
 
-      <DialogOverlay>
-        <DialogModal className="sm:max-w-[425px]">
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Scrollable Content</DialogTitle>
-              <DialogDescription>
-                This is a dialog with scrollable content.
-              </DialogDescription>
-            </DialogHeader>
+      <Dialog.Overlay>
+        <Dialog.Modal className="sm:max-w-[425px]">
+          <Dialog.Content>
+            <Dialog.Header>
+              <Dialog.Title>Scrollable Content</Dialog.Title>
+              <Dialog.Description>
+                This is a dialog. with scrollable content.
+              </Dialog.Description>
+            </Dialog.Header>
             <div className="-mx-6 max-h-[500px] overflow-y-auto px-6 text-sm">
               <h4 className="mb-4 font-medium text-lg leading-none">
                 Lorem Ipsum
@@ -97,28 +87,28 @@ function DialogScrollableContent() {
               ))}
             </div>
 
-            <DialogClose />
-          </DialogContent>
-        </DialogModal>
-      </DialogOverlay>
-    </DialogRoot>
+            <Dialog.Close />
+          </Dialog.Content>
+        </Dialog.Modal>
+      </Dialog.Overlay>
+    </Dialog.Root>
   );
 }
 
 function DialogWithStickyFooter() {
   return (
-    <DialogRoot>
+    <Dialog.Root>
       <Button variant="outline">Sticky Footer</Button>
 
-      <DialogOverlay>
-        <DialogModal>
-          <DialogContent className="sm:max-w-lg">
-            <DialogHeader>
-              <DialogTitle>Scrollable Content</DialogTitle>
-              <DialogDescription>
-                This is a dialog with scrollable content.
-              </DialogDescription>
-            </DialogHeader>
+      <Dialog.Overlay>
+        <Dialog.Modal>
+          <Dialog.Content className="sm:max-w-lg">
+            <Dialog.Header>
+              <Dialog.Title>Scrollable Content</Dialog.Title>
+              <Dialog.Description>
+                This is a dialog. with scrollable content.
+              </Dialog.Description>
+            </Dialog.Header>
             <div className="-mx-6 max-h-[500px] overflow-y-auto px-6 text-sm">
               <h4 className="mb-4 font-medium text-lg leading-none">
                 Lorem Ipsum
@@ -137,16 +127,16 @@ function DialogWithStickyFooter() {
                 </p>
               ))}
             </div>
-            <DialogFooter>
+            <Dialog.Footer>
               <Button slot="close" variant="outline">
                 Close
               </Button>
-            </DialogFooter>
+            </Dialog.Footer>
 
-            <DialogClose />
-          </DialogContent>
-        </DialogModal>
-      </DialogOverlay>
-    </DialogRoot>
+            <Dialog.Close />
+          </Dialog.Content>
+        </Dialog.Modal>
+      </Dialog.Overlay>
+    </Dialog.Root>
   );
 }

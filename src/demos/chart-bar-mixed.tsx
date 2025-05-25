@@ -1,22 +1,10 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
+import { TrendingUpIcon } from "lucide-react";
 import { Bar, BarChart, XAxis, YAxis } from "recharts";
 
-import {
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardRoot,
-  CardTitle,
-} from "~/components/ui/card";
-import {
-  type ChartConfig,
-  ChartRoot,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "~/components/ui/chart";
+import { Card } from "~/components/ui/card";
+import { Chart, type ChartConfig } from "~/components/ui/chart";
 
 export const description = "A mixed bar chart";
 
@@ -56,13 +44,13 @@ const chartConfig = {
 
 export function ChartBarMixed() {
   return (
-    <CardRoot>
-      <CardHeader>
-        <CardTitle>Bar Chart - Mixed</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <ChartRoot config={chartConfig}>
+    <Card.Root>
+      <Card.Header>
+        <Card.Title>Bar Chart - Mixed</Card.Title>
+        <Card.Description>January - June 2024</Card.Description>
+      </Card.Header>
+      <Card.Content>
+        <Chart.Root config={chartConfig}>
           <BarChart
             accessibilityLayer
             data={chartData}
@@ -82,22 +70,22 @@ export function ChartBarMixed() {
               }
             />
             <XAxis dataKey="visitors" type="number" hide />
-            <ChartTooltip
+            <Chart.Tooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel />}
+              content={<Chart.TooltipContent hideLabel />}
             />
             <Bar dataKey="visitors" layout="vertical" radius={5} />
           </BarChart>
-        </ChartRoot>
-      </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
+        </Chart.Root>
+      </Card.Content>
+      <Card.Footer className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+          Trending up by 5.2% this month <TrendingUpIcon className="h-4 w-4" />
         </div>
         <div className="text-muted-foreground leading-none">
           Showing total visitors for the last 6 months
         </div>
-      </CardFooter>
-    </CardRoot>
+      </Card.Footer>
+    </Card.Root>
   );
 }
