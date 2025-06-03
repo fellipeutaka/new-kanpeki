@@ -3,7 +3,7 @@ import { ComponentWrapper } from "~/demos/component-wrapper";
 
 const SINK_COMPONENTS: [
   string,
-  React.LazyExoticComponent<() => React.JSX.Element>
+  React.LazyExoticComponent<() => React.JSX.Element>,
 ][] = [
   [
     "chart",
@@ -260,6 +260,14 @@ const SINK_COMPONENTS: [
     "sonner",
     lazy(() =>
       import("~/demos/sonner-demo").then((mod) => ({ default: mod.SonnerDemo }))
+    ),
+  ],
+  [
+    "spinner",
+    lazy(() =>
+      import("~/demos/spinner-demo").then((mod) => ({
+        default: mod.SpinnerDemo,
+      }))
     ),
   ],
   [
