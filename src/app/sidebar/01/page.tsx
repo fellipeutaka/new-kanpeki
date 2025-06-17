@@ -1,4 +1,5 @@
 import { Breadcrumb } from "~/components/ui/breadcrumb";
+import { Link } from "~/components/ui/link";
 import { Separator } from "~/components/ui/separator";
 import { Sidebar } from "~/components/ui/sidebar";
 import { AppSidebar } from "./_components/app-sidebar";
@@ -17,13 +18,11 @@ export default function Page() {
             />
             <Breadcrumb.Root>
               <Breadcrumb.Item className="hidden md:block">
-                <Breadcrumb.Link href="#">
-                  Building Your Application
-                </Breadcrumb.Link>
+                <Link href="#">Building Your Application</Link>
               </Breadcrumb.Item>
               <Breadcrumb.Separator className="hidden md:block" />
               <Breadcrumb.Item>
-                <Breadcrumb.Link>Data Fetching</Breadcrumb.Link>
+                <Link>Data Fetching</Link>
               </Breadcrumb.Item>
             </Breadcrumb.Root>
           </div>

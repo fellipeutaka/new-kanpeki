@@ -4,7 +4,6 @@ import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react";
 import {
   Breadcrumb,
   Breadcrumbs,
-  Link,
   composeRenderProps,
 } from "react-aria-components";
 import { BreadcrumbStyles } from "./styles";
@@ -33,21 +32,6 @@ export function BreadcrumbItem({ className, ...props }: BreadcrumbItemProps) {
     <Breadcrumb
       data-slot="breadcrumb-item"
       className={BreadcrumbStyles.Item({ className })}
-      {...props}
-    />
-  );
-}
-
-export interface BreadcrumbLinkProps
-  extends React.ComponentProps<typeof Link> {}
-
-export function BreadcrumbLink({ className, ...props }: BreadcrumbLinkProps) {
-  return (
-    <Link
-      data-slot="breadcrumb-link"
-      className={composeRenderProps(className, (className) =>
-        BreadcrumbStyles.Link({ className })
-      )}
       {...props}
     />
   );

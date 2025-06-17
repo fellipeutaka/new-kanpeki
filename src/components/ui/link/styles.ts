@@ -1,0 +1,32 @@
+import { cva } from "~/lib/cva";
+
+export const LinkStyles = cva({
+  base: [
+    "rounded-md current:font-normal outline-none transition-all",
+    "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+  ],
+  variants: {
+    variant: {
+      unstyled: null,
+      default: [
+        "current:text-foreground text-muted-foreground",
+        "hover:text-foreground",
+      ],
+      foreground: [
+        "text-foreground",
+        "hover:text-foreground/90 dark:hover:text-foreground/60",
+      ],
+      primary: [
+        "text-primary",
+        "hover:text-primary/90 dark:hover:text-primary/60",
+      ],
+    },
+    underline: {
+      always: ["underline underline-offset-4"],
+      hover: ["underline-offset-4 hover:underline"],
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});

@@ -179,6 +179,12 @@ const SINK_COMPONENTS: [
       import("~/demos/label-demo").then((mod) => ({ default: mod.LabelDemo }))
     ),
   ],
+  [
+    "link",
+    lazy(() =>
+      import("~/demos/link-demo").then((mod) => ({ default: mod.LinkDemo }))
+    ),
+  ],
   // ["menubar"],
   // ["navigation-menu"],
   [
