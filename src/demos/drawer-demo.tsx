@@ -1,6 +1,6 @@
 "use client";
 
-// import { Minus, Plus } from "lucide-react";
+// import { MinusIcon, PlusIcon } from "lucide-react";
 // import { Bar, BarChart, ResponsiveContainer } from "recharts";
 
 // import { useCallback, useState } from "react";

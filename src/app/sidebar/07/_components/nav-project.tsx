@@ -1,11 +1,11 @@
 "use client";
 
 import {
-  Folder,
-  Forward,
+  FolderIcon,
+  ForwardIcon,
   type LucideIcon,
-  MoreHorizontal,
-  Trash2,
+  MoreHorizontalIcon,
+  Trash2Icon,
 } from "lucide-react";
 
 import { Menu } from "~/components/ui/menu";
@@ -35,7 +35,7 @@ export function NavProjects({ projects }: NavProjectsProps) {
             </Sidebar.MenuLink>
             <Menu.Root>
               <Sidebar.MenuAction showOnHover>
-                <MoreHorizontal />
+                <MoreHorizontalIcon />
                 <span className="sr-only">More</span>
               </Sidebar.MenuAction>
 
@@ -44,16 +44,16 @@ export function NavProjects({ projects }: NavProjectsProps) {
               >
                 <Menu.Content className="w-48 rounded-lg">
                   <Menu.Item>
-                    <Folder className="text-muted-foreground" />
+                    <FolderIcon className="text-muted-foreground" />
                     <span>View Project</span>
                   </Menu.Item>
                   <Menu.Item>
-                    <Forward className="text-muted-foreground" />
+                    <ForwardIcon className="text-muted-foreground" />
                     <span>Share Project</span>
                   </Menu.Item>
                   <Menu.Separator />
                   <Menu.Item>
-                    <Trash2 className="text-muted-foreground" />
+                    <Trash2Icon className="text-muted-foreground" />
                     <span>Delete Project</span>
                   </Menu.Item>
                 </Menu.Content>
@@ -63,7 +63,7 @@ export function NavProjects({ projects }: NavProjectsProps) {
         ))}
         <Sidebar.MenuItem>
           <Sidebar.MenuButton className="text-sidebar-foreground/70">
-            <MoreHorizontal className="text-sidebar-foreground/70" />
+            <MoreHorizontalIcon className="text-sidebar-foreground/70" />
             <span>More</span>
           </Sidebar.MenuButton>
         </Sidebar.MenuItem>
