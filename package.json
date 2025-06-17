@@ -12,7 +12,6 @@
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
     "@internationalized/date": "^3.8.2",
-    "@radix-ui/react-scroll-area": "^1.2.9",
     "embla-carousel-react": "^8.6.0",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.516.0",
