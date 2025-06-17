@@ -2,26 +2,15 @@
 
 import { getLocalTimeZone, today } from "@internationalized/date";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { Button } from "~/components/ui/button";
-import {
-  CalendarCell,
-  CalendarGrid,
-  CalendarGridBody,
-  CalendarGridHeader,
-  CalendarHeader,
-  CalendarHeaderCell,
-  CalendarMonth,
-  CalendarNav,
-  CalendarRoot,
-  RangeCalendarRoot,
-} from "~/components/ui/calendar";
+import { Button } from "~/components/ui/button/button";
+import { Calendar } from "~/components/ui/calendar";
 
 export function CalendarDemo() {
   return (
     <div className="flex @md:flex-row flex-col flex-wrap items-start gap-2">
-      <CalendarRoot className="rounded-md border p-3 shadow-sm">
-        <CalendarHeader>
-          <CalendarNav>
+      <Calendar.Root variant="outline">
+        <Calendar.Header>
+          <Calendar.Nav>
             <Button
               size="icon"
               variant="outline"
@@ -31,7 +20,7 @@ export function CalendarDemo() {
               <ChevronLeftIcon className="size-4" />
             </Button>
 
-            <CalendarMonth />
+            <Calendar.Month />
 
             <Button
               size="icon"
@@ -41,29 +30,29 @@ export function CalendarDemo() {
             >
               <ChevronRightIcon className="size-4" />
             </Button>
-          </CalendarNav>
-        </CalendarHeader>
+          </Calendar.Nav>
+        </Calendar.Header>
 
-        <CalendarGrid weekdayStyle="short">
-          <CalendarGridHeader>
-            {(weekDay) => <CalendarHeaderCell>{weekDay}</CalendarHeaderCell>}
-          </CalendarGridHeader>
+        <Calendar.Grid weekdayStyle="short">
+          <Calendar.GridHeader>
+            {(weekDay) => <Calendar.HeaderCell>{weekDay}</Calendar.HeaderCell>}
+          </Calendar.GridHeader>
 
-          <CalendarGridBody>
-            {(date) => <CalendarCell shape="rounded" date={date} />}
-          </CalendarGridBody>
-        </CalendarGrid>
-      </CalendarRoot>
+          <Calendar.GridBody>
+            {(date) => <Calendar.Cell shape="rounded" date={date} />}
+          </Calendar.GridBody>
+        </Calendar.Grid>
+      </Calendar.Root>
 
-      <RangeCalendarRoot
-        className="rounded-md border p-3 shadow-sm"
+      <Calendar.Range
+        variant="outline"
         visibleDuration={{ months: 2 }}
         isDateUnavailable={(date) => {
           return date.compare(today(getLocalTimeZone())) > 0;
         }}
       >
-        <CalendarHeader>
-          <CalendarNav>
+        <Calendar.Header>
+          <Calendar.Nav>
             <Button
               size="icon"
               variant="outline"
@@ -73,7 +62,7 @@ export function CalendarDemo() {
               <ChevronLeftIcon className="size-4" />
             </Button>
 
-            <CalendarMonth />
+            <Calendar.Month />
 
             <Button
               size="icon"
@@ -83,31 +72,35 @@ export function CalendarDemo() {
             >
               <ChevronRightIcon className="size-4" />
             </Button>
-          </CalendarNav>
-        </CalendarHeader>
+          </Calendar.Nav>
+        </Calendar.Header>
 
         <div className="flex gap-2">
-          <CalendarGrid weekdayStyle="short">
-            <CalendarGridHeader>
-              {(weekDay) => <CalendarHeaderCell>{weekDay}</CalendarHeaderCell>}
-            </CalendarGridHeader>
+          <Calendar.Grid weekdayStyle="short">
+            <Calendar.GridHeader>
+              {(weekDay) => (
+                <Calendar.HeaderCell>{weekDay}</Calendar.HeaderCell>
+              )}
+            </Calendar.GridHeader>
 
-            <CalendarGridBody>
-              {(date) => <CalendarCell date={date} />}
-            </CalendarGridBody>
-          </CalendarGrid>
+            <Calendar.GridBody>
+              {(date) => <Calendar.Cell date={date} />}
+            </Calendar.GridBody>
+          </Calendar.Grid>
 
-          <CalendarGrid offset={{ months: 1 }} weekdayStyle="short">
-            <CalendarGridHeader>
-              {(weekDay) => <CalendarHeaderCell>{weekDay}</CalendarHeaderCell>}
-            </CalendarGridHeader>
+          <Calendar.Grid offset={{ months: 1 }} weekdayStyle="short">
+            <Calendar.GridHeader>
+              {(weekDay) => (
+                <Calendar.HeaderCell>{weekDay}</Calendar.HeaderCell>
+              )}
+            </Calendar.GridHeader>
 
-            <CalendarGridBody>
-              {(date) => <CalendarCell date={date} />}
-            </CalendarGridBody>
-          </CalendarGrid>
+            <Calendar.GridBody>
+              {(date) => <Calendar.Cell date={date} />}
+            </Calendar.GridBody>
+          </Calendar.Grid>
         </div>
-      </RangeCalendarRoot>
+      </Calendar.Range>
     </div>
   );
 }

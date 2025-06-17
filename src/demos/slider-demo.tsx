@@ -1,64 +1,57 @@
 "use client";
 
 import { useState } from "react";
-import { Label } from "~/components/ui/label";
-import {
-  SliderHeader,
-  SliderOutput,
-  SliderRange,
-  SliderRoot,
-  SliderThumb,
-  SliderTrack,
-} from "~/components/ui/slider";
+import { Label } from "~/components/ui/label/label";
+import { Slider } from "~/components/ui/slider";
 
 export function SliderDemo() {
   return (
     <div className="flex w-full max-w-sm flex-col flex-wrap gap-6 md:flex-row">
-      <SliderRoot defaultValue={[50]} maxValue={100} step={1}>
-        <SliderTrack>
-          <SliderRange />
-          <SliderThumb />
-        </SliderTrack>
-      </SliderRoot>
+      <Slider.Root defaultValue={[50]} maxValue={100} step={1}>
+        <Slider.Track>
+          <Slider.Range />
+          <Slider.Thumb />
+        </Slider.Track>
+      </Slider.Root>
 
-      <SliderRoot defaultValue={[25, 50]} maxValue={100} step={1}>
-        <SliderTrack>
-          <SliderRange />
-          <SliderThumb />
-        </SliderTrack>
-      </SliderRoot>
+      <Slider.Root defaultValue={[25, 50]} maxValue={100} step={1}>
+        <Slider.Track>
+          <Slider.Range />
+          <Slider.Thumb />
+        </Slider.Track>
+      </Slider.Root>
 
-      <SliderRoot defaultValue={[10, 20]} maxValue={100} step={10}>
-        <SliderTrack>
-          <SliderRange />
-          <SliderThumb />
-        </SliderTrack>
-      </SliderRoot>
+      <Slider.Root defaultValue={[10, 20]} maxValue={100} step={10}>
+        <Slider.Track>
+          <Slider.Range />
+          <Slider.Thumb />
+        </Slider.Track>
+      </Slider.Root>
 
       <div className="flex w-full items-center gap-6">
-        <SliderRoot
+        <Slider.Root
           defaultValue={[50]}
           maxValue={100}
           step={1}
           orientation="vertical"
         >
-          <SliderTrack>
-            <SliderRange />
-            <SliderThumb />
-          </SliderTrack>
-        </SliderRoot>
+          <Slider.Track>
+            <Slider.Range />
+            <Slider.Thumb />
+          </Slider.Track>
+        </Slider.Root>
 
-        <SliderRoot
+        <Slider.Root
           defaultValue={[25]}
           maxValue={100}
           step={1}
           orientation="vertical"
         >
-          <SliderTrack>
-            <SliderRange />
-            <SliderThumb />
-          </SliderTrack>
-        </SliderRoot>
+          <Slider.Track>
+            <Slider.Range />
+            <Slider.Thumb />
+          </Slider.Track>
+        </Slider.Root>
       </div>
 
       <SliderControlled />
@@ -70,26 +63,26 @@ function SliderControlled() {
   const [value, setValue] = useState([0.3, 0.7]);
 
   return (
-    <SliderRoot
+    <Slider.Root
       value={value}
       onChange={setValue}
       minValue={0}
       maxValue={1}
       step={0.1}
     >
-      <SliderHeader>
+      <Slider.Header>
         <Label>Temperature</Label>
 
-        <SliderOutput className="text-muted-foreground text-sm">
+        <Slider.Output className="text-muted-foreground text-sm">
           {({ state }) =>
             state.values.map((_, i) => state.getThumbValueLabel(i)).join(", ")
           }
-        </SliderOutput>
-      </SliderHeader>
-      <SliderTrack>
-        <SliderRange />
-        <SliderThumb />
-      </SliderTrack>
-    </SliderRoot>
+        </Slider.Output>
+      </Slider.Header>
+      <Slider.Track>
+        <Slider.Range />
+        <Slider.Thumb />
+      </Slider.Track>
+    </Slider.Root>
   );
 }

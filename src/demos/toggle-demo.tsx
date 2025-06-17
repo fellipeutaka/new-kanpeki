@@ -5,7 +5,7 @@ import {
   UnderlineIcon,
 } from "lucide-react";
 
-import { Toggle } from "~/components/ui/toggle";
+import { Toggle } from "~/components/ui/toggle/toggle";
 
 export function ToggleDemo() {
   return (

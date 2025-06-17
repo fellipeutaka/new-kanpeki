@@ -38,7 +38,7 @@
 
 - [⏳] Fix aria-label warnings
 - [⏳] Rename root components and `data-slot` names
-- [⏳] Replace all lucide imports to use the `Icon` suffix
+- [✅] Replace all lucide imports to use the `Icon` suffix
 - [⏳] Convert to better folder structure
 - [⏳] Organize classNames
 - [⏳] Replace all imports to use just `<Component.Sub />` pattern

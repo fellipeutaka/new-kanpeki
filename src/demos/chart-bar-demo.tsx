@@ -1,22 +1,10 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
+import { TrendingUpIcon } from "lucide-react";
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
-import {
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardRoot,
-  CardTitle,
-} from "~/components/ui/card";
-import {
-  type ChartConfig,
-  ChartRoot,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "~/components/ui/chart";
+import { Card } from "~/components/ui/card";
+import { Chart, type ChartConfig } from "~/components/ui/chart";
 
 export const description = "A multiple bar chart";
 
@@ -42,13 +30,13 @@ const chartConfig = {
 
 export function ChartBarDemo() {
   return (
-    <CardRoot>
-      <CardHeader>
-        <CardTitle>Bar Chart - Multiple</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <ChartRoot config={chartConfig}>
+    <Card.Root>
+      <Card.Header>
+        <Card.Title>Bar Chart - Multiple</Card.Title>
+        <Card.Description>January - June 2024</Card.Description>
+      </Card.Header>
+      <Card.Content>
+        <Chart.Root config={chartConfig}>
           <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
             <XAxis
@@ -58,23 +46,23 @@ export function ChartBarDemo() {
               axisLine={false}
               tickFormatter={(value) => value.slice(0, 3)}
             />
-            <ChartTooltip
+            <Chart.Tooltip
               cursor={false}
-              content={<ChartTooltipContent indicator="dashed" />}
+              content={<Chart.TooltipContent indicator="dashed" />}
             />
             <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
             <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
           </BarChart>
-        </ChartRoot>
-      </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
+        </Chart.Root>
+      </Card.Content>
+      <Card.Footer className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+          Trending up by 5.2% this month <TrendingUpIcon className="h-4 w-4" />
         </div>
         <div className="text-muted-foreground leading-none">
           Showing total visitors for the last 6 months
         </div>
-      </CardFooter>
-    </CardRoot>
+      </Card.Footer>
+    </Card.Root>
   );
 }

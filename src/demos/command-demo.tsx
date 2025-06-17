@@ -12,26 +12,10 @@ import {
 
 import { useEffect, useState } from "react";
 import { Autocomplete } from "~/components/ui/autocomplete";
-import {
-  DialogContent,
-  DialogModal,
-  DialogOverlay,
-  DialogRoot,
-} from "~/components/ui/dialog";
+import { Dialog } from "~/components/ui/dialog";
 import { Keyboard } from "~/components/ui/keyboard";
-import {
-  MenuContent,
-  MenuEmpty,
-  MenuGroup,
-  MenuItem,
-  MenuLabel,
-  MenuSeparator,
-} from "~/components/ui/menu";
-import {
-  SearchFieldButton,
-  SearchFieldInput,
-  SearchFieldRoot,
-} from "~/components/ui/search-field";
+import { Menu } from "~/components/ui/menu";
+import { SearchField } from "~/components/ui/search-field";
 
 export function CommandDemo() {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,7 +40,7 @@ export function CommandDemo() {
   }, []);
 
   return (
-    <DialogRoot isOpen={isOpen} onOpenChange={setIsOpen}>
+    <Dialog.Root isOpen={isOpen} onOpenChange={setIsOpen}>
       <p className="text-muted-foreground text-sm">
         Press{" "}
         <Keyboard>
@@ -64,66 +48,63 @@ export function CommandDemo() {
         </Keyboard>
       </p>
 
-      <DialogOverlay>
-        <DialogModal className="bg-popover p-0 text-popover-foreground">
-          <DialogContent className="gap-0">
+      <Dialog.Overlay>
+        <Dialog.Modal className="bg-popover p-0 text-popover-foreground">
+          <Dialog.Content className="gap-0">
             <Autocomplete>
-              <SearchFieldRoot className="h-12" aria-label="Search" autoFocus>
+              <SearchField.Root className="h-12" aria-label="Search" autoFocus>
                 <SearchIcon />
-                <SearchFieldInput
-                  className="flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
-                  placeholder="Type a command or search..."
-                />
-                <SearchFieldButton />
-              </SearchFieldRoot>
+                <SearchField.Input placeholder="Type a command or search..." />
+                <SearchField.Button />
+              </SearchField.Root>
 
-              <MenuContent
-                className="max-h-[300px] border-none **:data-[slot=menu-item]:py-3 **:data-[slot=menu-label]:text-muted-foreground **:data-[slot=menu-label]:text-xs"
+              <Menu.Content
+                variant="command"
                 renderEmptyState={() => (
-                  <MenuEmpty>No results found.</MenuEmpty>
+                  <Menu.Empty>No results found.</Menu.Empty>
                 )}
               >
-                <MenuGroup>
-                  <MenuLabel>Suggestions</MenuLabel>
+                <Menu.Group>
+                  <Menu.Label>Suggestions</Menu.Label>
 
-                  <MenuItem textValue="Calendar">
+                  <Menu.Item textValue="Calendar">
                     <CalendarIcon />
                     <span>Calendar</span>
-                  </MenuItem>
-                  <MenuItem textValue="Search Emoji">
+                  </Menu.Item>
+                  <Menu.Item textValue="Search Emoji">
                     <SmileIcon />
                     <span>Search Emoji</span>
-                  </MenuItem>
-                  <MenuItem textValue="Calculator">
+                  </Menu.Item>
+                  <Menu.Item textValue="Calculator">
                     <CalculatorIcon />
                     <span>Calculator</span>
-                  </MenuItem>
-                </MenuGroup>
-                <MenuSeparator />
-                <MenuGroup>
-                  <MenuLabel>Settings</MenuLabel>
+                  </Menu.Item>
+                </Menu.Group>
+                <Menu.Separator />
+                <Menu.Group>
+                  <Menu.Label>Settings</Menu.Label>
 
-                  <MenuItem textValue="Profile">
+                  <Menu.Item textValue="Profile">
                     <UserIcon />
                     <span>Profile</span>
                     <Keyboard variant="menu">⌘P</Keyboard>
-                  </MenuItem>
-                  <MenuItem textValue="Billing">
+                  </Menu.Item>
+                  <Menu.Item textValue="Billing">
                     <CreditCardIcon />
                     <span>Billing</span>
                     <Keyboard variant="menu">⌘B</Keyboard>
-                  </MenuItem>
-                  <MenuItem textValue="Settings">
+                  </Menu.Item>
+                  <Menu.Item textValue="Settings">
                     <SettingsIcon />
                     <span>Settings</span>
                     <Keyboard variant="menu">⌘S</Keyboard>
-                  </MenuItem>
-                </MenuGroup>
-              </MenuContent>
+                  </Menu.Item>
+                </Menu.Group>
+              </Menu.Content>
             </Autocomplete>
-          </DialogContent>
-        </DialogModal>
-      </DialogOverlay>
-    </DialogRoot>
+          </Dialog.Content>
+        </Dialog.Modal>
+      </Dialog.Overlay>
+    </Dialog.Root>
   );
 }

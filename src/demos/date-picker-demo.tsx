@@ -4,22 +4,12 @@ import { getLocalTimeZone } from "@internationalized/date";
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useState } from "react";
 import { type DateValue, Group } from "react-aria-components";
-import { Button } from "~/components/ui/button";
-import {
-  CalendarCell,
-  CalendarGrid,
-  CalendarGridBody,
-  CalendarGridHeader,
-  CalendarHeader,
-  CalendarHeaderCell,
-  CalendarMonth,
-  CalendarNav,
-  CalendarRoot,
-} from "~/components/ui/calendar";
-import { DateFieldInput } from "~/components/ui/date-field";
-import { DatePickerIcon, DatePickerRoot } from "~/components/ui/date-picker";
-import { DialogContent } from "~/components/ui/dialog";
-import { PopoverContent, PopoverRoot } from "~/components/ui/popover";
+import { Button } from "~/components/ui/button/button";
+import { Calendar } from "~/components/ui/calendar";
+import { DateField } from "~/components/ui/date-field";
+import { DatePicker } from "~/components/ui/date-picker";
+import { DialogContent } from "~/components/ui/dialog/dialog";
+import { Popover } from "~/components/ui/popover";
 import { cn } from "~/lib/cva";
 
 export function DatePickerDemo() {
@@ -27,26 +17,28 @@ export function DatePickerDemo() {
     <div className="flex flex-col items-start gap-4 md:flex-row">
       <Simple />
       <DatePickerSimple />
-      {/* <DatePickerWithRange /> */}
+      {/* <DatePicker.WithRange /> */}
     </div>
   );
 }
 
 function Simple() {
   return (
-    <DatePickerRoot>
+    <DatePicker.Root>
       <Group>
         <Button variant="outline" className="font-normal">
           <CalendarIcon className="size-4 shrink-0 text-muted-foreground" />
-          <DateFieldInput />
-          <DatePickerIcon />
+          <DateField.Input>
+            {(segment) => <DateField.Segment segment={segment} />}
+          </DateField.Input>
+          <DatePicker.Icon />
         </Button>
       </Group>
-      <PopoverContent>
+      <Popover.Content>
         <DialogContent className="bg-popover">
-          <CalendarRoot className="rounded-md border p-3 shadow-sm">
-            <CalendarHeader>
-              <CalendarNav>
+          <Calendar.Root variant="outline">
+            <Calendar.Header>
+              <Calendar.Nav>
                 <Button
                   size="icon"
                   variant="outline"
@@ -56,7 +48,7 @@ function Simple() {
                   <ChevronLeftIcon className="size-4" />
                 </Button>
 
-                <CalendarMonth />
+                <Calendar.Month />
 
                 <Button
                   size="icon"
@@ -66,24 +58,24 @@ function Simple() {
                 >
                   <ChevronRightIcon className="size-4" />
                 </Button>
-              </CalendarNav>
-            </CalendarHeader>
+              </Calendar.Nav>
+            </Calendar.Header>
 
-            <CalendarGrid weekdayStyle="short">
-              <CalendarGridHeader>
+            <Calendar.Grid weekdayStyle="short">
+              <Calendar.GridHeader>
                 {(weekDay) => (
-                  <CalendarHeaderCell>{weekDay}</CalendarHeaderCell>
+                  <Calendar.HeaderCell>{weekDay}</Calendar.HeaderCell>
                 )}
-              </CalendarGridHeader>
+              </Calendar.GridHeader>
 
-              <CalendarGridBody>
-                {(date) => <CalendarCell date={date} />}
-              </CalendarGridBody>
-            </CalendarGrid>
-          </CalendarRoot>
+              <Calendar.GridBody>
+                {(date) => <Calendar.Cell date={date} />}
+              </Calendar.GridBody>
+            </Calendar.Grid>
+          </Calendar.Root>
         </DialogContent>
-      </PopoverContent>
-    </DatePickerRoot>
+      </Popover.Content>
+    </DatePicker.Root>
   );
 }
 
@@ -91,7 +83,7 @@ function DatePickerSimple() {
   const [date, setDate] = useState<DateValue>();
 
   return (
-    <PopoverRoot>
+    <Popover.Root>
       <Button
         variant="outline"
         className={cn(
@@ -110,10 +102,10 @@ function DatePickerSimple() {
           <span>Pick a date</span>
         )}
       </Button>
-      <PopoverContent className="min-w-auto p-3" placement="bottom start">
-        <CalendarRoot value={date} onChange={setDate}>
-          <CalendarHeader>
-            <CalendarNav>
+      <Popover.Content className="min-w-auto p-3" placement="bottom start">
+        <Calendar.Root value={date} onChange={setDate}>
+          <Calendar.Header>
+            <Calendar.Nav>
               <Button
                 size="icon"
                 variant="outline"
@@ -123,7 +115,7 @@ function DatePickerSimple() {
                 <ChevronLeftIcon className="size-4" />
               </Button>
 
-              <CalendarMonth />
+              <Calendar.Month />
 
               <Button
                 size="icon"
@@ -133,25 +125,27 @@ function DatePickerSimple() {
               >
                 <ChevronRightIcon className="size-4" />
               </Button>
-            </CalendarNav>
-          </CalendarHeader>
+            </Calendar.Nav>
+          </Calendar.Header>
 
-          <CalendarGrid weekdayStyle="short">
-            <CalendarGridHeader>
-              {(weekDay) => <CalendarHeaderCell>{weekDay}</CalendarHeaderCell>}
-            </CalendarGridHeader>
+          <Calendar.Grid weekdayStyle="short">
+            <Calendar.GridHeader>
+              {(weekDay) => (
+                <Calendar.HeaderCell>{weekDay}</Calendar.HeaderCell>
+              )}
+            </Calendar.GridHeader>
 
-            <CalendarGridBody>
-              {(date) => <CalendarCell date={date} />}
-            </CalendarGridBody>
-          </CalendarGrid>
-        </CalendarRoot>
-      </PopoverContent>
-    </PopoverRoot>
+            <Calendar.GridBody>
+              {(date) => <Calendar.Cell date={date} />}
+            </Calendar.GridBody>
+          </Calendar.Grid>
+        </Calendar.Root>
+      </Popover.Content>
+    </Popover.Root>
   );
 }
 
-// function DatePickerWithRange() {
+// function DatePicker.WithRange() {
 //   const [date, setDate] = useState<DateRange | undefined>({
 //     from: new Date(new Date().getFullYear(), 0, 20),
 //     to: addDays(new Date(new Date().getFullYear(), 0, 20), 20),
@@ -183,8 +177,8 @@ function DatePickerSimple() {
 //           )}
 //         </Button>
 //       </PopoverTrigger>
-//       <PopoverContent className="w-auto p-0" align="start">
-//         <Calendar
+//       <Popover.Content className="w-auto p-0" align="start">
+//         <Calendar.
 //           initialFocus
 //           mode="range"
 //           defaultMonth={date?.from}
@@ -192,7 +186,7 @@ function DatePickerSimple() {
 //           onSelect={setDate}
 //           numberOfMonths={2}
 //         />
-//       </PopoverContent>
+//       </Popover.Content>
 //     </Popover>
 //   );
 // }

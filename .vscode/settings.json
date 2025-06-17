@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["embla", "kanpeki", "sonner", "turbopack"]
+  "cSpell.words": ["embla", "kanpeki", "sonner", "turbopack"],
+  "editor.defaultFormatter": "biomejs.biome"
 }

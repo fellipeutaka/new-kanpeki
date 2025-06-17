@@ -3,13 +3,8 @@
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 
 import { useId, useState } from "react";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot,
-} from "~/components/ui/input-otp";
-import { Label } from "~/components/ui/label";
+import { InputOTP } from "~/components/ui/input-otp";
+import { Label } from "~/components/ui/label/label";
 
 export function InputOTPDemo() {
   return (
@@ -28,19 +23,19 @@ function InputOTPSimple() {
   return (
     <div className="grid gap-2">
       <Label htmlFor={id}>Simple</Label>
-      <InputOTP id={id} maxLength={6}>
-        <InputOTPGroup>
-          <InputOTPSlot index={0} />
-          <InputOTPSlot index={1} />
-          <InputOTPSlot index={2} />
-        </InputOTPGroup>
-        <InputOTPSeparator />
-        <InputOTPGroup>
-          <InputOTPSlot index={3} />
-          <InputOTPSlot index={4} />
-          <InputOTPSlot index={5} />
-        </InputOTPGroup>
-      </InputOTP>
+      <InputOTP.Root id={id} maxLength={6}>
+        <InputOTP.Group>
+          <InputOTP.Slot index={0} />
+          <InputOTP.Slot index={1} />
+          <InputOTP.Slot index={2} />
+        </InputOTP.Group>
+        <InputOTP.Separator />
+        <InputOTP.Group>
+          <InputOTP.Slot index={3} />
+          <InputOTP.Slot index={4} />
+          <InputOTP.Slot index={5} />
+        </InputOTP.Group>
+      </InputOTP.Root>
     </div>
   );
 }
@@ -51,16 +46,16 @@ function InputOTPPattern() {
   return (
     <div className="grid gap-2">
       <Label htmlFor={id}>Digits Only</Label>
-      <InputOTP id={id} maxLength={6} pattern={REGEXP_ONLY_DIGITS}>
-        <InputOTPGroup>
-          <InputOTPSlot index={0} />
-          <InputOTPSlot index={1} />
-          <InputOTPSlot index={2} />
-          <InputOTPSlot index={3} />
-          <InputOTPSlot index={4} />
-          <InputOTPSlot index={5} />
-        </InputOTPGroup>
-      </InputOTP>
+      <InputOTP.Root id={id} maxLength={6} pattern={REGEXP_ONLY_DIGITS}>
+        <InputOTP.Group>
+          <InputOTP.Slot index={0} />
+          <InputOTP.Slot index={1} />
+          <InputOTP.Slot index={2} />
+          <InputOTP.Slot index={3} />
+          <InputOTP.Slot index={4} />
+          <InputOTP.Slot index={5} />
+        </InputOTP.Group>
+      </InputOTP.Root>
     </div>
   );
 }
@@ -72,22 +67,22 @@ function InputOTPWithSeparator() {
   return (
     <div className="grid gap-2">
       <Label htmlFor={id}>With Separator</Label>
-      <InputOTP id={id} maxLength={6} value={value} onChange={setValue}>
-        <InputOTPGroup>
-          <InputOTPSlot index={0} />
-          <InputOTPSlot index={1} />
-        </InputOTPGroup>
-        <InputOTPSeparator />
-        <InputOTPGroup>
-          <InputOTPSlot index={2} />
-          <InputOTPSlot index={3} />
-        </InputOTPGroup>
-        <InputOTPSeparator />
-        <InputOTPGroup>
-          <InputOTPSlot index={4} />
-          <InputOTPSlot index={5} />
-        </InputOTPGroup>
-      </InputOTP>
+      <InputOTP.Root id={id} maxLength={6} value={value} onChange={setValue}>
+        <InputOTP.Group>
+          <InputOTP.Slot index={0} />
+          <InputOTP.Slot index={1} />
+        </InputOTP.Group>
+        <InputOTP.Separator />
+        <InputOTP.Group>
+          <InputOTP.Slot index={2} />
+          <InputOTP.Slot index={3} />
+        </InputOTP.Group>
+        <InputOTP.Separator />
+        <InputOTP.Group>
+          <InputOTP.Slot index={4} />
+          <InputOTP.Slot index={5} />
+        </InputOTP.Group>
+      </InputOTP.Root>
     </div>
   );
 }
@@ -98,14 +93,14 @@ function InputOTPWithSpacing() {
   return (
     <div className="grid gap-2">
       <Label htmlFor={id}>With Spacing</Label>
-      <InputOTP id={id} maxLength={6}>
-        <InputOTPGroup className="gap-2 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border">
-          <InputOTPSlot index={0} aria-invalid="true" />
-          <InputOTPSlot index={1} aria-invalid="true" />
-          <InputOTPSlot index={2} aria-invalid="true" />
-          <InputOTPSlot index={3} aria-invalid="true" />
-        </InputOTPGroup>
-      </InputOTP>
+      <InputOTP.Root id={id} maxLength={6}>
+        <InputOTP.Group className="gap-2 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border">
+          <InputOTP.Slot index={0} aria-invalid="true" />
+          <InputOTP.Slot index={1} aria-invalid="true" />
+          <InputOTP.Slot index={2} aria-invalid="true" />
+          <InputOTP.Slot index={3} aria-invalid="true" />
+        </InputOTP.Group>
+      </InputOTP.Root>
     </div>
   );
 }
