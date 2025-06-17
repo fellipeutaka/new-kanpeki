@@ -1,17 +1,16 @@
 # TODO
 
 - [✅] Accordion
-- [⚠️] Alert Dialog (just dialog)
+- [✅] Alert Dialog (just dialog)
 - [✅] Breadcrumb
-- [⚠️] Calendar
-- [⚠️] Checkbox
-  - "By clicking this checkbox, you agree to the terms and conditions."
+- [✅] Calendar
+- [✅] Checkbox
 - [✅] Collapsible
 - [⚠️] Combobox
-- [⚠️] Command (Autocomplete)
+- [✅] Command (Autocomplete)
 - [⏳] Context Menu
-- [⚠️] Date Picker
-- [⚠️] Dialog
+- [✅] Date Picker
+- [✅] Dialog
 - [⏳] Drawer
 - [✅] Dropdown Menu
 - [⏳] Form
@@ -25,7 +24,7 @@
 - [✅] Progress
 - [✅] Radio Group
 - [⚠️] Select
-- [⏳] Sheet (just a dialog)
+- [✅] Sheet (just a dialog)
 - [✅] Slider
 - [✅] Switch
 - [✅] Table
