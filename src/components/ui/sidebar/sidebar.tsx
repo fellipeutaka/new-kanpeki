@@ -155,20 +155,20 @@ export function SidebarProvider({
   );
 }
 
-export interface SidebarProps extends React.ComponentProps<"div"> {
+export interface SidebarROotProps extends React.ComponentProps<"div"> {
   side?: "left" | "right";
   variant?: "sidebar" | "floating" | "inset";
   collapsible?: "offcanvas" | "icon" | "none";
 }
 
-export function Sidebar({
+export function SidebarRoot({
   side = "left",
   variant = "sidebar",
   collapsible = "offcanvas",
   className,
   children,
   ...props
-}: SidebarProps) {
+}: SidebarROotProps) {
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
 
   if (collapsible === "none") {

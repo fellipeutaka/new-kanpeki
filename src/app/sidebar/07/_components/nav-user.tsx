@@ -1,23 +1,18 @@
 "use client";
 
 import {
-  BadgeCheck,
-  Bell,
-  ChevronsUpDown,
-  CreditCard,
-  LogOut,
-  Sparkles,
+  BadgeCheckIcon,
+  BellIcon,
+  ChevronsUpDownIcon,
+  CreditCardIcon,
+  LogOutIcon,
+  SparklesIcon,
 } from "lucide-react";
 
 import { Avatar } from "~/components/ui/avatar";
 import { Menu } from "~/components/ui/menu";
 import { Popover } from "~/components/ui/popover";
-import {
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
-} from "~/components/ui/sidebar/sidebar";
+import { Sidebar, useSidebar } from "~/components/ui/sidebar";
 
 interface NavUserProps {
   user: {
@@ -31,10 +26,10 @@ export function NavUser({ user }: NavUserProps) {
   const { isMobile } = useSidebar();
 
   return (
-    <SidebarMenu>
-      <SidebarMenuItem>
+    <Sidebar.Menu>
+      <Sidebar.MenuItem>
         <Menu.Root>
-          <SidebarMenuButton
+          <Sidebar.MenuButton
             size="lg"
             className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
           >
@@ -46,8 +41,8 @@ export function NavUser({ user }: NavUserProps) {
               <span className="truncate font-medium">{user.name}</span>
               <span className="truncate text-xs">{user.email}</span>
             </div>
-            <ChevronsUpDown className="ml-auto size-4" />
-          </SidebarMenuButton>
+            <ChevronsUpDownIcon className="ml-auto size-4" />
+          </Sidebar.MenuButton>
           <Popover.Content placement={isMobile ? "bottom end" : "right"}>
             <Menu.Content className="min-w-56 rounded-lg">
               <Menu.Label className="p-0 font-normal">
@@ -65,34 +60,34 @@ export function NavUser({ user }: NavUserProps) {
               <Menu.Separator />
               <Menu.Group>
                 <Menu.Item>
-                  <Sparkles />
+                  <SparklesIcon />
                   Upgrade to Pro
                 </Menu.Item>
               </Menu.Group>
               <Menu.Separator />
               <Menu.Group>
                 <Menu.Item>
-                  <BadgeCheck />
+                  <BadgeCheckIcon />
                   Account
                 </Menu.Item>
                 <Menu.Item>
-                  <CreditCard />
+                  <CreditCardIcon />
                   Billing
                 </Menu.Item>
                 <Menu.Item>
-                  <Bell />
+                  <BellIcon />
                   Notifications
                 </Menu.Item>
               </Menu.Group>
               <Menu.Separator />
               <Menu.Item variant="destructive">
-                <LogOut />
+                <LogOutIcon />
                 Log out
               </Menu.Item>
             </Menu.Content>
           </Popover.Content>
         </Menu.Root>
-      </SidebarMenuItem>
-    </SidebarMenu>
+      </Sidebar.MenuItem>
+    </Sidebar.Menu>
   );
 }

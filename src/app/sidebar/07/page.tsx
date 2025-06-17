@@ -1,20 +1,16 @@
 import { Breadcrumb } from "~/components/ui/breadcrumb";
 import { Separator } from "~/components/ui/separator";
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "~/components/ui/sidebar/sidebar";
+import { Sidebar } from "~/components/ui/sidebar";
 import { AppSidebar } from "./_components/app-sidebar";
 
 export default function Page() {
   return (
-    <SidebarProvider>
+    <Sidebar.Provider>
       <AppSidebar />
-      <SidebarInset>
+      <Sidebar.Inset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
+            <Sidebar.Trigger className="-ml-1" />
             <Separator
               orientation="vertical"
               className="mr-2 data-[orientation=vertical]:h-4"
@@ -40,7 +36,7 @@ export default function Page() {
           </div>
           <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
         </div>
-      </SidebarInset>
-    </SidebarProvider>
+      </Sidebar.Inset>
+    </Sidebar.Provider>
   );
 }

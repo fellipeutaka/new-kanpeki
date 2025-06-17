@@ -13,13 +13,7 @@ import {
   SquareTerminalIcon,
 } from "lucide-react";
 
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarRail,
-} from "~/components/ui/sidebar/sidebar";
+import { Sidebar } from "~/components/ui/sidebar";
 import { NavMain } from "./nav-main";
 import { NavProjects } from "./nav-project";
 import { NavUser } from "./nav-user";
@@ -155,20 +149,20 @@ const data = {
   ],
 };
 
-export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar(props: React.ComponentProps<typeof Sidebar.Root>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
+    <Sidebar.Root collapsible="icon" {...props}>
+      <Sidebar.Header>
         <TeamSwitcher teams={data.teams} />
-      </SidebarHeader>
-      <SidebarContent>
+      </Sidebar.Header>
+      <Sidebar.Content>
         <NavMain items={data.navMain} />
         <NavProjects projects={data.projects} />
-      </SidebarContent>
-      <SidebarFooter>
+      </Sidebar.Content>
+      <Sidebar.Footer>
         <NavUser user={data.user} />
-      </SidebarFooter>
-      <SidebarRail />
-    </Sidebar>
+      </Sidebar.Footer>
+      <Sidebar.Rail />
+    </Sidebar.Root>
   );
 }

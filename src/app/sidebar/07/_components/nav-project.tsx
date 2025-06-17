@@ -10,16 +10,7 @@ import {
 
 import { Menu } from "~/components/ui/menu";
 import { Popover } from "~/components/ui/popover";
-import {
-  SidebarGroup,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuAction,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuLink,
-  useSidebar,
-} from "~/components/ui/sidebar/sidebar";
+import { Sidebar, useSidebar } from "~/components/ui/sidebar";
 
 interface NavProjectsProps {
   projects: {
@@ -33,20 +24,20 @@ export function NavProjects({ projects }: NavProjectsProps) {
   const { isMobile } = useSidebar();
 
   return (
-    <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Projects</SidebarGroupLabel>
-      <SidebarMenu>
+    <Sidebar.Group className="group-data-[collapsible=icon]:hidden">
+      <Sidebar.GroupLabel>Projects</Sidebar.GroupLabel>
+      <Sidebar.Menu>
         {projects.map((item) => (
-          <SidebarMenuItem key={item.name}>
-            <SidebarMenuLink href={item.url}>
+          <Sidebar.MenuItem key={item.name}>
+            <Sidebar.MenuLink href={item.url}>
               <item.icon />
               <span>{item.name}</span>
-            </SidebarMenuLink>
+            </Sidebar.MenuLink>
             <Menu.Root>
-              <SidebarMenuAction showOnHover>
+              <Sidebar.MenuAction showOnHover>
                 <MoreHorizontal />
                 <span className="sr-only">More</span>
-              </SidebarMenuAction>
+              </Sidebar.MenuAction>
 
               <Popover.Content
                 placement={isMobile ? "bottom end" : "right top"}
@@ -68,15 +59,15 @@ export function NavProjects({ projects }: NavProjectsProps) {
                 </Menu.Content>
               </Popover.Content>
             </Menu.Root>
-          </SidebarMenuItem>
+          </Sidebar.MenuItem>
         ))}
-        <SidebarMenuItem>
-          <SidebarMenuButton className="text-sidebar-foreground/70">
+        <Sidebar.MenuItem>
+          <Sidebar.MenuButton className="text-sidebar-foreground/70">
             <MoreHorizontal className="text-sidebar-foreground/70" />
             <span>More</span>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
-      </SidebarMenu>
-    </SidebarGroup>
+          </Sidebar.MenuButton>
+        </Sidebar.MenuItem>
+      </Sidebar.Menu>
+    </Sidebar.Group>
   );
 }

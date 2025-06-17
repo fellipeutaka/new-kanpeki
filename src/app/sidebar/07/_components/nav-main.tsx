@@ -1,18 +1,7 @@
-"use client";
-
 import { ChevronRightIcon, type LucideIcon } from "lucide-react";
 
 import { Collapsible } from "~/components/ui/collapsible";
-import {
-  SidebarGroup,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-} from "~/components/ui/sidebar/sidebar";
+import { Sidebar } from "~/components/ui/sidebar";
 
 export interface NavMainProps {
   items: {
@@ -29,36 +18,36 @@ export interface NavMainProps {
 
 export function NavMain({ items }: NavMainProps) {
   return (
-    <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
-      <SidebarMenu>
+    <Sidebar.Group>
+      <Sidebar.GroupLabel>Platform</Sidebar.GroupLabel>
+      <Sidebar.Menu>
         {items.map((item) => (
           <Collapsible.Root
             key={item.title}
             defaultExpanded={item.isActive}
             className="group"
           >
-            <SidebarMenuItem>
-              <SidebarMenuButton slot="trigger" tooltip={item.title}>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton slot="trigger" tooltip={item.title}>
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>
                 <ChevronRightIcon className="ml-auto transition-transform duration-200 group-expanded:rotate-90" />
-              </SidebarMenuButton>
+              </Sidebar.MenuButton>
               <Collapsible.Content>
-                <SidebarMenuSub>
+                <Sidebar.MenuSub>
                   {item.items?.map((subItem) => (
-                    <SidebarMenuSubItem key={subItem.title}>
-                      <SidebarMenuSubButton href={subItem.url}>
+                    <Sidebar.MenuSubItem key={subItem.title}>
+                      <Sidebar.MenuSubButton href={subItem.url}>
                         {subItem.title}
-                      </SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
+                      </Sidebar.MenuSubButton>
+                    </Sidebar.MenuSubItem>
                   ))}
-                </SidebarMenuSub>
+                </Sidebar.MenuSub>
               </Collapsible.Content>
-            </SidebarMenuItem>
+            </Sidebar.MenuItem>
           </Collapsible.Root>
         ))}
-      </SidebarMenu>
-    </SidebarGroup>
+      </Sidebar.Menu>
+    </Sidebar.Group>
   );
 }

@@ -1,17 +1,10 @@
-"use client";
-
-import { ChevronsUpDown, Plus } from "lucide-react";
+import { ChevronsUpDownIcon, PlusIcon } from "lucide-react";
 import { useState } from "react";
 
 import { Keyboard } from "~/components/ui/keyboard";
 import { Menu } from "~/components/ui/menu";
 import { Popover } from "~/components/ui/popover";
-import {
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
-} from "~/components/ui/sidebar/sidebar";
+import { Sidebar, useSidebar } from "~/components/ui/sidebar";
 
 interface TeamSwitcherProps {
   teams: {
@@ -30,10 +23,10 @@ export function TeamSwitcher({ teams }: TeamSwitcherProps) {
   }
 
   return (
-    <SidebarMenu>
-      <SidebarMenuItem>
+    <Sidebar.Menu>
+      <Sidebar.MenuItem>
         <Menu.Root>
-          <SidebarMenuButton size="lg">
+          <Sidebar.MenuButton size="lg">
             <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
               <activeTeam.logo className="size-4" />
             </div>
@@ -41,8 +34,8 @@ export function TeamSwitcher({ teams }: TeamSwitcherProps) {
               <span className="truncate font-medium">{activeTeam.name}</span>
               <span className="truncate text-xs">{activeTeam.plan}</span>
             </div>
-            <ChevronsUpDown className="ml-auto" />
-          </SidebarMenuButton>
+            <ChevronsUpDownIcon className="ml-auto" />
+          </Sidebar.MenuButton>
 
           <Popover.Content placement={isMobile ? "bottom" : "right"}>
             <Menu.Content className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg">
@@ -65,7 +58,7 @@ export function TeamSwitcher({ teams }: TeamSwitcherProps) {
               <Menu.Separator />
               <Menu.Item className="gap-2 p-2">
                 <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
-                  <Plus className="size-4" />
+                  <PlusIcon className="size-4" />
                 </div>
                 <div className="font-medium text-muted-foreground">
                   Add team
@@ -74,7 +67,7 @@ export function TeamSwitcher({ teams }: TeamSwitcherProps) {
             </Menu.Content>
           </Popover.Content>
         </Menu.Root>
-      </SidebarMenuItem>
-    </SidebarMenu>
+      </Sidebar.MenuItem>
+    </Sidebar.Menu>
   );
 }

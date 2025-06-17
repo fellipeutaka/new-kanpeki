@@ -1,15 +1,4 @@
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuLink,
-  SidebarRail,
-} from "~/components/ui/sidebar/sidebar";
+import { Sidebar } from "~/components/ui/sidebar";
 import { SearchForm } from "./search-form";
 import { VersionSwitcher } from "./version-switcher";
 
@@ -145,36 +134,36 @@ const data = {
   ],
 };
 
-export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar(props: React.ComponentProps<typeof Sidebar.Root>) {
   return (
-    <Sidebar {...props}>
-      <SidebarHeader>
+    <Sidebar.Root {...props}>
+      <Sidebar.Header>
         <VersionSwitcher
           versions={data.versions}
           defaultVersion={data.versions[0]}
         />
         <SearchForm />
-      </SidebarHeader>
-      <SidebarContent>
-        {/* We create a SidebarGroup for each parent. */}
+      </Sidebar.Header>
+      <Sidebar.Content>
+        {/* We create a Sidebar.Group for each parent. */}
         {data.navMain.map((item) => (
-          <SidebarGroup key={item.title}>
-            <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
+          <Sidebar.Group key={item.title}>
+            <Sidebar.GroupLabel>{item.title}</Sidebar.GroupLabel>
+            <Sidebar.GroupContent>
+              <Sidebar.Menu>
                 {item.items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuLink href={item.url} isActive={item.isActive}>
+                  <Sidebar.MenuItem key={item.title}>
+                    <Sidebar.MenuLink href={item.url} isActive={item.isActive}>
                       {item.title}
-                    </SidebarMenuLink>
-                  </SidebarMenuItem>
+                    </Sidebar.MenuLink>
+                  </Sidebar.MenuItem>
                 ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
+              </Sidebar.Menu>
+            </Sidebar.GroupContent>
+          </Sidebar.Group>
         ))}
-      </SidebarContent>
-      <SidebarRail />
-    </Sidebar>
+      </Sidebar.Content>
+      <Sidebar.Rail />
+    </Sidebar.Root>
   );
 }

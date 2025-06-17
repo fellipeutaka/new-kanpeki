@@ -8,11 +8,7 @@ import {
 import { useState } from "react";
 import { Menu } from "~/components/ui/menu";
 import { Popover } from "~/components/ui/popover";
-import {
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "~/components/ui/sidebar/sidebar";
+import { Sidebar } from "~/components/ui/sidebar";
 
 export interface VersionSwitcherProps {
   versions: string[];
@@ -26,10 +22,10 @@ export function VersionSwitcher({
   const [selectedVersion, setSelectedVersion] = useState(defaultVersion);
 
   return (
-    <SidebarMenu>
-      <SidebarMenuItem>
+    <Sidebar.Menu>
+      <Sidebar.MenuItem>
         <Menu.Root>
-          <SidebarMenuButton
+          <Sidebar.MenuButton
             size="lg"
             className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
           >
@@ -41,7 +37,7 @@ export function VersionSwitcher({
               <span className="">v{selectedVersion}</span>
             </div>
             <ChevronsUpDownIcon className="ml-auto" />
-          </SidebarMenuButton>
+          </Sidebar.MenuButton>
 
           <Popover.Content>
             <Menu.Content>
@@ -59,7 +55,7 @@ export function VersionSwitcher({
             </Menu.Content>
           </Popover.Content>
         </Menu.Root>
-      </SidebarMenuItem>
-    </SidebarMenu>
+      </Sidebar.MenuItem>
+    </Sidebar.Menu>
   );
 }
