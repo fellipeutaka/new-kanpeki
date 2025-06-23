@@ -131,6 +131,14 @@ const SINK_COMPONENTS: [
     ),
   ],
   [
+    "dropzone",
+    lazy(() =>
+      import("~/demos/dropzone-demo").then((mod) => ({
+        default: mod.DropzoneDemo,
+      }))
+    ),
+  ],
+  [
     "dialog",
     lazy(() =>
       import("~/demos/dialog-demo").then((mod) => ({ default: mod.DialogDemo }))

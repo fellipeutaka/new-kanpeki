@@ -20,7 +20,7 @@ const plans = [
 export function RadioGroupDemo() {
   return (
     <div className="flex flex-col gap-6">
-      <RadioGroup.Root defaultValue="comfortable">
+      <RadioGroup.Root aria-label="Display density" defaultValue="comfortable">
         <RadioGroup.Item value="default" id="r1">
           <RadioGroup.Indicator />
           <Label>Default</Label>
@@ -37,7 +37,11 @@ export function RadioGroupDemo() {
         </RadioGroup.Item>
       </RadioGroup.Root>
 
-      <RadioGroup.Root defaultValue="starter" className="max-w-sm">
+      <RadioGroup.Root
+        aria-label="Plan selection"
+        defaultValue="starter"
+        className="max-w-sm"
+      >
         {plans.map((plan) => (
           <RadioGroup.Item
             className="items-start rounded-lg border selected:border-green-600 selected:bg-green-50 p-4 hover:bg-accent/50 dark:selected:border-green-900 dark:selected:bg-green-950"

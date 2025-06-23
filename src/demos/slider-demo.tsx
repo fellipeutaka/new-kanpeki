@@ -7,21 +7,36 @@ import { Slider } from "~/components/ui/slider";
 export function SliderDemo() {
   return (
     <div className="flex w-full max-w-sm flex-col flex-wrap gap-6 md:flex-row">
-      <Slider.Root defaultValue={[50]} maxValue={100} step={1}>
+      <Slider.Root
+        aria-label="Single value slider"
+        defaultValue={[50]}
+        maxValue={100}
+        step={1}
+      >
         <Slider.Track>
           <Slider.Range />
           <Slider.Thumb />
         </Slider.Track>
       </Slider.Root>
 
-      <Slider.Root defaultValue={[25, 50]} maxValue={100} step={1}>
+      <Slider.Root
+        aria-label="Double value slider"
+        defaultValue={[25, 50]}
+        maxValue={100}
+        step={1}
+      >
         <Slider.Track>
           <Slider.Range />
           <Slider.Thumb />
         </Slider.Track>
       </Slider.Root>
 
-      <Slider.Root defaultValue={[10, 20]} maxValue={100} step={10}>
+      <Slider.Root
+        aria-label="Step slider"
+        defaultValue={[10, 20]}
+        maxValue={100}
+        step={10}
+      >
         <Slider.Track>
           <Slider.Range />
           <Slider.Thumb />
@@ -30,6 +45,7 @@ export function SliderDemo() {
 
       <div className="flex w-full items-center gap-6">
         <Slider.Root
+          aria-label="Vertical slider 1"
           defaultValue={[50]}
           maxValue={100}
           step={1}
@@ -42,6 +58,7 @@ export function SliderDemo() {
         </Slider.Root>
 
         <Slider.Root
+          aria-label="Vertical slider 2"
           defaultValue={[25]}
           maxValue={100}
           step={1}
@@ -64,6 +81,7 @@ function SliderControlled() {
 
   return (
     <Slider.Root
+      aria-label="Temperature slider"
       value={value}
       onChange={setValue}
       minValue={0}
