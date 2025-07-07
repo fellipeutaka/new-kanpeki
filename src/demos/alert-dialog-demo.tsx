@@ -4,7 +4,7 @@ import { Dialog } from "~/components/ui/dialog";
 export function AlertDialogDemo() {
   return (
     <Dialog.Root>
-      <Button variant="outline">Show Dialog.</Button>
+      <Button variant="outline">Show Dialog</Button>
 
       <Dialog.Overlay isDismissable={false}>
         <Dialog.Modal>

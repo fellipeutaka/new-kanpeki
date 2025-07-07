@@ -24,7 +24,7 @@ export function DatePickerDemo() {
 
 function Simple() {
   return (
-    <DatePicker.Root>
+    <DatePicker.Root aria-label="Date Picker">
       <Group>
         <Button variant="outline" className="font-normal">
           <CalendarIcon className="size-4 shrink-0 text-muted-foreground" />
