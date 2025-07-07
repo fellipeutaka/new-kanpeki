@@ -3,9 +3,8 @@ import { cva } from "~/lib/cva";
 export const DrawerStyles = {
   Overlay: cva({
     base: [
-      "fixed inset-0 z-50",
-      "data-[state=closed]:animate-out data-[state=open]:animate-in",
-      "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "fixed inset-0 z-50 bg-black/15 dark:bg-black/60",
+      "entering:motion-opacity-in motion-duration-200 motion-ease exiting:motion-opacity-out",
     ],
   }),
   Modal: cva({

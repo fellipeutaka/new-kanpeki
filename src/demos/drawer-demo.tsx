@@ -190,7 +190,7 @@ function DrawerDirections() {
                 Set your daily activity goal.
               </Drawer.Description>
             </Drawer.Header>
-            <div className="overflow-y-auto px-4 text-sm group-data-[side=bottom]:max-h-[60dvh] group-data-[side=top]:max-h-[60dvh]">
+            <div className="overflow-y-auto px-4 text-sm group-data-[orientation=vertical]:max-h-[60dvh]">
               {Array.from({ length: 10 }).map((_, index) => (
                 // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                 <p key={index} className="mb-4 leading-normal">

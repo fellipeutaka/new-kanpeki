@@ -1,7 +1,13 @@
 "use client";
 
 import type { VariantProps } from "cva";
-import { AnimatePresence, type PanInfo, motion } from "motion/react";
+import {
+  AnimatePresence,
+  type PanInfo,
+  type Point,
+  type TargetAndTransition,
+  motion,
+} from "motion/react";
 import { use } from "react";
 import {
   Button,
@@ -12,6 +18,7 @@ import {
   ModalOverlay,
   OverlayTriggerStateContext,
   Text,
+  composeRenderProps,
 } from "react-aria-components";
 
 import { DrawerStyles } from "./styles";
@@ -19,37 +26,33 @@ import { DrawerStyles } from "./styles";
 const MotionModal = motion.create(Modal);
 const MotionModalOverlay = motion.create(ModalOverlay);
 
-// Vaul-inspired constants
+const TRANSITIONS = {
+  DURATION: 0.5,
+  EASE: [0.32, 0.72, 0, 1],
+};
 const VELOCITY_THRESHOLD = 0.4;
 const CLOSE_THRESHOLD = 0.25;
-const TRANSITION_DURATION = 0.5;
-const TRANSITION_EASE = [0.32, 0.72, 0, 1] as const;
 
 type DrawerSide = "top" | "right" | "bottom" | "left";
 
-// Get initial position for each side
-function getInitialTransform(side: DrawerSide) {
-  switch (side) {
-    case "top":
-      return { y: "-100%" };
-    case "right":
-      return { x: "100%" };
-    case "bottom":
-      return { y: "100%" };
-    case "left":
-      return { x: "-100%" };
-    default:
-      return { y: "100%" };
-  }
+const initialTransform = {
+  top: { y: "-100%" },
+  right: { x: "100%" },
+  bottom: { y: "100%" },
+  left: { x: "-100%" },
+} as const satisfies Record<DrawerSide, TargetAndTransition>;
+
+function getIsVertical(side: DrawerSide): boolean {
+  return side === "top" || side === "bottom";
 }
 
 // Check if drag should close the drawer
 function shouldClose(
   side: DrawerSide,
-  offset: { x: number; y: number },
-  velocity: { x: number; y: number }
+  offset: Point,
+  velocity: Point
 ): boolean {
-  const isVertical = side === "top" || side === "bottom";
+  const isVertical = getIsVertical(side);
   const dragDistance = isVertical ? Math.abs(offset.y) : Math.abs(offset.x);
   const dragVelocity = isVertical ? Math.abs(velocity.y) : Math.abs(velocity.x);
 
@@ -77,7 +80,7 @@ function shouldClose(
 
 // Get drag configuration for each side
 function getDragConfig(side: DrawerSide) {
-  const isVertical = side === "top" || side === "bottom";
+  const isVertical = getIsVertical(side);
 
   return {
     drag: (isVertical ? "y" : "x") as "x" | "y",
@@ -123,7 +126,7 @@ export interface DrawerOverlayProps
    * @default true
    */
   notch?: boolean;
-  children: React.ReactNode;
+  children: React.ComponentProps<typeof Dialog>["children"];
 }
 
 export function DrawerOverlay({
@@ -147,7 +150,6 @@ export function DrawerOverlay({
     }
   };
 
-  const initialTransform = getInitialTransform(side);
   const dragConfig = getDragConfig(side);
 
   return (
@@ -162,21 +164,15 @@ export function DrawerOverlay({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{
-            duration: TRANSITION_DURATION,
-            ease: TRANSITION_EASE,
-          }}
-          style={{
-            backgroundColor: "rgba(0, 0, 0, 0.8)",
-          }}
+          transition={TRANSITIONS}
           {...props}
         >
           <MotionModal
             data-slot="drawer-modal"
             className={DrawerStyles.Modal({ side, isFloat })}
-            initial={initialTransform}
+            initial={initialTransform[side]}
             animate={{ x: 0, y: 0 }}
-            exit={initialTransform}
+            exit={initialTransform[side]}
             transition={{
               type: "spring",
               damping: 25,
@@ -196,12 +192,17 @@ export function DrawerOverlay({
               data-slot="drawer-content"
               className={DrawerStyles.Content({ side })}
               data-side={side}
+              data-orientation={getIsVertical(side) ? "vertical" : "horizontal"}
               aria-label="Drawer"
             >
-              {notch && (side === "bottom" || side === "top") && (
-                <div className={DrawerStyles.Notch()} />
-              )}
-              {children}
+              {composeRenderProps(children, (children) => (
+                <>
+                  {notch && (side === "bottom" || side === "top") && (
+                    <div className={DrawerStyles.Notch()} />
+                  )}
+                  {children}
+                </>
+              ))}
             </Dialog>
           </MotionModal>
         </MotionModalOverlay>
