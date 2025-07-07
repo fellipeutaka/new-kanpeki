@@ -144,7 +144,12 @@ const SINK_COMPONENTS: [
       import("~/demos/dialog-demo").then((mod) => ({ default: mod.DialogDemo }))
     ),
   ],
-  // ["drawer"],
+  [
+    "drawer",
+    lazy(() =>
+      import("~/demos/drawer-demo").then((mod) => ({ default: mod.DrawerDemo }))
+    ),
+  ],
   [
     "dropdown-menu",
     lazy(() =>

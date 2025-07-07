@@ -1,20 +1,10 @@
 "use client";
 
-// import { MinusIcon, PlusIcon } from "lucide-react";
-// import { Bar, BarChart, ResponsiveContainer } from "recharts";
-
-// import { useCallback, useState } from "react";
-// import { Button } from "~/components/ui/button";
-// import {
-//   Drawer,
-//   DrawerClose,
-//   DrawerContent,
-//   DrawerDescription,
-//   DrawerFooter,
-//   DrawerHeader,
-//   DrawerTitle,
-//   DrawerTrigger,
-// } from "~/components/ui/drawer";
+import { MinusIcon, PlusIcon } from "lucide-react";
+import { useCallback, useState } from "react";
+import { Bar, BarChart, ResponsiveContainer } from "recharts";
+import { Button } from "~/components/ui/button";
+import { Drawer } from "~/components/ui/drawer";
 
 const data = [
   {
@@ -61,170 +51,169 @@ const data = [
 export function DrawerDemo() {
   return (
     <div className="flex flex-wrap items-start gap-4">
-      {/* <DrawerBottom /> */}
-      {/* <DrawerScrollableContent /> */}
-      {/* <DrawerDirections /> */}
+      <DrawerBottom />
+      <DrawerScrollableContent />
+      <DrawerDirections />
     </div>
   );
 }
 
-// function DrawerBottom() {
-//   const [goal, setGoal] = useState(350);
+function DrawerBottom() {
+  const [goal, setGoal] = useState(350);
 
-//   const onClick = useCallback((adjustment: number) => {
-//     setGoal((prevGoal) => Math.max(200, Math.min(400, prevGoal + adjustment)));
-//   }, []);
+  const onClick = useCallback((adjustment: number) => {
+    setGoal((prevGoal) => Math.max(200, Math.min(400, prevGoal + adjustment)));
+  }, []);
 
-//   return (
-//     <Drawer>
-//       <DrawerTrigger asChild>
-//         <Button variant="outline">Open Drawer</Button>
-//       </DrawerTrigger>
-//       <DrawerContent>
-//         <div className="mx-auto w-full max-w-sm">
-//           <DrawerHeader>
-//             <DrawerTitle>Move Goal</DrawerTitle>
-//             <DrawerDescription>Set your daily activity goal.</DrawerDescription>
-//           </DrawerHeader>
-//           <div className="p-4 pb-0">
-//             <div className="flex items-center justify-center space-x-2">
-//               <Button
-//                 variant="outline"
-//                 size="icon"
-//                 className="h-8 w-8 shrink-0 rounded-full"
-//                 onClick={() => onClick(-10)}
-//                 isDisabled={goal <= 200}
-//               >
-//                 <Minus />
-//                 <span className="sr-only">Decrease</span>
-//               </Button>
-//               <div className="flex-1 text-center">
-//                 <div className="font-bold text-7xl tracking-tighter">
-//                   {goal}
-//                 </div>
-//                 <div className="text-[0.70rem] text-muted-foreground uppercase">
-//                   Calories/day
-//                 </div>
-//               </div>
-//               <Button
-//                 variant="outline"
-//                 size="icon"
-//                 className="h-8 w-8 shrink-0 rounded-full"
-//                 onClick={() => onClick(10)}
-//                 isDisabled={goal >= 400}
-//               >
-//                 <Plus />
-//                 <span className="sr-only">Increase</span>
-//               </Button>
-//             </div>
-//             <div className="mt-3 h-[120px]">
-//               <ResponsiveContainer width="100%" height="100%">
-//                 <BarChart data={data}>
-//                   <Bar
-//                     dataKey="goal"
-//                     style={
-//                       {
-//                         fill: "var(--primary)",
-//                         opacity: 0.9,
-//                       } as React.CSSProperties
-//                     }
-//                   />
-//                 </BarChart>
-//               </ResponsiveContainer>
-//             </div>
-//           </div>
-//           <DrawerFooter>
-//             <Button>Submit</Button>
-//             <DrawerClose asChild>
-//               <Button variant="outline">Cancel</Button>
-//             </DrawerClose>
-//           </DrawerFooter>
-//         </div>
-//       </DrawerContent>
-//     </Drawer>
-//   );
-// }
+  return (
+    <Drawer.Root>
+      <Button variant="outline">Open Drawer</Button>
 
-// function DrawerScrollableContent() {
-//   return (
-//     <Drawer direction="right">
-//       <DrawerTrigger asChild>
-//         <Button variant="outline">Scrollable Content</Button>
-//       </DrawerTrigger>
-//       <DrawerContent>
-//         <DrawerHeader>
-//           <DrawerTitle>Move Goal</DrawerTitle>
-//           <DrawerDescription>Set your daily activity goal.</DrawerDescription>
-//         </DrawerHeader>
-//         <div className="overflow-y-auto px-4 text-sm">
-//           <h4 className="mb-4 font-medium text-lg leading-none">Lorem Ipsum</h4>
-//           {Array.from({ length: 10 }).map((_, index) => (
-//             // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-//             <p key={index} className="mb-4 leading-normal">
-//               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-//               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-//               enim ad minim veniam, quis nostrud exercitation ullamco laboris
-//               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-//               reprehenderit in voluptate velit esse cillum dolore eu fugiat
-//               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-//               sunt in culpa qui officia deserunt mollit anim id est laborum.
-//             </p>
-//           ))}
-//         </div>
-//         <DrawerFooter>
-//           <Button>Submit</Button>
-//           <DrawerClose asChild>
-//             <Button variant="outline">Cancel</Button>
-//           </DrawerClose>
-//         </DrawerFooter>
-//       </DrawerContent>
-//     </Drawer>
-//   );
-// }
+      <Drawer.Overlay>
+        <div className="mx-auto w-full max-w-sm">
+          <Drawer.Header>
+            <Drawer.Title>Move Goal</Drawer.Title>
+            <Drawer.Description>
+              Set your daily activity goal.
+            </Drawer.Description>
+          </Drawer.Header>
+          <div className="p-4 pb-0">
+            <div className="flex items-center justify-center space-x-2">
+              <Button
+                variant="outline"
+                size="icon"
+                className="h-8 w-8 shrink-0 rounded-full"
+                onClick={() => onClick(-10)}
+                isDisabled={goal <= 200}
+              >
+                <MinusIcon />
+                <span className="sr-only">Decrease</span>
+              </Button>
+              <div className="flex-1 text-center">
+                <div className="font-bold text-7xl tracking-tighter">
+                  {goal}
+                </div>
+                <div className="text-[0.70rem] text-muted-foreground uppercase">
+                  Calories/day
+                </div>
+              </div>
+              <Button
+                variant="outline"
+                size="icon"
+                className="h-8 w-8 shrink-0 rounded-full"
+                onClick={() => onClick(10)}
+                isDisabled={goal >= 400}
+              >
+                <PlusIcon />
+                <span className="sr-only">Increase</span>
+              </Button>
+            </div>
+            <div className="mt-3 h-[120px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={data}>
+                  <Bar
+                    dataKey="goal"
+                    style={
+                      {
+                        fill: "var(--primary)",
+                        opacity: 0.9,
+                      } as React.CSSProperties
+                    }
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+          <Drawer.Footer className="gap-2 sm:flex-col sm:space-x-0">
+            <Button>Submit</Button>
+            <Button slot="close" variant="outline">
+              Cancel
+            </Button>
+          </Drawer.Footer>
+        </div>
+      </Drawer.Overlay>
+    </Drawer.Root>
+  );
+}
+
+function DrawerScrollableContent() {
+  return (
+    <Drawer.Root>
+      <Button variant="outline">Scrollable Content</Button>
+
+      <Drawer.Overlay side="right">
+        <Drawer.Header>
+          <Drawer.Title>Move Goal</Drawer.Title>
+          <Drawer.Description>Set your daily activity goal.</Drawer.Description>
+        </Drawer.Header>
+        <div className="overflow-y-auto px-4 text-sm">
+          <h4 className="mb-4 font-medium text-lg leading-none">Lorem Ipsum</h4>
+          {Array.from({ length: 10 }).map((_, index) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+            <p key={index} className="mb-4 leading-normal">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          ))}
+        </div>
+        <Drawer.Footer>
+          <Button>Submit</Button>
+          <Button slot="close" variant="outline">
+            Cancel
+          </Button>
+        </Drawer.Footer>
+      </Drawer.Overlay>
+    </Drawer.Root>
+  );
+}
 
 const directions = ["top", "right", "bottom", "left"] as const;
 
-// function DrawerDirections() {
-//   return (
-//     <>
-//       {directions.map((direction) => (
-//         <Drawer key={direction} direction={direction}>
-//           <DrawerTrigger asChild>
-//             <Button variant="outline" className="capitalize">
-//               {direction}
-//             </Button>
-//           </DrawerTrigger>
-//           <DrawerContent>
-//             <DrawerHeader>
-//               <DrawerTitle>Move Goal</DrawerTitle>
-//               <DrawerDescription>
-//                 Set your daily activity goal.
-//               </DrawerDescription>
-//             </DrawerHeader>
-//             <div className="overflow-y-auto px-4 text-sm">
-//               {Array.from({ length: 10 }).map((_, index) => (
-//                 // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-//                 <p key={index} className="mb-4 leading-normal">
-//                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-//                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-//                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
-//                   laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-//                   irure dolor in reprehenderit in voluptate velit esse cillum
-//                   dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-//                   cupidatat non proident, sunt in culpa qui officia deserunt
-//                   mollit anim id est laborum.
-//                 </p>
-//               ))}
-//             </div>
-//             <DrawerFooter>
-//               <Button>Submit</Button>
-//               <DrawerClose asChild>
-//                 <Button variant="outline">Cancel</Button>
-//               </DrawerClose>
-//             </DrawerFooter>
-//           </DrawerContent>
-//         </Drawer>
-//       ))}
-//     </>
-//   );
-// }
+function DrawerDirections() {
+  return (
+    <>
+      {directions.map((direction) => (
+        <Drawer.Root key={direction}>
+          <Button variant="outline" className="capitalize">
+            {direction}
+          </Button>
+
+          <Drawer.Overlay side={direction}>
+            <Drawer.Header>
+              <Drawer.Title>Move Goal</Drawer.Title>
+              <Drawer.Description>
+                Set your daily activity goal.
+              </Drawer.Description>
+            </Drawer.Header>
+            <div className="overflow-y-auto px-4 text-sm group-data-[side=bottom]:max-h-[60dvh] group-data-[side=top]:max-h-[60dvh]">
+              {Array.from({ length: 10 }).map((_, index) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                <p key={index} className="mb-4 leading-normal">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </p>
+              ))}
+            </div>
+            <Drawer.Footer>
+              <Button>Submit</Button>
+              <Button slot="close" variant="outline">
+                Cancel
+              </Button>
+            </Drawer.Footer>
+          </Drawer.Overlay>
+        </Drawer.Root>
+      ))}
+    </>
+  );
+}
