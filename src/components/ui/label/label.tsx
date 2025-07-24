@@ -1,14 +1,13 @@
 "use client";
 
-import { Label as LabelPrimitive } from "react-aria-components";
+import { Label as RACLabel } from "react-aria-components";
 import { LabelStyles } from "./styles";
 
-export interface LabelProps
-  extends React.ComponentProps<typeof LabelPrimitive> {}
+export interface LabelProps extends React.ComponentProps<typeof RACLabel> {}
 
 export function Label({ className, ...props }: LabelProps) {
   return (
-    <LabelPrimitive
+    <RACLabel
       data-slot="label"
       className={LabelStyles({ className })}
       {...props}

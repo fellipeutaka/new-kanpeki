@@ -1,21 +1,21 @@
 "use client";
 
 import {
-  DateField as DateFieldPrimitive,
   DateInput,
   DateSegment,
   type DateValue,
+  DateField as RACDateField,
   composeRenderProps,
 } from "react-aria-components";
 import { DateFieldStyles } from "./styles";
 
 export interface DateFieldRootProps<T extends DateValue>
-  extends React.ComponentProps<typeof DateFieldPrimitive<T>> {}
+  extends React.ComponentProps<typeof RACDateField<T>> {}
 
 export function DateFieldRoot<T extends DateValue>(
   props: DateFieldRootProps<T>
 ) {
-  return <DateFieldPrimitive {...props} data-slot="date-field-root" />;
+  return <RACDateField {...props} data-slot="date-field-root" />;
 }
 
 export interface DateFieldInputProps

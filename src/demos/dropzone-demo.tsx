@@ -4,7 +4,7 @@ import { ImageIcon, ImageUpIcon, UploadIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 import { FileTrigger } from "react-aria-components";
 import { toast } from "sonner";
-import { Button, ButtonPrimitive } from "~/components/ui/button";
+import { Button, RACButton } from "~/components/ui/button";
 import { Dropzone } from "~/components/ui/dropzone";
 
 export function DropzoneDemo() {
@@ -191,7 +191,7 @@ function Clickable() {
           setFile(file);
         }}
       >
-        <ButtonPrimitive>
+        <RACButton>
           <Dropzone.Root className="min-h-52 w-96 text-center">
             {previewUrl ? (
               <div className="absolute inset-0 flex items-center justify-center p-4">
@@ -218,7 +218,7 @@ function Clickable() {
               </div>
             )}
           </Dropzone.Root>
-        </ButtonPrimitive>
+        </RACButton>
       </FileTrigger>
 
       {previewUrl && (

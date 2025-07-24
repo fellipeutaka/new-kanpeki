@@ -12,7 +12,7 @@ import {
   useState,
 } from "react";
 import { Link, composeRenderProps } from "react-aria-components";
-import { Button, ButtonPrimitive } from "~/components/ui/button";
+import { Button, RACButton } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Separator } from "~/components/ui/separator";
 import {
@@ -291,13 +291,13 @@ export function SidebarTrigger({
 }
 
 export interface SidebarRailProps
-  extends React.ComponentProps<typeof ButtonPrimitive> {}
+  extends React.ComponentProps<typeof RACButton> {}
 
 export function SidebarRail({ className, ...props }: SidebarRailProps) {
   const { toggleSidebar } = useSidebar();
 
   return (
-    <ButtonPrimitive
+    <RACButton
       data-sidebar="rail"
       data-slot="sidebar-rail"
       aria-label="Toggle Sidebar"
@@ -421,14 +421,14 @@ export function SidebarGroupLabel({
 }
 
 export interface SidebarGroupActionProps
-  extends React.ComponentProps<typeof ButtonPrimitive> {}
+  extends React.ComponentProps<typeof RACButton> {}
 
 export function SidebarGroupAction({
   className,
   ...props
 }: SidebarGroupActionProps) {
   return (
-    <ButtonPrimitive
+    <RACButton
       data-slot="sidebar-group-action"
       data-sidebar="group-action"
       className={composeRenderProps(className, (className) =>
@@ -482,7 +482,7 @@ export function SidebarMenuItem({ className, ...props }: SidebarMenuItemProps) {
 }
 
 export interface SidebarMenuButtonProps
-  extends React.ComponentProps<typeof ButtonPrimitive>,
+  extends React.ComponentProps<typeof RACButton>,
     VariantProps<typeof SidebarStyles.MenuButton> {
   isActive?: boolean;
   tooltip?: string | React.ComponentProps<typeof TooltipContent>;
@@ -499,7 +499,7 @@ export function SidebarMenuButton({
   const { isMobile, state } = useSidebar();
 
   const button = (
-    <ButtonPrimitive
+    <RACButton
       data-slot="sidebar-menu-button"
       data-sidebar="menu-button"
       data-size={size}
@@ -580,7 +580,7 @@ export function SidebarMenuLink({
 }
 
 export interface SidebarMenuActionProps
-  extends React.ComponentProps<typeof ButtonPrimitive>,
+  extends React.ComponentProps<typeof RACButton>,
     VariantProps<typeof SidebarStyles.MenuAction> {}
 
 export function SidebarMenuAction({
@@ -589,7 +589,7 @@ export function SidebarMenuAction({
   ...props
 }: SidebarMenuActionProps) {
   return (
-    <ButtonPrimitive
+    <RACButton
       data-slot="sidebar-menu-action"
       data-sidebar="menu-action"
       className={composeRenderProps(className, (className) =>

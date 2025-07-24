@@ -1,14 +1,14 @@
 "use client";
 
-import { Separator as SeparatorPrimitive } from "react-aria-components";
+import { Separator as RACSeparator } from "react-aria-components";
 import { SeparatorStyles } from "./styles";
 
 export interface SeparatorProps
-  extends React.ComponentProps<typeof SeparatorPrimitive> {}
+  extends React.ComponentProps<typeof RACSeparator> {}
 
 export function Separator({ className, ...props }: SeparatorProps) {
   return (
-    <SeparatorPrimitive
+    <RACSeparator
       data-slot="separator"
       className={SeparatorStyles({ className })}
       {...props}

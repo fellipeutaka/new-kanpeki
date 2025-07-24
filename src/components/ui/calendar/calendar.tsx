@@ -4,13 +4,13 @@ import { getLocalTimeZone, isToday } from "@internationalized/date";
 import type { VariantProps } from "cva";
 import {
   Calendar,
-  CalendarCell as CalendarCellPrimitive,
-  CalendarGridBody as CalendarGridBodyPrimitive,
-  CalendarGridHeader as CalendarGridHeaderPrimitive,
-  CalendarGrid as CalendarGridPrimitive,
-  CalendarHeaderCell as CalendarHeaderCellPrimitive,
   type DateValue,
   Heading,
+  CalendarCell as RACCalendarCell,
+  CalendarGrid as RACCalendarGrid,
+  CalendarGridBody as RACCalendarGridBody,
+  CalendarGridHeader as RACCalendarGridHeader,
+  CalendarHeaderCell as RACCalendarHeaderCell,
   RangeCalendar,
   composeRenderProps,
 } from "react-aria-components";
@@ -100,10 +100,10 @@ export function CalendarNav({ className, ...props }: CalendarNavProps) {
 }
 
 export interface CalendarGridProps
-  extends React.ComponentProps<typeof CalendarGridPrimitive> {}
+  extends React.ComponentProps<typeof RACCalendarGrid> {}
 export function CalendarGrid({ className, ...props }: CalendarGridProps) {
   return (
-    <CalendarGridPrimitive
+    <RACCalendarGrid
       {...props}
       data-slot="calendar-grid"
       className={CalendarStyles.Grid({ className })}
@@ -112,22 +112,20 @@ export function CalendarGrid({ className, ...props }: CalendarGridProps) {
 }
 
 export interface CalendarGridHeaderProps
-  extends React.ComponentProps<typeof CalendarGridHeaderPrimitive> {}
+  extends React.ComponentProps<typeof RACCalendarGridHeader> {}
 export function CalendarGridHeader(props: CalendarGridHeaderProps) {
-  return (
-    <CalendarGridHeaderPrimitive {...props} data-slot="calendar-grid-header" />
-  );
+  return <RACCalendarGridHeader {...props} data-slot="calendar-grid-header" />;
 }
 
 export interface CalendarHeaderCellProps
-  extends React.ComponentProps<typeof CalendarHeaderCellPrimitive> {}
+  extends React.ComponentProps<typeof RACCalendarHeaderCell> {}
 
 export function CalendarHeaderCell({
   className,
   ...props
 }: CalendarHeaderCellProps) {
   return (
-    <CalendarHeaderCellPrimitive
+    <RACCalendarHeaderCell
       {...props}
       data-slot="calendar-header-cell"
       className={CalendarStyles.HeaderCell({ className })}
@@ -136,15 +134,13 @@ export function CalendarHeaderCell({
 }
 
 export interface CalendarGridBodyProps
-  extends React.ComponentProps<typeof CalendarGridBodyPrimitive> {}
+  extends React.ComponentProps<typeof RACCalendarGridBody> {}
 export function CalendarGridBody(props: CalendarGridBodyProps) {
-  return (
-    <CalendarGridBodyPrimitive {...props} data-slot="calendar-grid-body" />
-  );
+  return <RACCalendarGridBody {...props} data-slot="calendar-grid-body" />;
 }
 
 export interface CalendarCellProps
-  extends React.ComponentProps<typeof CalendarCellPrimitive>,
+  extends React.ComponentProps<typeof RACCalendarCell>,
     Omit<VariantProps<(typeof CalendarStyles)["Cell"]>, "isToday"> {}
 
 export function CalendarCell({
@@ -153,7 +149,7 @@ export function CalendarCell({
   ...props
 }: CalendarCellProps) {
   return (
-    <CalendarCellPrimitive
+    <RACCalendarCell
       {...props}
       data-slot="calendar-cell"
       data-shape={shape}

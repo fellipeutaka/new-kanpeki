@@ -1,17 +1,17 @@
 "use client";
 
 import {
-  Autocomplete as AutocompletePrimitive,
+  Autocomplete as RACAutocomplete,
   useFilter,
 } from "react-aria-components";
 
 export interface AutocompleteProps
-  extends React.ComponentProps<typeof AutocompletePrimitive> {
+  extends React.ComponentProps<typeof RACAutocomplete> {
   options?: Intl.CollatorOptions;
 }
 
 export function Autocomplete({ filter, options, ...props }: AutocompleteProps) {
   const { contains } = useFilter({ sensitivity: "base", ...options });
 
-  return <AutocompletePrimitive filter={filter ?? contains} {...props} />;
+  return <RACAutocomplete filter={filter ?? contains} {...props} />;
 }

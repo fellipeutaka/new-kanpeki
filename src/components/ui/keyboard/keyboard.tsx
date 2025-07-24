@@ -1,14 +1,14 @@
 import type { VariantProps } from "cva";
-import { Keyboard as KeyboardPrimitive } from "react-aria-components";
+import { Keyboard as RACKeyboard } from "react-aria-components";
 import { KeyboardStyles } from "./styles";
 
 export interface KeyboardProps
-  extends React.ComponentProps<typeof KeyboardPrimitive>,
+  extends React.ComponentProps<typeof RACKeyboard>,
     VariantProps<typeof KeyboardStyles> {}
 
 export function Keyboard({ className, variant, ...props }: KeyboardProps) {
   return (
-    <KeyboardPrimitive
+    <RACKeyboard
       {...props}
       data-slot="keyboard"
       className={KeyboardStyles({ className, variant })}

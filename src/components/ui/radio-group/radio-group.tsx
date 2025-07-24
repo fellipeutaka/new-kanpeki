@@ -2,18 +2,18 @@
 
 import { CircleIcon } from "lucide-react";
 import {
+  RadioGroup as RACRadioGroup,
   Radio,
-  RadioGroup as RadioGroupPrimitive,
   composeRenderProps,
 } from "react-aria-components";
 import { RadioGroupStyles } from "./styles";
 
 export interface RadioGroupRootProps
-  extends React.ComponentProps<typeof RadioGroupPrimitive> {}
+  extends React.ComponentProps<typeof RACRadioGroup> {}
 
 export function RadioGroupRoot({ className, ...props }: RadioGroupRootProps) {
   return (
-    <RadioGroupPrimitive
+    <RACRadioGroup
       data-slot="radio-group-root"
       className={composeRenderProps(className, (className) =>
         RadioGroupStyles.Root({ className })

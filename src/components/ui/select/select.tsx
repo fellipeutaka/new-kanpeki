@@ -4,8 +4,8 @@ import type { VariantProps } from "cva";
 import { ChevronDownIcon } from "lucide-react";
 import {
   Button,
+  SelectValue as RACSelectValue,
   Select,
-  SelectValue as SelectValuePrimitive,
   composeRenderProps,
 } from "react-aria-components";
 
@@ -64,11 +64,11 @@ export function SelectTrigger({
 // }
 
 export interface SelectValueProps
-  extends React.ComponentProps<typeof SelectValuePrimitive> {}
+  extends React.ComponentProps<typeof RACSelectValue> {}
 
 export function SelectValue({ className, ...props }: SelectValueProps) {
   return (
-    <SelectValuePrimitive
+    <RACSelectValue
       data-slot="select-value"
       className={composeRenderProps(className, (className) =>
         SelectStyles.Value({ className })
