@@ -1,7 +1,10 @@
 "use client";
 
 import type { VariantProps } from "cva";
-import { Button as ButtonPrimitive } from "react-aria-components";
+import {
+  Button as ButtonPrimitive,
+  composeRenderProps,
+} from "react-aria-components";
 import { ButtonStyles } from "./styles";
 
 export interface ButtonProps
@@ -12,7 +15,9 @@ export function Button({ className, variant, size, ...props }: ButtonProps) {
   return (
     <ButtonPrimitive
       data-slot="button"
-      className={ButtonStyles({ variant, size, className })}
+      className={composeRenderProps(className, (className) =>
+        ButtonStyles({ variant, size, className })
+      )}
       {...props}
     />
   );

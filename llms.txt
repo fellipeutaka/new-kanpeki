@@ -1,0 +1,312 @@
+# Kanpeki UI Component Library
+
+A comprehensive React component library built with React Aria Components for accessibility and CVA (Class Variance Authority) for styling. This library provides a complete set of accessible, customizable UI components that can be used in any React project.
+
+## Architecture
+
+### Core Technologies
+- **React** for the component foundation
+- **React Aria Components** for accessibility and behavior
+- **TypeScript** for type safety
+- **Tailwind CSS** for styling
+- **CVA (Class Variance Authority)** for variant-based styling with Tailwind merge
+- **@internationalized/date** for date handling in date components
+
+### Framework Compatibility
+The components are framework-agnostic and can be used with any React framework:
+- **Next.js**
+- **Remix**
+- **Astro**
+- **Vite**
+- **Create React App**
+- Any React-based framework
+
+### Component Structure
+Each component follows a consistent pattern:
+- `component.tsx` - Main component implementations
+- `styles.ts` - CVA-based styling definitions
+- `namespace.ts` - Namespace exports for dot notation usage (optional)
+- `index.ts` - Public API exports
+
+## Component Library
+
+### Layout & Structure
+- **Card** - Flexible container with header, content, and footer sections
+- **Separator** - Visual divider element for content sections
+- **Aspect Ratio** - Maintains aspect ratios for media content
+- **Resizable** - Drag-to-resize panels for layouts
+
+### Navigation
+- **Breadcrumb** - Navigation breadcrumb trail
+- **Sidebar** - Collapsible sidebar navigation with menu items
+- **Pagination** - Page navigation controls
+- **Link** - Enhanced anchor elements
+
+### Forms & Inputs
+- **Input** - Text input with validation states
+- **Textarea** - Multi-line text input
+- **Textfield** - Input with integrated label
+- **Search Field** - Search input with clear button
+- **Input OTP** - One-time password input with segments
+- **Label** - Form labels with accessibility
+- **Form** - Form wrapper with validation
+
+### Selection & Choice
+- **Button** - Action buttons with variants (default, outline, ghost, destructive, secondary, link) and sizes
+- **Select** - Dropdown selection with keyboard navigation
+- **Combobox** - Autocomplete dropdown with search functionality
+- **Checkbox** - Boolean selection input with indeterminate state
+- **Radio Group** - Single selection from multiple options
+- **Switch** - Toggle switch input with on/off states
+- **Toggle** - Toggle button with pressed states
+- **Toggle Group** - Grouped toggle buttons with single/multiple selection
+
+### Data Display
+- **Table** - Data table with sortable headers, body, and footer
+- **List Box** - Selectable list items with keyboard navigation
+- **Badge** - Status indicators and labels with color variants
+- **Avatar** - User profile images with fallback initials
+- **Progress** - Progress indicators with determinate/indeterminate states
+- **Spinner** - Loading spinner with size variants
+- **Skeleton** - Loading placeholders for content
+- **Keyboard** - Keyboard shortcut display component
+
+### Feedback & Overlays
+- **Dialog** - Modal dialogs with backdrop
+- **Sheet** - Slide-out panels from different directions
+- **Drawer** - Slide-out navigation drawer
+- **Popover** - Floating content containers with positioning
+- **Tooltip** - Contextual help text with delay options
+- **Alert** - Status messages and notifications with variants
+- **Toast** - Temporary notification messages (using Sonner)
+
+### Interactive Elements
+- **Accordion** - Collapsible content sections
+- **Collapsible** - Show/hide content toggle
+- **Tabs** - Tabbed content navigation
+- **Carousel** - Image/content slider (via Embla)
+- **Slider** - Range input control
+- **Menu** - Context and dropdown menus
+- **Autocomplete** - Search with suggestions
+- **Dropzone** - File upload area
+
+### Date & Time
+- **Calendar** - Date picker calendar
+- **Date Picker** - Date selection input
+- **Date Field** - Date input field
+
+### Visualization
+- **Chart** - Data visualization components (via Recharts)
+  - Area charts
+  - Bar charts
+  - Line charts
+  - Mixed charts
+
+- **Mode Switcher** - Theme toggle component for dark/light modes
+
+## Styling System
+
+### CVA Configuration
+Uses CVA with Tailwind merge for conflict resolution:
+```typescript
+import { defineConfig } from "cva";
+import { twMerge } from "tailwind-merge";
+
+export const { cva, cx: cn, compose } = defineConfig({
+  hooks: {
+    onComplete: (className) => twMerge(className),
+  },
+});
+```
+
+2. **Tailwind CSS**: Ensure Tailwind CSS is configured in your project
+3. **TypeScript**: Components are built with TypeScript support
+
+### Import Patterns
+Components support both individual imports and namespace imports:
+
+```typescript
+// Individual component imports
+import { Button } from '~/components/ui/button';
+import { CardRoot, CardHeader, CardTitle, CardContent } from '~/components/ui/card';
+
+// Namespace imports for dot notation
+import { Button } from '~/components/ui/button';
+import { Card } from '~/components/ui/card';
+
+// Usage with namespace pattern
+<Button.Root variant="outline" size="lg">
+  Click me
+</Button.Root>
+
+<Card.Root>
+  <Card.Header>
+    <Card.Title>Card Title</Card.Title>
+  </Card.Header>
+  <Card.Content>
+    Card content goes here
+  </Card.Content>
+</Card.Root>
+
+// Usage with individual imports
+<Button variant="outline" size="lg">
+  Click me
+</Button>
+```
+
+### Component Composition
+Most components are designed to be composed together:
+
+```typescript
+// Dialog with form
+<Dialog.Root>
+  <Dialog.Trigger>
+    <Button.Root>Open Dialog</Button.Root>
+  </Dialog.Trigger>
+  <Dialog.Modal>
+    <Dialog.Content>
+      <Dialog.Header>
+        <Dialog.Title>Edit Profile</Dialog.Title>
+      </Dialog.Header>
+      <Form.Root>
+        <Textfield.Root>
+          <Textfield.Label>Name</Textfield.Label>
+          <Textfield.Input />
+        </Textfield.Root>
+        <Button.Root type="submit">Save</Button.Root>
+      </Form.Root>
+    </Dialog.Content>
+  </Dialog.Modal>
+</Dialog.Root>
+```
+
+### Common Props
+All components support standard React props plus:
+- `className` - Custom CSS classes (merged with component styles)
+- `data-*` attributes - Custom data attributes
+- `aria-*` attributes - Accessibility attributes (many are automatic)
+
+### Styling Variants
+Components use CVA for variant-based styling:
+
+```typescript
+// Button variants
+<Button.Root variant="default">Default</Button.Root>
+<Button.Root variant="outline">Outline</Button.Root>
+<Button.Root variant="ghost">Ghost</Button.Root>
+<Button.Root variant="destructive">Destructive</Button.Root>
+
+// Button sizes
+<Button.Root size="sm">Small</Button.Root>
+<Button.Root size="default">Default</Button.Root>
+<Button.Root size="lg">Large</Button.Root>
+<Button.Root size="icon">Icon</Button.Root>
+```
+
+## Key Features
+
+### Accessibility
+- Built on React Aria Components for robust accessibility
+- Keyboard navigation support across all interactive components
+- Screen reader compatibility with proper ARIA attributes
+- Focus management and focus trapping in overlays
+- Color contrast compliance
+- Reduced motion support for animations
+
+### Theming & Customization
+- CSS custom properties for easy theming
+- Dark/light mode support
+- Consistent design tokens
+- Responsive design patterns
+- Customizable via className prop and CVA variants
+
+### Developer Experience
+- Full TypeScript support with proper interfaces
+- Consistent API across all components
+- Tree-shakeable exports
+- Comprehensive prop validation
+- Composable component architecture
+- Clear naming conventions
+
+### Performance
+- Optimized bundle size
+- Lazy loading support
+- Minimal re-renders
+- Efficient event handling
+- React 18+ concurrent features support
+
+## Common Use Cases
+
+### Forms
+```typescript
+<Form.Root onSubmit={handleSubmit}>
+  <Textfield.Root>
+    <Textfield.Label>Email</Textfield.Label>
+    <Textfield.Input type="email" required />
+    <Textfield.Description>We'll never share your email</Textfield.Description>
+  </Textfield.Root>
+  
+  <RadioGroup.Root>
+    <RadioGroup.Item value="option1">
+      <RadioGroup.Indicator />
+      Option 1
+    </RadioGroup.Item>
+    <RadioGroup.Item value="option2">
+      <RadioGroup.Indicator />
+      Option 2
+    </RadioGroup.Item>
+  </RadioGroup.Root>
+  
+  <Button.Root type="submit">Submit</Button.Root>
+</Form.Root>
+```
+
+### Data Tables
+```typescript
+<Table.Root>
+  <Table.Header>
+    <Table.Row>
+      <Table.Head>Name</Table.Head>
+      <Table.Head>Email</Table.Head>
+      <Table.Head>Role</Table.Head>
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    {users.map(user => (
+      <Table.Row key={user.id}>
+        <Table.Cell>{user.name}</Table.Cell>
+        <Table.Cell>{user.email}</Table.Cell>
+        <Table.Cell>
+          <Badge.Root variant="secondary">{user.role}</Badge.Root>
+        </Table.Cell>
+      </Table.Row>
+    ))}
+  </Table.Body>
+</Table.Root>
+```
+
+### Navigation
+```typescript
+<Sidebar.Root>
+  <Sidebar.Header>
+    <Sidebar.Title>My App</Sidebar.Title>
+  </Sidebar.Header>
+  <Sidebar.Content>
+    <Sidebar.Menu>
+      <Sidebar.MenuItem>
+        <Sidebar.MenuButton>Dashboard</Sidebar.MenuButton>
+      </Sidebar.MenuItem>
+      <Sidebar.MenuItem>
+        <Sidebar.MenuButton>Users</Sidebar.MenuButton>
+        <Sidebar.MenuSub>
+          <Sidebar.MenuSubItem>
+            <Sidebar.MenuSubButton>All Users</Sidebar.MenuSubButton>
+          </Sidebar.MenuSubItem>
+        </Sidebar.MenuSub>
+      </Sidebar.MenuItem>
+    </Sidebar.Menu>
+  </Sidebar.Content>
+</Sidebar.Root>
+```
+
+This component library provides a complete design system with consistent patterns, accessibility features, and extensive customization options for building modern web applications.

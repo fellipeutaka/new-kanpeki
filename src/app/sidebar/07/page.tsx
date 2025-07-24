@@ -1,5 +1,5 @@
 import { Breadcrumb } from "~/components/ui/breadcrumb";
-import { Link } from "~/components/ui/link";
+import { Link } from "~/components/ui/link/link";
 import { Separator } from "~/components/ui/separator";
 import { Sidebar } from "~/components/ui/sidebar";
 import { AppSidebar } from "./_components/app-sidebar";

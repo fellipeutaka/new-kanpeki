@@ -201,6 +201,14 @@ const SINK_COMPONENTS: [
   // ["menubar"],
   // ["navigation-menu"],
   [
+    "number-field",
+    lazy(() =>
+      import("~/demos/number-field-demo").then((mod) => ({
+        default: mod.NumberFieldDemo,
+      }))
+    ),
+  ],
+  [
     "pagination",
     lazy(() =>
       import("~/demos/pagination-demo").then((mod) => ({

@@ -1,6 +1,6 @@
 import { Breadcrumb } from "~/components/ui/breadcrumb";
 import { Button } from "~/components/ui/button/button";
-import { Link } from "~/components/ui/link";
+import { Link } from "~/components/ui/link/link";
 import { Menu } from "~/components/ui/menu";
 import { Popover } from "~/components/ui/popover";
 
