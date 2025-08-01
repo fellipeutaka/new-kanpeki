@@ -78,12 +78,15 @@ function shouldClose(
   return dragDistance >= threshold;
 }
 
+type DragOrientation = "x" | "y";
+
 // Get drag configuration for each side
 function getDragConfig(side: DrawerSide) {
   const isVertical = getIsVertical(side);
+  const drag: DragOrientation = isVertical ? "y" : "x";
 
   return {
-    drag: (isVertical ? "y" : "x") as "x" | "y",
+    drag,
     dragConstraints: isVertical
       ? side === "top"
         ? { top: -300, bottom: 5 } // More restrictive for scrollable content
@@ -156,44 +159,44 @@ export function DrawerOverlay({
     <AnimatePresence>
       {(props?.isOpen || state?.isOpen) && (
         <MotionModalOverlay
-          data-slot="drawer-overlay"
+          animate={{ opacity: 1 }}
           className={DrawerStyles.Overlay({ className })}
+          data-slot="drawer-overlay"
+          exit={{ opacity: 0 }}
+          initial={{ opacity: 0 }}
           isDismissable={isDismissable}
           isOpen={props?.isOpen || state?.isOpen}
           onOpenChange={props?.onOpenChange || state?.setOpen}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
           transition={TRANSITIONS}
           {...props}
         >
           <MotionModal
-            data-slot="drawer-modal"
-            className={DrawerStyles.Modal({ side, isFloat })}
-            initial={initialTransform[side]}
             animate={{ x: 0, y: 0 }}
-            exit={initialTransform[side]}
-            transition={{
-              type: "spring",
-              damping: 25,
-              stiffness: 400,
-            }}
+            className={DrawerStyles.Modal({ side, isFloat })}
+            data-slot="drawer-modal"
             drag={dragConfig.drag}
             dragConstraints={dragConfig.dragConstraints}
             dragElastic={dragConfig.dragElastic}
             dragMomentum={false}
             dragSnapToOrigin
+            exit={initialTransform[side]}
+            initial={initialTransform[side]}
             onDragEnd={handleDragEnd}
+            transition={{
+              type: "spring",
+              damping: 25,
+              stiffness: 400,
+            }}
             whileDrag={{
               cursor: "grabbing",
             }}
           >
             <Dialog
-              data-slot="drawer-content"
-              className={DrawerStyles.Content({ side })}
-              data-side={side}
-              data-orientation={getIsVertical(side) ? "vertical" : "horizontal"}
               aria-label="Drawer"
+              className={DrawerStyles.Content({ side })}
+              data-orientation={getIsVertical(side) ? "vertical" : "horizontal"}
+              data-side={side}
+              data-slot="drawer-content"
             >
               {composeRenderProps(children, (children) => (
                 <>
@@ -216,9 +219,9 @@ export interface DrawerHeaderProps extends React.ComponentProps<"div"> {}
 export function DrawerHeader({ className, ...props }: DrawerHeaderProps) {
   return (
     <div
+      className={DrawerStyles.Header({ className })}
       data-slot="drawer-header"
       slot="header"
-      className={DrawerStyles.Header({ className })}
       {...props}
     />
   );
@@ -230,9 +233,9 @@ export interface DrawerTitleProps
 export function DrawerTitle({ className, ...props }: DrawerTitleProps) {
   return (
     <Heading
-      slot="title"
-      data-slot="drawer-title"
       className={DrawerStyles.Title({ className })}
+      data-slot="drawer-title"
+      slot="title"
       {...props}
     />
   );
@@ -247,9 +250,9 @@ export function DrawerDescription({
 }: DrawerDescriptionProps) {
   return (
     <Text
-      slot="description"
-      data-slot="drawer-description"
       className={DrawerStyles.Description({ className })}
+      data-slot="drawer-description"
+      slot="description"
       {...props}
     />
   );
@@ -260,9 +263,9 @@ export interface DrawerBodyProps extends React.ComponentProps<"div"> {}
 export function DrawerBody({ className, ...props }: DrawerBodyProps) {
   return (
     <div
+      className={DrawerStyles.Body({ className })}
       data-slot="drawer-body"
       slot="body"
-      className={DrawerStyles.Body({ className })}
       {...props}
     />
   );
@@ -273,9 +276,9 @@ export interface DrawerFooterProps extends React.ComponentProps<"div"> {}
 export function DrawerFooter({ className, ...props }: DrawerFooterProps) {
   return (
     <div
+      className={DrawerStyles.Footer({ className })}
       data-slot="drawer-footer"
       slot="footer"
-      className={DrawerStyles.Footer({ className })}
       {...props}
     />
   );
@@ -286,9 +289,9 @@ export interface DrawerCloseProps extends React.ComponentProps<typeof Button> {}
 export function DrawerClose({ className, ...props }: DrawerCloseProps) {
   return (
     <Button
+      className={className}
       data-slot="drawer-close"
       slot="close"
-      className={className}
       {...props}
     />
   );

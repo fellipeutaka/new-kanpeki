@@ -21,10 +21,10 @@ export function SliderRoot<T extends number | number[]>({
   return (
     <Slider
       {...props}
-      data-slot="slider-root"
       className={composeRenderProps(className, (className) =>
         SliderStyles.Root({ className })
       )}
+      data-slot="slider-root"
     />
   );
 }
@@ -35,10 +35,10 @@ export function SliderTrack({ className, ...props }: SliderTrackProps) {
   return (
     <Track
       {...props}
-      data-slot="slider-track"
       className={composeRenderProps(className, (className) =>
         SliderStyles.Track({ className })
       )}
+      data-slot="slider-track"
     />
   );
 }
@@ -55,13 +55,13 @@ export function SliderThumb({ className, ...props }: SliderThumbProps) {
   return context.values.map((_value, idx) => (
     <Thumb
       {...props}
-      // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-      key={idx}
-      index={idx}
-      data-slot="slider-thumb"
       className={composeRenderProps(className, (className) =>
         SliderStyles.Thumb({ className })
       )}
+      data-slot="slider-thumb"
+      index={idx}
+      // biome-ignore lint/suspicious/noArrayIndexKey: Using index as key is acceptable here since SliderThumbs are generated based on the number of values in the slider.
+      key={idx}
     />
   ));
 }
@@ -73,12 +73,40 @@ export function SliderOutput({ className, ...props }: SliderOutputProps) {
   return (
     <Output
       {...props}
-      data-slot="slider-output"
       className={composeRenderProps(className, (className) =>
         SliderStyles.Output({ className })
       )}
+      data-slot="slider-output"
     />
   );
+}
+
+interface GetSliderRangeStyleProps {
+  orientation: "horizontal" | "vertical";
+  getThumbPercent: (index: number) => number;
+  values: number[];
+}
+
+function getSliderRangeStyle(
+  props: GetSliderRangeStyleProps
+): React.CSSProperties {
+  const { orientation, getThumbPercent, values } = props;
+
+  if (values.length === 1) {
+    return orientation === "horizontal"
+      ? { width: `${getThumbPercent(0) * 100}%` }
+      : { height: `${getThumbPercent(0) * 100}%` };
+  }
+
+  return orientation === "horizontal"
+    ? {
+        left: `${getThumbPercent(0) * 100}%`,
+        width: `${Math.abs(getThumbPercent(0) - getThumbPercent(1)) * 100}%`,
+      }
+    : {
+        bottom: `${getThumbPercent(0) * 100}%`,
+        height: `${Math.abs(getThumbPercent(0) - getThumbPercent(1)) * 100}%`,
+      };
 }
 
 export interface SliderRangeProps extends React.ComponentProps<"div"> {}
@@ -96,25 +124,11 @@ export function SliderRange({ className, ...props }: SliderRangeProps) {
     <div
       {...props}
       className={SliderStyles.Range({ className })}
-      style={
-        values.length === 1
-          ? orientation === "horizontal"
-            ? { width: `${getThumbPercent(0) * 100}%` }
-            : { height: `${getThumbPercent(0) * 100}%` }
-          : orientation === "horizontal"
-            ? {
-                left: `${getThumbPercent(0) * 100}%`,
-                width: `${
-                  Math.abs(getThumbPercent(0) - getThumbPercent(1)) * 100
-                }%`,
-              }
-            : {
-                bottom: `${getThumbPercent(0) * 100}%`,
-                height: `${
-                  Math.abs(getThumbPercent(0) - getThumbPercent(1)) * 100
-                }%`,
-              }
-      }
+      style={getSliderRangeStyle({
+        getThumbPercent,
+        orientation,
+        values,
+      })}
     />
   );
 }
@@ -125,8 +139,8 @@ export function SliderHeader({ className, ...props }: SliderHeaderProps) {
   return (
     <div
       {...props}
-      data-slot="slider-header"
       className={SliderStyles.Header({ className })}
+      data-slot="slider-header"
     />
   );
 }
