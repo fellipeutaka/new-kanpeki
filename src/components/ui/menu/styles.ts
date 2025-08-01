@@ -22,7 +22,7 @@ export const MenuStyles = {
   }),
   Content: cva({
     base: [
-      "z-50 min-w-32 overflow-y-auto overflow-x-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
+      "z-50 min-w-32 overflow-y-auto overflow-x-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md outline-none",
     ],
     variants: {
       variant: {

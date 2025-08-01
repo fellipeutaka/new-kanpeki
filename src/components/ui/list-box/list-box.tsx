@@ -29,15 +29,15 @@ export function ListboxRoot<T extends object>({
   );
 }
 
-export interface ListboxItemProps
-  extends React.ComponentProps<typeof ListBoxItem> {}
+export interface ListboxItemProps<T extends object>
+  extends React.ComponentProps<typeof ListBoxItem<T>> {}
 
-export function ListboxItem({
+export function ListboxItem<T extends object>({
   className,
   children,
   textValue,
   ...props
-}: ListboxItemProps) {
+}: ListboxItemProps<T>) {
   const _textValue =
     (textValue ?? typeof children === "string") ? String(children) : undefined;
 
